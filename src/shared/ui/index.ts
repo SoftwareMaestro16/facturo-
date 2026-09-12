@@ -7,3 +7,4 @@ export { Field } from './field';
 export { Input } from './input';
 export { Logo } from './logo';
 export { Skeleton } from './skeleton';
+export { GoogleButton } from './google-button';

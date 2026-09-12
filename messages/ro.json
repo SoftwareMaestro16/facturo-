@@ -147,6 +147,23 @@
     },
     "logout": {
       "submit": "Ieșire"
+    },
+    "google": {
+      "loading": "Pregătim intrarea…",
+      "companyDetails": "Ați ales Google. Mai sunt necesare datele companiei.",
+      "companyName": "Denumirea companiei",
+      "createCompany": "Înregistrați compania",
+      "chooseAnother": "Alegeți alt cont Google",
+      "orEmail": "Sau folosiți adresa de e-mail și parola de mai jos.",
+      "retry": "Încercați din nou",
+      "register": "Înregistrați compania",
+      "generic": "Nu am reușit să vă conectăm prin Google. Încercați din nou sau folosiți e-mailul și parola.",
+      "google_invalid": "Alegerea contului Google a expirat. Alegeți-l din nou.",
+      "google_unavailable": "Intrarea prin Google nu este disponibilă acum. Folosiți e-mailul și parola.",
+      "google_registration_required": "Compania nu este încă înregistrată prin Google. Mergeți la înregistrare.",
+      "email_taken": "Această adresă este deja folosită. Intrați cu parola aleasă la înregistrare.",
+      "company_exists": "Acest IDNO este deja înregistrat. Intrați în compania existentă.",
+      "invalid_credentials": "Intrarea nu este disponibilă acum. Încercați mai târziu."
     }
   },
   "workspace": {
@@ -302,5 +319,20 @@
       "network": "Ceva nu a funcționat. Verificați conexiunea.",
       "retry": "Încercați din nou"
     }
+  },
+  "imports": {
+    "title": "Încărcați din Excel",
+    "instructions": "O singură foaie, până la 1000 de rânduri și 1 MB. Prima linie conține denumirile coloanelor de mai jos. Salvați IDNO și codurile ca text pentru a păstra zerourile.",
+    "counterpartyColumns": "Obligatoriu: name (denumire), idno (13 cifre). Opțional: vatCode, email, phone, address, iban, bankName.",
+    "productColumns": "Obligatoriu: code (cod), name (denumire), priceNet (preț fără TVA, de exemplu 125.50), vatRate (20, 8 sau 0). Opțional: unit (unitatea de măsură).",
+    "validationNote": "Dacă există valori greșite, nu se adaugă nimic. IDNO și codurile existente vor fi omise.",
+    "file": "Fișier Excel (.xlsx)",
+    "upload": "Încărcați lista",
+    "invalidFile": "Nu am putut citi fișierul. Verificați coloanele, păstrați o foaie cu cel mult 1000 de rânduri și salvați în .xlsx, până la 1 MB, fără formule.",
+    "failed": "Nu am reușit să încărcăm lista. Încercați din nou: înregistrările adăugate nu se vor repeta.",
+    "result": "Am adăugat {count} din {total} rânduri.",
+    "rowError": "Rândul {row}, {field}: {reason}",
+    "duplicate": "există deja în listă",
+    "invalidValue": "verificați valoarea"
   }
 }

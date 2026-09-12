@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl';
 
 import { RegisterForm } from '@/features/auth-register';
+import { GoogleAuth } from '@/features/auth-google';
 import { Link } from '@/shared/i18n';
 import { Card, Logo } from '@/shared/ui';
 
@@ -20,6 +21,7 @@ export function RegisterView() {
         <p className="mt-1 text-body text-ink-muted">{t('subtitle')}</p>
 
         <div className="mt-6">
+          <GoogleAuth mode="register" />
           <RegisterForm />
         </div>
       </Card>

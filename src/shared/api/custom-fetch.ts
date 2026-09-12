@@ -37,12 +37,17 @@ export async function customFetch<T extends { data: unknown; status: number }>(
   url: string,
   options: RequestInit = {},
 ): Promise<T> {
-  const response = await fetch(`${env.apiUrl}${url}`, {
+  const path = `/api/${url.replace(/^\/?api\//, '').replace(/^\//, '')}`;
+  const target = typeof window === 'undefined' ? `${env.apiUrl.replace(/\/api\/?$/, '')}${path}` : path;
+  const response = await fetch(target, {
     ...options,
     // Authentication is httpOnly cookies; there is no token for JavaScript to
     // attach, and none for a script on another origin to steal.
     credentials: 'include',
-    headers: { 'Content-Type': 'application/json', ...options.headers },
+    headers: {
+      ...(options.body instanceof FormData ? {} : { 'Content-Type': 'application/json' }),
+      ...options.headers,
+    },
   });
 
   const body = await readBody(response);

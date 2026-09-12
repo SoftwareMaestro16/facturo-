@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 
 import { useProducts } from '@/entities/product';
+import { CatalogImport } from '@/features/catalog-import';
 import { formatMoney } from '@/shared/lib';
 import type { Locale } from '@/shared/i18n';
 import { Badge, Button, Card, EmptyState, ErrorState, Field, Input, Skeleton } from '@/shared/ui';
@@ -33,6 +34,7 @@ export function ProductsListView({ locale }: { locale: Locale }) {
           <Button className="w-full sm:w-auto">{t('create')}</Button>
         </Link>
       </header>
+      <CatalogImport kind="PRODUCTS" />
 
       <Field label={t('search.label')}>
         {(props) => (

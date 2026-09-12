@@ -6,8 +6,8 @@ import { Link, usePathname } from '@/shared/i18n';
 import { cn } from '@/shared/lib';
 
 /// Main navigation. Five items, nouns for things the person owns, not
-/// abstractions. On a phone this is a bottom bar; on a wider screen it is a
-/// side column. Both are the same component, only the CSS differs.
+/// abstractions. Long translated labels wrap into a grid on phones and a
+/// side column on wider screens, without horizontal page scrolling.
 const ITEMS = [
   { href: '/invoices', key: 'invoices' },
   { href: '/counterparties', key: 'counterparties' },
@@ -22,17 +22,17 @@ export function AppNav() {
 
   return (
     <nav aria-label={t('label')} className="w-full">
-      <ul className="flex flex-row gap-1 sm:flex-col">
+      <ul className="grid grid-cols-2 gap-1 sm:grid-cols-1">
         {ITEMS.map((item) => {
           const active = pathname.startsWith(item.href);
 
           return (
-            <li key={item.key} className="flex-1">
+            <li key={item.key} className="min-w-0">
               <Link
                 href={item.href}
                 aria-current={active ? 'page' : undefined}
                 className={cn(
-                  'flex h-(--size-control) items-center justify-center rounded-(--radius-control) px-4 text-body font-medium transition-colors sm:justify-start',
+                  'flex min-h-(--size-control) items-center justify-start rounded-(--radius-control) px-4 py-2 text-body font-medium transition-colors',
                   active
                     ? 'bg-brand-50 text-brand-700'
                     : 'text-ink-muted hover:bg-surface-sunken hover:text-ink',

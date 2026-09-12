@@ -11,7 +11,7 @@ import { defineConfig } from 'orval';
 /// the interface can show a person.
 export default defineConfig({
   facturo: {
-    input: { target: '../facturo-server/openapi.json' },
+    input: { target: '../backend/openapi.json' },
     output: {
       mode: 'tags-split',
       target: './src/shared/api/generated/facturo.ts',

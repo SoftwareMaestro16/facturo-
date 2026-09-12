@@ -16,7 +16,7 @@ export default function WorkspaceLayout({ children }: { children: ReactNode }) {
           <AppNav />
         </aside>
 
-        <main className="flex-1">{children}</main>
+        <main className="min-w-0 flex-1">{children}</main>
       </div>
     </div>
   );

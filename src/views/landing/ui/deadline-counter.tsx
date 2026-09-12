@@ -10,7 +10,7 @@ export function DeadlineCounter({ daysLeft }: { daysLeft: number }) {
   const t = useTranslations('landing.deadline');
 
   return (
-    <p className="text-body font-semibold text-ink">
+    <p className="text-body font-semibold text-current">
       {daysLeft > 0 ? t('before', { days: daysLeft }) : t('after')}
     </p>
   );

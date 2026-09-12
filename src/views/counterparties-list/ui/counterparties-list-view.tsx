@@ -4,6 +4,7 @@ import { useTranslations, useFormatter } from 'next-intl';
 import { useState } from 'react';
 
 import { useCounterparties } from '@/entities/counterparty';
+import { CatalogImport } from '@/features/catalog-import';
 import { Link } from '@/shared/i18n';
 import { Badge, Button, Card, EmptyState, ErrorState, Field, Input, Skeleton } from '@/shared/ui';
 
@@ -35,6 +36,7 @@ export function CounterpartiesListView() {
           <Button className="w-full sm:w-auto">{t('create')}</Button>
         </Link>
       </header>
+      <CatalogImport kind="COUNTERPARTIES" />
 
       <Field label={t('search.label')}>
         {(props) => (

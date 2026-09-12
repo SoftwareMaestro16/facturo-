@@ -1,5 +1,7 @@
 import { useTranslations } from 'next-intl';
 
+import Velaris from '@/components/ui/velaris';
+
 import { Link } from '@/shared/i18n';
 import { Badge, Button, Card, Logo } from '@/shared/ui';
 
@@ -23,47 +25,49 @@ export function LandingView({ daysUntilMandate }: { daysUntilMandate: number }) 
       </header>
 
       <main className="mx-auto w-full max-w-6xl px-4 pb-20">
-        <section className="flex flex-col gap-6 py-10 sm:py-16">
-          <Badge tone="warning">{t('hero.badge')}</Badge>
+        <Velaris height="auto" className="rounded-(--radius-card) mb-8 text-white">
+          <section className="flex flex-col gap-6 bg-black/50 px-6 py-10 sm:px-10 sm:py-16 [&_.text-ink-muted]:text-white/80">
+            <Badge tone="warning">{t('hero.badge')}</Badge>
 
-          <h1 className="max-w-3xl text-4xl sm:text-5xl">{t('hero.title')}</h1>
+            <h1 className="max-w-3xl text-4xl sm:text-5xl">{t('hero.title')}</h1>
 
-          <p className="max-w-2xl text-body-lg text-ink-muted">{t('hero.subtitle')}</p>
+            <p className="max-w-2xl text-body-lg text-ink-muted">{t('hero.subtitle')}</p>
 
-          <DeadlineCounter daysLeft={daysUntilMandate} />
+            <DeadlineCounter daysLeft={daysUntilMandate} />
 
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <Link href="/register">
-              <Button size="lg" className="w-full sm:w-auto">
-                {t('hero.primaryCta')}
-              </Button>
-            </Link>
-            <Link href="/pricing">
-              <Button size="lg" variant="secondary" className="w-full sm:w-auto">
-                {t('hero.secondaryCta')}
-              </Button>
-            </Link>
-          </div>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Link href="/register">
+                <Button size="lg" className="w-full sm:w-auto">
+                  {t('hero.primaryCta')}
+                </Button>
+              </Link>
+              <Link href="/pricing">
+                <Button size="lg" variant="secondary" className="w-full sm:w-auto">
+                  {t('hero.secondaryCta')}
+                </Button>
+              </Link>
+            </div>
 
-          <p className="text-sm text-ink-muted">{t('hero.note')}</p>
+            <p className="text-sm text-ink-muted">{t('hero.note')}</p>
 
-          {/* Consent sits under the button that creates the account, where the
+            {/* Consent sits under the button that creates the account, where the
               person actually agrees, not only in the footer. */}
-          <p className="text-sm text-ink-muted">
-            {t.rich('hero.consent', {
-              terms: (chunks) => (
-                <Link href="/terms" className="underline">
-                  {chunks}
-                </Link>
-              ),
-              privacy: (chunks) => (
-                <Link href="/privacy" className="underline">
-                  {chunks}
-                </Link>
-              ),
-            })}
-          </p>
-        </section>
+            <p className="text-sm text-ink-muted">
+              {t.rich('hero.consent', {
+                terms: (chunks) => (
+                  <Link href="/terms" className="underline">
+                    {chunks}
+                  </Link>
+                ),
+                privacy: (chunks) => (
+                  <Link href="/privacy" className="underline">
+                    {chunks}
+                  </Link>
+                ),
+              })}
+            </p>
+          </section>
+        </Velaris>
 
         <section className="grid gap-4 sm:grid-cols-3">
           {(['speed', 'import', 'errors'] as const).map((key) => (
