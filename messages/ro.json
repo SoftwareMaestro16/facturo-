@@ -251,5 +251,56 @@
         "network": "Ceva nu a funcționat. Verificați conexiunea."
       }
     }
+  },
+  "invoiceCreate": {
+    "title": "Factură nouă",
+    "subtitle": "Alegeți cumpărătorul și adăugați pozițiile.",
+    "back": "← Toate facturile",
+    "saveDraft": "Salvați ca ciornă",
+    "sendNow": "Trimiteți acum",
+    "issueDate": {
+      "label": "Data facturii"
+    },
+    "notes": {
+      "label": "Note"
+    },
+    "counterparty": {
+      "label": "Cumpărător",
+      "search": "Căutați după nume sau IDNO",
+      "add": "Adăugați un partener",
+      "empty": {
+        "title": "Niciun partener nu se potrivește",
+        "description": "Adăugați un partener nou sau schimbați căutarea."
+      }
+    },
+    "lines": {
+      "title": "Poziții",
+      "name": "Denumire",
+      "quantity": "Cantitate",
+      "price": "Preț fără TVA",
+      "vatRate": "Cotă TVA",
+      "add": "Adăugați o poziție",
+      "remove": "Ștergeți poziția"
+    },
+    "totals": {
+      "subtotal": "Subtotal",
+      "vat": "TVA",
+      "total": "Total"
+    },
+    "errors": {
+      "issue_date_invalid": "Verificați data.",
+      "counterparty_required": "Alegeți cumpărătorul.",
+      "line_name_required": "Introduceți denumirea poziției.",
+      "quantity_invalid": "Cantitatea poate avea cel mult 3 zecimale.",
+      "price_invalid": "Prețul poate avea cel mult 2 zecimale.",
+      "vat_invalid": "Alegeți una dintre cotele disponibile.",
+      "lines_empty": "Adăugați cel puțin o poziție.",
+      "efactura_issue_date_in_past": "Data facturii a trecut. Puneți data de azi sau o dată din următoarele 10 zile.",
+      "efactura_issue_date_too_far_ahead": "Data facturii este prea departe. Cel mult 10 zile de azi înainte.",
+      "counterparty_not_found": "Partenerul nu mai există. Reîmprospătați lista.",
+      "generic": "Ceva nu a funcționat. Încercați din nou.",
+      "network": "Ceva nu a funcționat. Verificați conexiunea.",
+      "retry": "Încercați din nou"
+    }
   }
 }
