@@ -74,9 +74,9 @@ mode = "sqlite"
 ## 2. Generating the contract instead of writing it
 
 This client generates its entire data layer from the server's OpenAPI document
-with `@rtk-query/codegen-openapi`. Nobody writes a `fetch` wrapper or copies a
-response type. That removes the single largest repetitive writing task in a
-two-repository product, and with it the tokens spent producing and reviewing it.
+with `orval`. Nobody writes a `fetch` wrapper or copies a response type. That
+removes the single largest repetitive writing task in a two-repository product,
+and with it the tokens spent producing and reviewing it.
 
 `npm run openapi:export` in facturo-server, `npm run api:generate` here.
 

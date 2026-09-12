@@ -13,6 +13,6 @@ export default async function InvoicesPage({ params }: { params: Promise<{ local
   const { locale } = await params;
   setRequestLocale(locale);
 
-  // Phase 1 replaces this with the generated RTK Query hook.
+  // Phase 1 replaces this with the generated TanStack Query hook.
   return <InvoicesListView invoices={[]} />;
 }

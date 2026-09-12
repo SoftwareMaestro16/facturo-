@@ -17,14 +17,6 @@ export default defineConfig([
     },
   },
   {
-    files: ['./src/shared/store/**'],
-    rules: {
-      // "store" is the purpose, not the shape: this segment is the Redux store
-      // and its typed hooks, and there is no better word for that.
-      'fsd/segments-by-purpose': 'off',
-    },
-  },
-  {
     files: ['./src/app/**'],
     rules: {
       // Next.js owns src/app. Its route files are not FSD slices and have no

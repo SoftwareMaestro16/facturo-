@@ -7,7 +7,7 @@ import type { ReactNode } from 'react';
 
 import { env } from '@/shared/config';
 import { routing } from '@/shared/i18n';
-import { StoreProvider } from '@/shared/store';
+import { QueryProvider } from '@/shared/api';
 
 import '../globals.css';
 import { MotionProvider } from './motion-provider';
@@ -78,9 +78,9 @@ export default async function LocaleLayout({
     <html lang={locale} className={inter.variable}>
       <body className="font-sans antialiased">
         <NextIntlClientProvider>
-          <StoreProvider>
+          <QueryProvider>
             <MotionProvider>{children}</MotionProvider>
-          </StoreProvider>
+          </QueryProvider>
         </NextIntlClientProvider>
       </body>
     </html>

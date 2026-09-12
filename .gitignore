@@ -17,7 +17,7 @@ next-env.d.ts
 .vscode/*
 !.vscode/extensions.json
 
-# Generated from the server's OpenAPI document — never edited by hand.
+# Generated from the server's OpenAPI document by orval — never edited by hand.
 src/shared/api/generated/
 
 # Written by `rtk init`: records this machine's binary path.

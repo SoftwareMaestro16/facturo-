@@ -3,7 +3,7 @@
 Веб-интерфейс Facturo: выставление и приём электронных счетов `e-Factura` для
 малого и среднего бизнеса Молдовы.
 
-Next.js 16 (App Router), Feature-Sliced Design, RTK Query, Tailwind v4,
+Next.js 16 (App Router), Feature-Sliced Design, TanStack Query, Tailwind v4,
 ro/ru с первого дня.
 
 ## Начать
