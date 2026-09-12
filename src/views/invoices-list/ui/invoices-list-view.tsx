@@ -1,20 +1,22 @@
+'use client';
+
 import { useTranslations } from 'next-intl';
 
+import { useInvoiceList } from '@/entities/invoice';
 import type { InvoiceListItem } from '@/entities/invoice';
 import { Link } from '@/shared/i18n';
-import { Button, EmptyState } from '@/shared/ui';
+import { Button, EmptyState, ErrorState } from '@/shared/ui';
 import { InvoiceTable } from '@/widgets/invoice-table';
 
-interface InvoicesListViewProps {
-  invoices: readonly InvoiceListItem[];
-  isLoading?: boolean;
-}
-
-/// Every screen carries all four states, not just the happy one: loading,
-/// empty, error and data. The error state is owned by the route's error
-/// boundary; the other three live here.
-export function InvoicesListView({ invoices, isLoading = false }: InvoicesListViewProps) {
+/// Live invoices list. Four states, one per branch: loading, error, empty,
+/// data. The route uses the client hook, so this view is client-side; the
+/// error boundary above it catches thrown errors, this one shows the ordinary
+/// "request failed" case that TanStack Query surfaces as `isError`.
+export function InvoicesListView() {
   const t = useTranslations('invoices');
+  const { data, isLoading, isError, refetch } = useInvoiceList({ pageSize: 25 });
+
+  const items = (data?.items ?? ([] as unknown)) as InvoiceListItem[];
 
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-8">
@@ -25,7 +27,15 @@ export function InvoicesListView({ invoices, isLoading = false }: InvoicesListVi
         </Link>
       </header>
 
-      {!isLoading && invoices.length === 0 ? (
+      {isError ? (
+        <ErrorState
+          message={t('errors.load')}
+          retryLabel={t('errors.retry')}
+          onRetry={() => {
+            void refetch();
+          }}
+        />
+      ) : !isLoading && items.length === 0 ? (
         <EmptyState
           title={t('empty.title')}
           description={t('empty.description')}
@@ -36,7 +46,7 @@ export function InvoicesListView({ invoices, isLoading = false }: InvoicesListVi
           }
         />
       ) : (
-        <InvoiceTable invoices={invoices} isLoading={isLoading} />
+        <InvoiceTable invoices={items} isLoading={isLoading} />
       )}
     </div>
   );

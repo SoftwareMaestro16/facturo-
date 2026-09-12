@@ -79,6 +79,10 @@
     "empty": {
       "title": "Nicio factură încă",
       "description": "Emiteți prima factură electronică. Durează mai puțin de un minut dacă contragentul este deja în listă."
+    },
+    "errors": {
+      "load": "Nu am putut încărca facturile. Verificați conexiunea.",
+      "retry": "Încercați din nou"
     }
   },
   "nav": {
@@ -148,6 +152,47 @@
   "workspace": {
     "header": {
       "home": "Pagina principală"
+    }
+  },
+  "counterparties": {
+    "title": "Cumpărători și furnizori",
+    "create": "Adăugați un partener",
+    "idno": "IDNO",
+    "empty": {
+      "title": "Nu aveți încă parteneri",
+      "description": "Adăugați primul cumpărător sau furnizor pentru a-l putea alege pe factură."
+    },
+    "search": {
+      "label": "Căutare",
+      "placeholder": "Nume sau IDNO"
+    },
+    "badges": {
+      "archived": "Arhivat",
+      "vat": "Plătitor de TVA"
+    },
+    "errors": {
+      "load": "Nu am putut încărca lista. Verificați conexiunea.",
+      "retry": "Încercați din nou"
+    }
+  },
+  "products": {
+    "title": "Produse și servicii",
+    "create": "Adăugați",
+    "vat": "TVA {rate}%",
+    "empty": {
+      "title": "Nu aveți încă poziții",
+      "description": "Adăugați primul produs sau serviciu pentru a-l putea alege pe factură."
+    },
+    "search": {
+      "label": "Căutare",
+      "placeholder": "Nume sau cod"
+    },
+    "badges": {
+      "archived": "Arhivat"
+    },
+    "errors": {
+      "load": "Nu am putut încărca lista. Verificați conexiunea.",
+      "retry": "Încercați din nou"
     }
   }
 }
