@@ -16,12 +16,13 @@ export default defineConfig({
       mode: 'tags-split',
       target: './src/shared/api/generated/facturo.ts',
       schemas: './src/shared/api/generated/model',
+      // GETs become useQuery, POST/PATCH/DELETE become useMutation. That is
+      // the default and it is right for this API: a login is not a query.
       client: 'react-query',
       httpClient: 'fetch',
       clean: true,
       override: {
         mutator: { path: './src/shared/api/custom-fetch.ts', name: 'customFetch' },
-        query: { useQuery: true, useSuspenseQuery: false, signal: true },
       },
     },
     hooks: {

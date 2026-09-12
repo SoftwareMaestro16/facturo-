@@ -3,6 +3,9 @@ import { env } from '@/shared/config';
 /// Every generated hook calls this. It is the only place in the client that
 /// knows the API's address, that cookies are the credential, and how a server
 /// error becomes something the interface can show a person.
+///
+/// The return shape mirrors what orval's generated types expect: `{ data,
+/// status, headers }`, so a hook can inspect the status without a second call.
 
 /// What the server returns on any failure: a stable `code` the interface maps
 /// to a translated sentence, plus a message meant for logs, never for a screen.
@@ -24,7 +27,16 @@ export class ApiError extends Error {
   }
 }
 
-export async function customFetch<T>(url: string, options: RequestInit = {}): Promise<T> {
+export interface FetchResponse<T> {
+  data: T;
+  status: number;
+  headers: Headers;
+}
+
+export async function customFetch<T extends { data: unknown; status: number }>(
+  url: string,
+  options: RequestInit = {},
+): Promise<T> {
   const response = await fetch(`${env.apiUrl}${url}`, {
     ...options,
     // Authentication is httpOnly cookies; there is no token for JavaScript to
@@ -33,26 +45,43 @@ export async function customFetch<T>(url: string, options: RequestInit = {}): Pr
     headers: { 'Content-Type': 'application/json', ...options.headers },
   });
 
+  const body = await readBody(response);
+
   if (!response.ok) {
-    throw new ApiError(response.status, await readErrorCode(response), response.statusText);
+    throw new ApiError(response.status, readCode(body), response.statusText);
   }
 
-  // 204 and an empty body are ordinary answers, not failures to parse.
-  if (response.status === 204) {
-    return undefined as T;
-  }
-
-  return (await response.json()) as T;
+  // The cast is honest: orval's generated types describe T as this exact
+  // envelope with the response's own body typed as `data`.
+  return { data: body, status: response.status, headers: response.headers } as unknown as T;
 }
 
-async function readErrorCode(response: Response): Promise<string> {
-  try {
-    const body = (await response.json()) as Partial<ApiErrorBody>;
+async function readBody(response: Response): Promise<unknown> {
+  if (response.status === 204) {
+    return undefined;
+  }
 
-    return typeof body.code === 'string' ? body.code : 'request_failed';
+  const contentType = response.headers.get('content-type') ?? '';
+
+  if (!contentType.includes('application/json')) {
+    return undefined;
+  }
+
+  try {
+    return await response.json();
   } catch {
-    // A proxy or a gateway can answer with HTML instead of our JSON. That is
-    // still a failure the interface has to name, so it gets a code of its own.
+    return undefined;
+  }
+}
+
+function readCode(body: unknown): string {
+  // A proxy or a gateway can answer with HTML instead of our JSON. That is
+  // still a failure the interface has to name, so it gets a code of its own.
+  if (typeof body !== 'object' || body === null) {
     return 'request_failed';
   }
+
+  const candidate = (body as Partial<ApiErrorBody>).code;
+
+  return typeof candidate === 'string' ? candidate : 'request_failed';
 }

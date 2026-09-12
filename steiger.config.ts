@@ -14,6 +14,11 @@ export default defineConfig([
       // architecture. The layering itself is enforced by eslint, which does not
       // guess.
       'fsd/insignificant-slice': 'off',
+      // "auth-login", "auth-logout", "auth-register" all belong to one story
+      // and were split for a reason: each is a feature the customer performs
+      // separately. Renaming them "login" / "logout" / "register" would drop
+      // the shared prefix that tells a reader they are related.
+      'fsd/repetitive-naming': 'off',
     },
   },
   {

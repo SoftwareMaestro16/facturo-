@@ -86,9 +86,68 @@
     "counterparties": "Cumpărători și furnizori",
     "products": "Produse și servicii",
     "billing": "Plată",
-    "settings": "Setări"
+    "settings": "Setări",
+    "label": "Meniu principal"
   },
   "legal": {
     "back": "Înapoi la pagina principală"
+  },
+  "auth": {
+    "login": {
+      "title": "Intrare în cont",
+      "subtitle": "Continuăm de unde ați rămas.",
+      "email": "E-mail",
+      "password": "Parolă",
+      "submit": "Intrați",
+      "retry": "Încercați din nou",
+      "noAccount": "Nu aveți încă un cont? <register>Creați unul</register>.",
+      "backToLanding": "Pagina principală",
+      "errors": {
+        "invalid_email": "Verificați adresa: pare scrisă greșit.",
+        "password_required": "Introduceți parola.",
+        "invalid": "E-mailul sau parola nu se potrivesc. Verificați și încercați din nou.",
+        "network": "Ceva nu a funcționat. Verificați conexiunea și încercați din nou."
+      }
+    },
+    "register": {
+      "title": "Creați un cont",
+      "subtitle": "Aveți nevoie doar de câteva date despre compania dumneavoastră.",
+      "companyName": "Denumirea companiei",
+      "idno": "IDNO",
+      "idnoHint": "13 cifre. Îl găsiți în certificatul de înregistrare.",
+      "vatCode": "Cod TVA",
+      "vatHint": "6 cifre, dacă sunteți plătitor de TVA. Puteți lăsa gol.",
+      "fullName": "Numele dumneavoastră",
+      "email": "E-mail",
+      "phone": "Telefon",
+      "password": "Parolă",
+      "passwordHint": "Cel puțin 8 caractere. Nu folosiți numărul de telefon.",
+      "submit": "Creați contul",
+      "retry": "Încercați din nou",
+      "haveAccount": "Aveți deja un cont? <login>Intrați</login>.",
+      "consent": "Creând un cont, sunteți de acord cu <terms>Termenii și condițiile</terms> și cu <privacy>Politica de confidențialitate</privacy>.",
+      "backToLanding": "Pagina principală",
+      "errors": {
+        "company_too_short": "Introduceți denumirea completă a companiei.",
+        "idno_invalid": "IDNO trebuie să conțină exact 13 cifre.",
+        "vat_invalid": "Codul TVA trebuie să conțină exact 6 cifre.",
+        "email_invalid": "Verificați adresa: pare scrisă greșit.",
+        "name_too_short": "Introduceți numele dumneavoastră.",
+        "password_too_short": "Parola trebuie să aibă cel puțin 8 caractere.",
+        "password_is_phone": "Parola nu poate fi numărul de telefon: e ușor de ghicit.",
+        "email_taken": "Există deja un cont cu această adresă. Intrați sau folosiți altă adresă.",
+        "company_exists": "O companie cu acest IDNO este deja înregistrată la noi.",
+        "generic": "Ceva nu a funcționat. Încercați din nou.",
+        "network": "Ceva nu a funcționat. Verificați conexiunea și încercați din nou."
+      }
+    },
+    "logout": {
+      "submit": "Ieșire"
+    }
+  },
+  "workspace": {
+    "header": {
+      "home": "Pagina principală"
+    }
   }
 }
