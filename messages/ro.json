@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "title": "Facturo — facturi electronice pentru afaceri mici",
+    "description": "Emiteți e-Factura în trei clicuri, importați contragenții din Excel și vedeți clar de ce a fost respins un document. Fără program de contabilitate."
+  },
+  "landing": {
+    "nav": {
+      "login": "Autentificare"
+    },
+    "hero": {
+      "badge": "Obligatoriu din 1 octombrie 2026",
+      "title": "e-Factura, fără să învățați un program de contabilitate",
+      "subtitle": "Emiteți factura electronică în trei clicuri și trimiteți-o prin sistemul e-Factura. Contragenții și articolele se importă dintr-un fișier Excel într-o seară.",
+      "primaryCta": "Începeți gratuit",
+      "secondaryCta": "Vedeți prețurile",
+      "note": "Primele 10 facturi sunt gratuite. Fără card la înregistrare."
+    },
+    "deadline": {
+      "before": "Au mai rămas {days} zile până când factura electronică devine obligatorie în relațiile B2B.",
+      "after": "Factura electronică este deja obligatorie în relațiile B2B."
+    },
+    "features": {
+      "speed": {
+        "title": "Trei clicuri",
+        "body": "Alegeți contragentul, adăugați poziția, trimiteți. De pe telefon, din mașină, fără să deschideți laptopul."
+      },
+      "import": {
+        "title": "Import din Excel",
+        "body": "Încărcați lista de contragenți și de articole dintr-un fișier pe care îl aveți deja. Rândurile cu probleme sunt arătate separat, cu motivul."
+      },
+      "errors": {
+        "title": "Erori explicate",
+        "body": "Când sistemul respinge un document, vă spunem ce trebuie corectat, într-o propoziție, nu un cod de eroare."
+      }
+    },
+    "footer": {
+      "company": "Facturo, Republica Moldova",
+      "terms": "Termeni",
+      "privacy": "Confidențialitate"
+    }
+  },
+  "invoice": {
+    "status": {
+      "DRAFT": "Ciornă",
+      "SIGNING": "Se semnează",
+      "SENT": "Trimisă",
+      "DELIVERED": "Livrată",
+      "ACCEPTED": "Acceptată",
+      "REJECTED": "Respinsă",
+      "CANCELLED": "Anulată",
+      "ERROR": "Eroare"
+    },
+    "table": {
+      "number": "Număr",
+      "counterparty": "Contragent",
+      "issueDate": "Data",
+      "total": "Total",
+      "status": "Stare"
+    }
+  },
+  "common": {
+    "retry": "Încercați din nou",
+    "loadFailed": "Nu am putut încărca datele. Verificați conexiunea și încercați din nou."
+  },
+  "invoices": {
+    "title": "Facturi",
+    "create": "Factură nouă",
+    "empty": {
+      "title": "Nicio factură încă",
+      "description": "Emiteți prima factură electronică. Durează mai puțin de un minut dacă contragentul este deja în listă."
+    }
+  }
+}

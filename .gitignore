@@ -1,0 +1,21 @@
+node_modules/
+.next/
+out/
+build/
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+
+# Secrets never enter git. Only .env.example is tracked.
+.env
+.env.*
+!.env.example
+
+.vercel
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Generated from the server's OpenAPI document — never edited by hand.
+src/shared/api/generated/

@@ -1,0 +1,102 @@
+@import 'tailwindcss';
+
+/*
+  Design tokens.
+
+  Every colour, radius and shadow in the product is declared once here and used
+  only through these names. A hard-coded #2b41d8 or border-radius: 12px in a
+  component means the next brand change is a hundred-file edit.
+*/
+
+@theme {
+  /* ── Type family ─────────────────────────────────────────────────────────
+     next/font defines --font-inter at build time and self-hosts the files, so
+     nothing is fetched from Google at runtime. The fallback stack stays so the
+     first paint is not blank if the face is slow. */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* ── Brand ──────────────────────────────────────────────────────────────
+     One scale, ten steps. 600 is the action colour; 700 is its hover. */
+  --color-brand-50: oklch(0.97 0.02 265);
+  --color-brand-100: oklch(0.94 0.04 265);
+  --color-brand-200: oklch(0.88 0.08 265);
+  --color-brand-300: oklch(0.8 0.12 265);
+  --color-brand-400: oklch(0.71 0.16 265);
+  --color-brand-500: oklch(0.62 0.19 265);
+  --color-brand-600: oklch(0.54 0.2 265);
+  --color-brand-700: oklch(0.46 0.18 265);
+  --color-brand-800: oklch(0.38 0.14 265);
+  --color-brand-900: oklch(0.3 0.1 265);
+
+  /* ── Status ─────────────────────────────────────────────────────────────
+     Invoice states map onto these and nowhere else picks its own green. */
+  --color-success-50: oklch(0.96 0.04 155);
+  --color-success-600: oklch(0.58 0.15 155);
+  --color-success-700: oklch(0.5 0.14 155);
+  --color-warning-50: oklch(0.97 0.05 85);
+  --color-warning-600: oklch(0.68 0.15 75);
+  --color-warning-700: oklch(0.58 0.14 70);
+  --color-danger-50: oklch(0.96 0.03 25);
+  --color-danger-600: oklch(0.58 0.2 25);
+  --color-danger-700: oklch(0.5 0.19 25);
+
+  /* ── Surfaces ───────────────────────────────────────────────────────── */
+  --color-ink: oklch(0.22 0.02 265);
+  --color-ink-muted: oklch(0.52 0.02 265);
+  --color-line: oklch(0.91 0.005 265);
+  --color-surface: oklch(1 0 0);
+  --color-surface-sunken: oklch(0.98 0.003 265);
+
+  /* ── Radius ─────────────────────────────────────────────────────────── */
+  --radius-control: 0.625rem;
+  --radius-card: 1rem;
+
+  /* ── Elevation ──────────────────────────────────────────────────────── */
+  --shadow-card: 0 1px 2px oklch(0.22 0.02 265 / 0.06), 0 1px 3px oklch(0.22 0.02 265 / 0.04);
+  --shadow-raised: 0 4px 12px oklch(0.22 0.02 265 / 0.1), 0 2px 4px oklch(0.22 0.02 265 / 0.06);
+  --shadow-button: 0 2px 8px oklch(0.54 0.2 265 / 0.28);
+
+  /* ── Touch targets ──────────────────────────────────────────────────────
+     44px is the floor everywhere. 56px is for screens used standing up with
+     one hand, which for this product means the mobile invoice form. */
+  --size-control: 2.75rem;
+  --size-control-lg: 3.5rem;
+
+  /* ── Type ───────────────────────────────────────────────────────────────
+     Body text never goes below 15px: a large part of the audience is over 40
+     and reads invoices on a phone. */
+  --text-body: 0.9375rem;
+  --text-body-lg: 1rem;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-surface-sunken);
+    color: var(--color-ink);
+    font-size: var(--text-body);
+    line-height: 1.55;
+    /* Nothing may scroll sideways except a table inside its own container. */
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.02em;
+    font-weight: 700;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-600);
+    outline-offset: 2px;
+  }
+}
