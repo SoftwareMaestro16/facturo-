@@ -1,15 +1,15 @@
 import { describe, expect, it } from 'vitest';
 
-import { toneForStatus } from './status-tone';
+import { needsAttention, toneForStatus } from './status-tone';
 import type { InvoiceStatus } from './types';
 
 const ALL: InvoiceStatus[] = [
   'DRAFT',
-  'SIGNING',
+  'SIGNED',
   'SENT',
-  'DELIVERED',
-  'ACCEPTED',
-  'REJECTED',
+  'RECEIVED',
+  'FINISHED',
+  'CANCELLATION_REQUESTED',
   'CANCELLED',
   'ERROR',
 ];
@@ -21,9 +21,21 @@ describe('toneForStatus', () => {
     }
   });
 
-  it('reads acceptance as success and both failure states as danger', () => {
-    expect(toneForStatus('ACCEPTED')).toBe('success');
-    expect(toneForStatus('REJECTED')).toBe('danger');
+  it('reads a finished document as success and a failed send as danger', () => {
+    expect(toneForStatus('FINISHED')).toBe('success');
     expect(toneForStatus('ERROR')).toBe('danger');
+  });
+});
+
+describe('needsAttention', () => {
+  it('picks out the documents the customer still has to do something about', () => {
+    expect(needsAttention('DRAFT')).toBe(true);
+    expect(needsAttention('ERROR')).toBe(true);
+    expect(needsAttention('CANCELLATION_REQUESTED')).toBe(true);
+  });
+
+  it('leaves documents that are on their way or done alone', () => {
+    expect(needsAttention('SENT')).toBe(false);
+    expect(needsAttention('FINISHED')).toBe(false);
   });
 });

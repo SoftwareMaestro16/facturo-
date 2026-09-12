@@ -20,6 +20,13 @@ states exist:
    code, never an English API message.
 4. **Data.**
 
+## Every word on the screen
+
+Read `.claude/skills/plain-language/SKILL.md` before writing any label, button,
+heading or error. It is not style guidance; it is the product requirement. The
+reader is a company owner on a phone who will close the tab rather than work out
+what a word means.
+
 ## Rules
 
 - **Layers.** Route assembles a view. View composes widgets. Widgets use
@@ -35,6 +42,11 @@ states exist:
   container.
 - **Both languages in the same commit.** Add every key to `messages/ro.json` and
   `messages/ru.json` together. Check the Romanian diacritics: ă â î ș ț.
+- **One primary action per screen**, full width and 56px tall at the bottom of
+  the form on a phone. Two primary actions mean two screens.
+- **Symmetry.** Fields the same width, labels above them, left edges aligned,
+  equal padding on both sides of every card, equal gaps between list rows.
+  Nothing shifts when the data arrives.
 - **Money is a string** until `formatMoney` renders it. Do not convert to a
   number to "make it easier".
 - **No clock during render.** Reading `Date.now()` in a component is rejected by

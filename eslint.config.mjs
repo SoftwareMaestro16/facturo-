@@ -104,6 +104,14 @@ export default tseslint.config(
     rules: { 'max-lines': 'off', 'no-restricted-imports': 'off' },
   },
 
+  {
+    // Legal texts are content, not code. Splitting a privacy policy across
+    // files to satisfy a line count would make it harder for a lawyer to read,
+    // which is the only thing that matters about these files.
+    files: ['src/views/legal/model/*.{ro,ru}.ts'],
+    rules: { 'max-lines': 'off' },
+  },
+
   // Config and setup files are plain JavaScript or live outside the program.
   {
     files: ['**/*.{js,mjs,cjs}', 'vitest.setup.ts', '*.config.ts'],

@@ -14,9 +14,10 @@ You make sure both halves of the audience get a finished product.
 2. **Diacritics.** Romanian uses ă â î ș ț. The comma-below ș and ț are the
    correct characters, not the cedilla forms ş and ţ. Text without them reads as
    careless to a Romanian speaker.
-3. **Tone.** The audience is a company director, not a developer. No jargon, no
-   "error occurred", no English left in place. Every error string says what to
-   fix.
+3. **Plain language.** Apply `.claude/skills/plain-language/SKILL.md` in full.
+   The banned-vocabulary table is not advisory: no "валидация", no "импорт", no
+   error codes, no English left in place. Every error string says what happened
+   and what to do, in that order.
 4. **Formatting.** Numbers, money and dates go through `shared/lib/format.ts`,
    which uses `ro-MD` and `ru-MD`. With `ro-RO` the currency renders as "850,00
    MDL" instead of "850,00 L", and every customer notices.

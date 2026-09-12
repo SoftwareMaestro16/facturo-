@@ -19,3 +19,6 @@ next-env.d.ts
 
 # Generated from the server's OpenAPI document — never edited by hand.
 src/shared/api/generated/
+
+# Written by `rtk init`: records this machine's binary path.
+.claude/settings.local.json

@@ -46,6 +46,23 @@ export function LandingView({ daysUntilMandate }: { daysUntilMandate: number }) 
           </div>
 
           <p className="text-sm text-ink-muted">{t('hero.note')}</p>
+
+          {/* Consent sits under the button that creates the account, where the
+              person actually agrees, not only in the footer. */}
+          <p className="text-sm text-ink-muted">
+            {t.rich('hero.consent', {
+              terms: (chunks) => (
+                <Link href="/terms" className="underline">
+                  {chunks}
+                </Link>
+              ),
+              privacy: (chunks) => (
+                <Link href="/privacy" className="underline">
+                  {chunks}
+                </Link>
+              ),
+            })}
+          </p>
         </section>
 
         <section className="grid gap-4 sm:grid-cols-3">

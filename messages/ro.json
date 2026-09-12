@@ -13,7 +13,8 @@
       "subtitle": "Emiteți factura electronică în trei clicuri și trimiteți-o prin sistemul e-Factura. Contragenții și articolele se importă dintr-un fișier Excel într-o seară.",
       "primaryCta": "Începeți gratuit",
       "secondaryCta": "Vedeți prețurile",
-      "note": "Primele 10 facturi sunt gratuite. Fără card la înregistrare."
+      "note": "Primele 10 facturi sunt gratuite. Fără card la înregistrare.",
+      "consent": "Creând un cont, sunteți de acord cu <terms>Termenii și condițiile</terms> și cu <privacy>Politica de confidențialitate</privacy>."
     },
     "deadline": {
       "before": "Au mai rămas {days} zile până când factura electronică devine obligatorie în relațiile B2B.",
@@ -42,20 +43,30 @@
   "invoice": {
     "status": {
       "DRAFT": "Ciornă",
-      "SIGNING": "Se semnează",
+      "SIGNED": "Semnată",
       "SENT": "Trimisă",
-      "DELIVERED": "Livrată",
-      "ACCEPTED": "Acceptată",
-      "REJECTED": "Respinsă",
+      "RECEIVED": "Primită de cumpărător",
+      "FINISHED": "Gata",
+      "CANCELLATION_REQUESTED": "Așteaptă acordul de anulare",
       "CANCELLED": "Anulată",
-      "ERROR": "Eroare"
+      "ERROR": "Netrimisă"
     },
     "table": {
       "number": "Număr",
-      "counterparty": "Contragent",
+      "counterparty": "Cumpărător",
       "issueDate": "Data",
       "total": "Total",
       "status": "Stare"
+    },
+    "statusHint": {
+      "DRAFT": "Nu a plecat nicăieri. O puteți schimba oricând.",
+      "SIGNED": "Semnată. Se trimite cumpărătorului.",
+      "SENT": "A plecat. Așteptăm cumpărătorul.",
+      "RECEIVED": "Cumpărătorul a deschis-o. Mai trebuie să o semneze.",
+      "FINISHED": "Totul e în regulă. Nu mai aveți nimic de făcut.",
+      "CANCELLATION_REQUESTED": "Ați cerut anularea. Cumpărătorul trebuie să fie de acord.",
+      "CANCELLED": "Anulată. Dacă mai e nevoie, faceți una nouă.",
+      "ERROR": "Nu a plecat. Deschideți-o ca să vedeți ce trebuie schimbat."
     }
   },
   "common": {
@@ -69,5 +80,15 @@
       "title": "Nicio factură încă",
       "description": "Emiteți prima factură electronică. Durează mai puțin de un minut dacă contragentul este deja în listă."
     }
+  },
+  "nav": {
+    "invoices": "Facturi",
+    "counterparties": "Cumpărători și furnizori",
+    "products": "Produse și servicii",
+    "billing": "Plată",
+    "settings": "Setări"
+  },
+  "legal": {
+    "back": "Înapoi la pagina principală"
   }
 }
