@@ -8,3 +8,5 @@ export { Input } from './input';
 export { Logo } from './logo';
 export { Skeleton } from './skeleton';
 export { GoogleButton } from './google-button';
+export { HeroCanvas, type HeroCanvasProps } from './hero-canvas';
+export { LocaleSwitcher } from './locale-switcher';

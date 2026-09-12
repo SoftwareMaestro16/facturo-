@@ -2,6 +2,12 @@
 
 import { useEffect, useRef, type ReactNode } from 'react';
 
+/// A full-bleed animated dark noise background for the landing hero.
+///
+/// Pure canvas/WebGL, no external image or font dependency, so it never breaks
+/// on a blocked CDN. Respects `prefers-reduced-motion` (freezes on the first
+/// frame) and pauses when the tab or the element itself is not visible.
+
 const vertexShaderGLSL = `
 attribute vec2 position;
 varying vec2 vUv;
@@ -83,7 +89,7 @@ void main() {
 }
 `;
 
-export interface VelarisProps {
+export interface HeroCanvasProps {
   bg?: string;
   colors?: string[];
   speed?: number;
@@ -95,7 +101,7 @@ export interface VelarisProps {
 
 const DEFAULT_COLORS = ['#eeeeee', '#999999', '#333333', '#000000'];
 
-const Velaris = ({
+export const HeroCanvas = ({
   bg = '#000000',
   colors = DEFAULT_COLORS,
   speed = 2.0,
@@ -103,7 +109,7 @@ const Velaris = ({
   height = '100vh',
   className,
   children,
-}: VelarisProps) => {
+}: HeroCanvasProps) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -237,5 +243,3 @@ const Velaris = ({
     </div>
   );
 };
-
-export default Velaris;

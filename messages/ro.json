@@ -8,7 +8,7 @@
       "login": "Autentificare"
     },
     "hero": {
-      "badge": "Obligatoriu din 1 octombrie 2026",
+      "badge": "Integrare directă cu e-Factura",
       "title": "e-Factura, fără să învățați un program de contabilitate",
       "subtitle": "Emiteți factura electronică în trei clicuri și trimiteți-o prin sistemul e-Factura. Contragenții și articolele se importă dintr-un fișier Excel într-o seară.",
       "primaryCta": "Începeți gratuit",
@@ -16,22 +16,21 @@
       "note": "Primele 10 facturi sunt gratuite. Fără card la înregistrare.",
       "consent": "Creând un cont, sunteți de acord cu <terms>Termenii și condițiile</terms> și cu <privacy>Politica de confidențialitate</privacy>."
     },
-    "deadline": {
-      "before": "Au mai rămas {days} zile până când factura electronică devine obligatorie în relațiile B2B.",
-      "after": "Factura electronică este deja obligatorie în relațiile B2B."
-    },
     "features": {
       "speed": {
         "title": "Trei clicuri",
-        "body": "Alegeți contragentul, adăugați poziția, trimiteți. De pe telefon, din mașină, fără să deschideți laptopul."
+        "body": "Alegeți contragentul, adăugați poziția, trimiteți. De pe telefon, din mașină, fără să deschideți laptopul.",
+        "eyebrow": "Viteză"
       },
       "import": {
         "title": "Import din Excel",
-        "body": "Încărcați lista de contragenți și de articole dintr-un fișier pe care îl aveți deja. Rândurile cu probleme sunt arătate separat, cu motivul."
+        "body": "Încărcați lista de contragenți și de articole dintr-un fișier pe care îl aveți deja. Rândurile cu probleme sunt arătate separat, cu motivul.",
+        "eyebrow": "Import"
       },
       "errors": {
         "title": "Erori explicate",
-        "body": "Când sistemul respinge un document, vă spunem ce trebuie corectat, într-o propoziție, nu un cod de eroare."
+        "body": "Când sistemul respinge un document, vă spunem ce trebuie corectat, într-o propoziție, nu un cod de eroare.",
+        "eyebrow": "Claritate"
       }
     },
     "footer": {
