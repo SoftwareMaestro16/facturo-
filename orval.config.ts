@@ -1,4 +1,5 @@
 import { defineConfig } from 'orval';
+import { existsSync } from 'node:fs';
 
 /// Generates the whole client data layer from the server's OpenAPI document.
 ///
@@ -11,10 +12,12 @@ import { defineConfig } from 'orval';
 /// the interface can show a person.
 export default defineConfig({
   facturo: {
-    // Sibling checkout of facturo-server. If another session's environment
-    // clones it under a different name, fix the path here rather than
-    // renaming the checkout — this file is what everyone else reads.
-    input: { target: '../facturo-server/openapi.json' },
+    // Use the live sibling contract locally and the versioned snapshot in a clean checkout.
+    input: {
+      target:
+        process.env.FACTURO_OPENAPI_PATH ??
+        (existsSync('../backend/openapi.json') ? '../backend/openapi.json' : './api-contract.json'),
+    },
     output: {
       mode: 'tags-split',
       target: './src/shared/api/generated/facturo.ts',

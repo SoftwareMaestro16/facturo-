@@ -4,6 +4,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
 
+import { sessionDestination } from '@/entities/session';
+
 import { ApiError } from '@/shared/api';
 import { useRouter } from '@/shared/i18n';
 import { Button, ErrorState, Field, Input } from '@/shared/ui';
@@ -25,10 +27,12 @@ export function LoginForm() {
 
   const onSubmit = form.handleSubmit(async (values) => {
     try {
-      await login.mutateAsync(values);
+      const result = await login.mutateAsync(values);
       // /invoices is workspace-scoped; the middleware routes it through the
       // locale it should be.
-      router.push('/invoices');
+      if (!result.data) throw new Error('Missing session');
+      router.replace(sessionDestination(result.data));
+      router.refresh();
     } catch (error) {
       // The server folds unknown-address, wrong-password and locked account
       // into a single response so nobody can enumerate accounts. The UI does

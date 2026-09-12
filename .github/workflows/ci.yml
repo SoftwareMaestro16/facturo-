@@ -23,6 +23,9 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - run: npm run api:generate
+        env:
+          FACTURO_OPENAPI_PATH: ./api-contract.json
       - run: npm run format:check
       - run: npm run lint
       # Structural FSD checks the import linter cannot see.

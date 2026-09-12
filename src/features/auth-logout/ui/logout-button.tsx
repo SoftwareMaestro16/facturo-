@@ -17,22 +17,34 @@ export function LogoutButton() {
   const runLogout = async () => {
     try {
       await logout.mutateAsync();
-    } finally {
-      // Land on the sign-in screen even if the server call failed: the local
-      // session is already cleared.
-      router.push('/login');
+      try {
+        localStorage.setItem('facturo-session', crypto.randomUUID());
+      } catch {
+        /* Storage may be disabled; logout still succeeds. */
+      }
+      router.replace('/login');
+      router.refresh();
+    } catch {
+      // Keep the current page when the server did not clear HttpOnly cookies.
     }
   };
 
   return (
-    <Button
-      variant="ghost"
-      onClick={() => {
-        void runLogout();
-      }}
-      isLoading={logout.isPending}
-    >
-      {t('submit')}
-    </Button>
+    <div>
+      <Button
+        variant="ghost"
+        onClick={() => {
+          void runLogout();
+        }}
+        isLoading={logout.isPending}
+      >
+        {t('submit')}
+      </Button>
+      {logout.isError ? (
+        <p role="alert" className="text-sm text-danger-700">
+          {t('error')}
+        </p>
+      ) : null}
+    </div>
   );
 }

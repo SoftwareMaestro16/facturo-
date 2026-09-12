@@ -6,11 +6,26 @@
 Next.js 16 (App Router), Feature-Sliced Design, TanStack Query, Tailwind v4,
 ro/ru с первого дня.
 
+Лендинг: чёрный монохромный hero высотой не меньше экрана, адаптивные bento-карточки.
+Google-вход использует единый `POST /api/auth/google`: новый пользователь переходит
+на `/onboarding`, создаёт первую компанию и попадает в кабинет. В `/settings`
+можно создать дополнительные компании и переключаться между ними.
+
+В `.env` задайте `NEXT_PUBLIC_GOOGLE_CLIENT_ID` — тот же Web Client ID, что у
+бэкенда. В Google Cloud разрешите origin `http://localhost:3000`. Client secret
+не используется. После изменения переменной перезапустите dev-сервер или сборку.
+
+`src/proxy.ts` проверяет наличие cookie на закрытых маршрутах. `SessionBoundary`
+проверяет настоящую сессию через API, а транспорт обновляет её через HttpOnly
+refresh-cookie. Вход и регистрация используют `replace`; открытие этих страниц
+с действующей сессией возвращает в кабинет. Это не удаляет историю браузера.
+
 ## Начать
 
 ```bash
 cp .env.example .env
 npm install
+npm run api:generate
 npm run dev
 ```
 
@@ -23,6 +38,12 @@ npm run openapi:export
 # здесь
 npm run api:generate
 ```
+
+По умолчанию схема берётся из `../backend/openapi.json`. Для другой структуры
+папок задайте `FACTURO_OPENAPI_PATH` перед `npm run api:generate`. Если соседнего
+бэкенда нет, используется снимок `api-contract.json`; CI генерирует типы из него.
+После изменения серверного контракта обновите снимок копированием экспортированного
+`openapi.json`, затем сгенерируйте клиент. Не редактируйте снимок вручную.
 
 ## Проверка перед коммитом
 

@@ -4,6 +4,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
 
+import { sessionDestination } from '@/entities/session';
+
 import { ApiError } from '@/shared/api';
 import { Link, useRouter } from '@/shared/i18n';
 import { Button, ErrorState, Field, Input } from '@/shared/ui';
@@ -33,7 +35,7 @@ export function RegisterForm() {
 
   const onSubmit = form.handleSubmit(async (values) => {
     try {
-      await register.mutateAsync({
+      const result = await register.mutateAsync({
         companyName: values.companyName,
         idno: values.idno,
         vatCode: values.vatCode,
@@ -42,7 +44,9 @@ export function RegisterForm() {
         fullName: values.fullName,
         password: values.password,
       });
-      router.push('/invoices');
+      if (!result.data) throw new Error('Missing session');
+      router.replace(sessionDestination(result.data));
+      router.refresh();
     } catch (error) {
       if (error instanceof ApiError) {
         const message = t(`errors.${error.code}`, { default: t('errors.generic') });

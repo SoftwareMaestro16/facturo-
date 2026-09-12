@@ -33,13 +33,25 @@ export interface FetchResponse<T> {
   headers: Headers;
 }
 
+let refreshRequest: Promise<boolean> | undefined;
+
+function refreshSession(): Promise<boolean> {
+  refreshRequest ??= fetch('/api/auth/refresh', { method: 'POST', credentials: 'include' })
+    .then((response) => response.ok)
+    .catch(() => false)
+    .finally(() => {
+      refreshRequest = undefined;
+    });
+  return refreshRequest;
+}
+
 export async function customFetch<T extends { data: unknown; status: number }>(
   url: string,
   options: RequestInit = {},
 ): Promise<T> {
   const path = `/api/${url.replace(/^\/?api\//, '').replace(/^\//, '')}`;
   const target = typeof window === 'undefined' ? `${env.apiUrl.replace(/\/api\/?$/, '')}${path}` : path;
-  const response = await fetch(target, {
+  const request: RequestInit = {
     ...options,
     // Authentication is httpOnly cookies; there is no token for JavaScript to
     // attach, and none for a script on another origin to steal.
@@ -48,7 +60,12 @@ export async function customFetch<T extends { data: unknown; status: number }>(
       ...(options.body instanceof FormData ? {} : { 'Content-Type': 'application/json' }),
       ...options.headers,
     },
-  });
+  };
+  let response = await fetch(target, request);
+  const canRefresh = path === '/api/auth/me' || !path.startsWith('/api/auth/');
+  if (response.status === 401 && typeof window !== 'undefined' && canRefresh && (await refreshSession())) {
+    response = await fetch(target, request);
+  }
 
   const body = await readBody(response);
 

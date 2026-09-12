@@ -1,0 +1,2544 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/auth/register": {
+      "post": {
+        "operationId": "AuthController_register",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "email_taken | company_exists"
+          }
+        },
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "operationId": "AuthController_login",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "invalid_credentials"
+          }
+        },
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/auth/refresh": {
+      "post": {
+        "operationId": "AuthController_refresh",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": "New cookies are set"
+          },
+          "401": {
+            "description": "invalid_refresh_token"
+          }
+        },
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/auth/logout": {
+      "post": {
+        "operationId": "AuthController_logout",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": "Cookies cleared whether or not a session was live"
+          }
+        },
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/auth/me": {
+      "get": {
+        "operationId": "AuthController_describe",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/auth/change-password": {
+      "post": {
+        "operationId": "AuthController_changePassword",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePasswordDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Every session is revoked; the caller signs in again"
+          },
+          "401": {
+            "description": "invalid_credentials | no_password_set"
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/auth/google/challenge": {
+      "get": {
+        "operationId": "GoogleController_challenge",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoogleChallengeResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/auth/google": {
+      "post": {
+        "operationId": "GoogleController_authenticate",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GoogleAuthDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "google_invalid"
+          }
+        },
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/companies/me": {
+      "get": {
+        "operationId": "CompaniesController_findOwn",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompanyResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "companies"
+        ]
+      },
+      "patch": {
+        "operationId": "CompaniesController_update",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCompanyDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompanyResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "companies"
+        ]
+      }
+    },
+    "/api/companies": {
+      "get": {
+        "operationId": "CompaniesController_list",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CompanySummary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "companies"
+        ]
+      },
+      "post": {
+        "operationId": "CompaniesController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCompanyDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "companies"
+        ]
+      }
+    },
+    "/api/companies/{id}/switch": {
+      "post": {
+        "operationId": "CompaniesController_switchTo",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "companies"
+        ]
+      }
+    },
+    "/api/counterparties": {
+      "get": {
+        "operationId": "CounterpartiesController_list",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "default": 1,
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/Object"
+                }
+              ]
+            }
+          },
+          {
+            "name": "pageSize",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "maximum": 100,
+              "default": 25,
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/Object"
+                }
+              ]
+            }
+          },
+          {
+            "name": "search",
+            "required": false,
+            "in": "query",
+            "description": "Free text match on name and fiscal code",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CounterpartyPage"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "counterparties"
+        ]
+      },
+      "post": {
+        "operationId": "CounterpartiesController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCounterpartyDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CounterpartyResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "counterparty_exists"
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "counterparties"
+        ]
+      }
+    },
+    "/api/counterparties/{id}": {
+      "get": {
+        "operationId": "CounterpartiesController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CounterpartyResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "counterparty_not_found"
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "counterparties"
+        ]
+      },
+      "patch": {
+        "operationId": "CounterpartiesController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCounterpartyDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CounterpartyResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "counterparty_not_found"
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "counterparties"
+        ]
+      },
+      "delete": {
+        "operationId": "CounterpartiesController_archive",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CounterpartyResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "counterparty_not_found"
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "counterparties"
+        ]
+      }
+    },
+    "/api/products": {
+      "get": {
+        "operationId": "ProductsController_list",
+        "parameters": [
+          {
+            "name": "search",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": 1,
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/Object"
+                }
+              ]
+            }
+          },
+          {
+            "name": "pageSize",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": 25,
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/Object"
+                }
+              ]
+            }
+          },
+          {
+            "name": "includeArchived",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": false,
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/Object"
+                }
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductPage"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "products"
+        ]
+      },
+      "post": {
+        "operationId": "ProductsController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProductDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "product_code_exists"
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "products"
+        ]
+      }
+    },
+    "/api/products/{id}": {
+      "get": {
+        "operationId": "ProductsController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "product_not_found"
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "products"
+        ]
+      },
+      "patch": {
+        "operationId": "ProductsController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProductDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "product_not_found"
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "products"
+        ]
+      },
+      "delete": {
+        "operationId": "ProductsController_archive",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "product_not_found"
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "products"
+        ]
+      }
+    },
+    "/api/invoices": {
+      "get": {
+        "operationId": "InvoicesController_list",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": 1,
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/Object"
+                }
+              ]
+            }
+          },
+          {
+            "name": "pageSize",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": 25,
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/Object"
+                }
+              ]
+            }
+          },
+          {
+            "name": "search",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "direction",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "OUTGOING",
+                "INCOMING"
+              ]
+            }
+          },
+          {
+            "name": "status",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "DRAFT",
+                "SIGNED",
+                "SENT",
+                "RECEIVED",
+                "FINISHED",
+                "CANCELLATION_REQUESTED",
+                "CANCELLED",
+                "ERROR"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoicePage"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "invoices"
+        ]
+      },
+      "post": {
+        "operationId": "InvoicesController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateInvoiceDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoiceResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "invoices"
+        ]
+      }
+    },
+    "/api/invoices/{id}": {
+      "get": {
+        "operationId": "InvoicesController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoiceResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "invoice_not_found"
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "invoices"
+        ]
+      },
+      "patch": {
+        "operationId": "InvoicesController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateInvoiceDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoiceResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "invoice_not_found"
+          },
+          "409": {
+            "description": "invoice_not_editable"
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "invoices"
+        ]
+      },
+      "delete": {
+        "operationId": "InvoicesController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          },
+          "404": {
+            "description": "invoice_not_found"
+          },
+          "409": {
+            "description": "invoice_not_draft"
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "invoices"
+        ]
+      }
+    },
+    "/api/invoices/preview": {
+      "post": {
+        "operationId": "InvoicesController_preview",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreviewInvoiceDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Subtotal, VAT and total for the given lines",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PreviewInvoiceResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "invoices"
+        ]
+      }
+    },
+    "/api/invoices/{id}/submit": {
+      "post": {
+        "operationId": "InvoiceSubmitController_submit",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The document is now on the platform in state SIGNED"
+          },
+          "404": {
+            "description": "invoice_not_found"
+          },
+          "409": {
+            "description": "invoice_not_signable"
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "invoices"
+        ]
+      }
+    },
+    "/api/imports": {
+      "post": {
+        "operationId": "ImportsController_upload",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/ImportUploadDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImportResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "imports"
+        ]
+      }
+    },
+    "/api/health": {
+      "get": {
+        "operationId": "HealthController_check",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "The Health Check is successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "ok",
+                        "degraded"
+                      ],
+                      "example": "ok"
+                    },
+                    "info": {
+                      "type": "object",
+                      "example": {
+                        "database": {
+                          "status": "up",
+                          "responseTime": 12
+                        }
+                      },
+                      "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                          "status"
+                        ],
+                        "properties": {
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "up",
+                              "degraded",
+                              "down"
+                            ]
+                          },
+                          "responseTime": {
+                            "type": "number",
+                            "description": "Time the health indicator took to respond, in ms"
+                          }
+                        },
+                        "additionalProperties": true
+                      },
+                      "nullable": true
+                    },
+                    "error": {
+                      "type": "object",
+                      "example": {},
+                      "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                          "status"
+                        ],
+                        "properties": {
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "up",
+                              "degraded",
+                              "down"
+                            ]
+                          },
+                          "responseTime": {
+                            "type": "number",
+                            "description": "Time the health indicator took to respond, in ms"
+                          }
+                        },
+                        "additionalProperties": true
+                      },
+                      "nullable": true
+                    },
+                    "details": {
+                      "type": "object",
+                      "example": {
+                        "database": {
+                          "status": "up",
+                          "responseTime": 12
+                        }
+                      },
+                      "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                          "status"
+                        ],
+                        "properties": {
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "up",
+                              "degraded",
+                              "down"
+                            ]
+                          },
+                          "responseTime": {
+                            "type": "number",
+                            "description": "Time the health indicator took to respond, in ms"
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The Health Check is not successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "error",
+                        "shutting_down"
+                      ],
+                      "example": "error"
+                    },
+                    "info": {
+                      "type": "object",
+                      "example": {
+                        "database": {
+                          "status": "up",
+                          "responseTime": 12
+                        }
+                      },
+                      "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                          "status"
+                        ],
+                        "properties": {
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "up",
+                              "degraded",
+                              "down"
+                            ]
+                          },
+                          "responseTime": {
+                            "type": "number",
+                            "description": "Time the health indicator took to respond, in ms"
+                          }
+                        },
+                        "additionalProperties": true
+                      },
+                      "nullable": true
+                    },
+                    "error": {
+                      "type": "object",
+                      "example": {
+                        "redis": {
+                          "status": "down",
+                          "message": "Could not connect",
+                          "responseTime": 3005
+                        }
+                      },
+                      "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                          "status"
+                        ],
+                        "properties": {
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "up",
+                              "degraded",
+                              "down"
+                            ]
+                          },
+                          "responseTime": {
+                            "type": "number",
+                            "description": "Time the health indicator took to respond, in ms"
+                          }
+                        },
+                        "additionalProperties": true
+                      },
+                      "nullable": true
+                    },
+                    "details": {
+                      "type": "object",
+                      "example": {
+                        "database": {
+                          "status": "up",
+                          "responseTime": 12
+                        },
+                        "redis": {
+                          "status": "down",
+                          "message": "Could not connect",
+                          "responseTime": 3005
+                        }
+                      },
+                      "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                          "status"
+                        ],
+                        "properties": {
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "up",
+                              "degraded",
+                              "down"
+                            ]
+                          },
+                          "responseTime": {
+                            "type": "number",
+                            "description": "Time the health indicator took to respond, in ms"
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "health"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "Facturo API",
+    "description": "e-Factura invoicing for Moldovan small and medium business",
+    "version": "0.1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "cookie": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "access_token"
+      }
+    },
+    "schemas": {
+      "RegisterDto": {
+        "type": "object",
+        "properties": {
+          "companyName": {
+            "type": "string",
+            "example": "SRL Exemplu"
+          },
+          "idno": {
+            "type": "string",
+            "description": "IDNO, 13 digits",
+            "example": "1003600012345"
+          },
+          "vatCode": {
+            "type": "string",
+            "description": "VAT registration code, 6 digits",
+            "example": "0123456"
+          },
+          "email": {
+            "type": "string",
+            "example": "director@exemplu.md"
+          },
+          "phone": {
+            "type": "string",
+            "example": "+373 69 123 456"
+          },
+          "fullName": {
+            "type": "string",
+            "example": "Ion Popescu"
+          },
+          "password": {
+            "type": "string",
+            "minLength": 8,
+            "description": "Checked against the password policy"
+          },
+          "locale": {
+            "type": "string",
+            "enum": [
+              "ro",
+              "ru"
+            ],
+            "default": "ro"
+          }
+        },
+        "required": [
+          "companyName",
+          "idno",
+          "email",
+          "fullName",
+          "password"
+        ]
+      },
+      "SessionResponse": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string"
+          },
+          "companyId": {
+            "type": "string",
+            "nullable": true,
+            "description": "Null until the person creates or joins a company"
+          },
+          "email": {
+            "type": "string"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "OWNER",
+              "ACCOUNTANT",
+              "VIEWER"
+            ]
+          },
+          "companyName": {
+            "type": "string",
+            "nullable": true
+          },
+          "locale": {
+            "type": "string",
+            "nullable": true,
+            "enum": [
+              "ro",
+              "ru"
+            ]
+          },
+          "vatCode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "required": [
+          "userId",
+          "companyId",
+          "email",
+          "fullName",
+          "role",
+          "companyName",
+          "locale"
+        ]
+      },
+      "LoginDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "director@exemplu.md"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ]
+      },
+      "ChangePasswordDto": {
+        "type": "object",
+        "properties": {
+          "currentPassword": {
+            "type": "string"
+          },
+          "newPassword": {
+            "type": "string",
+            "minLength": 8
+          }
+        },
+        "required": [
+          "currentPassword",
+          "newPassword"
+        ]
+      },
+      "GoogleChallengeResponse": {
+        "type": "object",
+        "properties": {
+          "nonce": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "nonce"
+        ]
+      },
+      "GoogleAuthDto": {
+        "type": "object",
+        "properties": {
+          "credential": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "credential"
+        ]
+      },
+      "CompanyResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "idno": {
+            "type": "string",
+            "description": "IDNO, 13 digits"
+          },
+          "name": {
+            "type": "string"
+          },
+          "vatCode": {
+            "type": "object"
+          },
+          "isVatPayer": {
+            "type": "boolean"
+          },
+          "address": {
+            "type": "object"
+          },
+          "city": {
+            "type": "object"
+          },
+          "country": {
+            "type": "string"
+          },
+          "email": {
+            "type": "object"
+          },
+          "phone": {
+            "type": "object"
+          },
+          "iban": {
+            "type": "object",
+            "description": "Bank account the customer is asked to pay into"
+          },
+          "bankName": {
+            "type": "object"
+          },
+          "bankBic": {
+            "type": "object"
+          },
+          "locale": {
+            "type": "string",
+            "enum": [
+              "ro",
+              "ru"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "idno",
+          "name",
+          "isVatPayer",
+          "country",
+          "locale"
+        ]
+      },
+      "UpdateCompanyDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "vatCode": {
+            "type": "string",
+            "description": "6 digits, or null when the company stops being a VAT payer"
+          },
+          "address": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "iban": {
+            "type": "string",
+            "example": "MD24AG000225100013104168"
+          },
+          "bankName": {
+            "type": "string"
+          },
+          "bankBic": {
+            "type": "string"
+          },
+          "locale": {
+            "type": "string",
+            "enum": [
+              "ro",
+              "ru"
+            ]
+          }
+        }
+      },
+      "CompanySummary": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "idno": {
+            "type": "string",
+            "description": "IDNO, 13 digits"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "OWNER",
+              "ACCOUNTANT",
+              "VIEWER"
+            ]
+          },
+          "isCurrent": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "idno",
+          "role",
+          "isCurrent"
+        ]
+      },
+      "CreateCompanyDto": {
+        "type": "object",
+        "properties": {
+          "companyName": {
+            "type": "string",
+            "example": "SRL Exemplu"
+          },
+          "idno": {
+            "type": "string",
+            "description": "IDNO, 13 digits",
+            "example": "1003600012345"
+          },
+          "vatCode": {
+            "type": "string",
+            "description": "VAT registration code, 6 digits",
+            "example": "0123456"
+          },
+          "locale": {
+            "type": "string",
+            "enum": [
+              "ro",
+              "ru"
+            ],
+            "default": "ro"
+          }
+        },
+        "required": [
+          "companyName",
+          "idno"
+        ]
+      },
+      "Object": {
+        "type": "object",
+        "properties": {}
+      },
+      "CounterpartyResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "idno": {
+            "type": "string"
+          },
+          "vatCode": {
+            "type": "object"
+          },
+          "isVatPayer": {
+            "type": "boolean"
+          },
+          "address": {
+            "type": "object"
+          },
+          "email": {
+            "type": "object"
+          },
+          "phone": {
+            "type": "object"
+          },
+          "iban": {
+            "type": "object"
+          },
+          "bankName": {
+            "type": "object"
+          },
+          "isArchived": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "idno",
+          "isVatPayer",
+          "isArchived"
+        ]
+      },
+      "PageMeta": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "number"
+          },
+          "pageSize": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          },
+          "totalPages": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "page",
+          "pageSize",
+          "total",
+          "totalPages"
+        ]
+      },
+      "CounterpartyPage": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CounterpartyResponse"
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/PageMeta"
+          }
+        },
+        "required": [
+          "items",
+          "meta"
+        ]
+      },
+      "CreateCounterpartyDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "SRL Partener"
+          },
+          "idno": {
+            "type": "string",
+            "description": "IDNO, 13 digits",
+            "example": "1009600054321"
+          },
+          "vatCode": {
+            "type": "string",
+            "description": "VAT registration code, 6 digits"
+          },
+          "address": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "iban": {
+            "type": "string",
+            "example": "MD24AG000225100013104168"
+          },
+          "bankName": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "idno"
+        ]
+      },
+      "UpdateCounterpartyDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "SRL Partener"
+          },
+          "idno": {
+            "type": "string",
+            "description": "IDNO, 13 digits",
+            "example": "1009600054321"
+          },
+          "vatCode": {
+            "type": "string",
+            "description": "VAT registration code, 6 digits"
+          },
+          "address": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "iban": {
+            "type": "string",
+            "example": "MD24AG000225100013104168"
+          },
+          "bankName": {
+            "type": "string"
+          },
+          "isArchived": {
+            "type": "boolean",
+            "description": "Archived counterparties stay on old documents but leave the picker"
+          }
+        }
+      },
+      "ProductResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "code": {
+            "type": "object"
+          },
+          "name": {
+            "type": "string"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "priceNet": {
+            "type": "string",
+            "example": "1250.00"
+          },
+          "vatRate": {
+            "type": "string",
+            "example": "20.00"
+          },
+          "isArchived": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "unit",
+          "priceNet",
+          "vatRate",
+          "isArchived"
+        ]
+      },
+      "ProductPage": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductResponse"
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/PageMeta"
+          }
+        },
+        "required": [
+          "items",
+          "meta"
+        ]
+      },
+      "CreateProductDto": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "SRV-001"
+          },
+          "name": {
+            "type": "string",
+            "example": "Consultanță IT"
+          },
+          "unit": {
+            "type": "string",
+            "example": "H87",
+            "description": "Unit code from the national classifier"
+          },
+          "priceNet": {
+            "type": "string",
+            "example": "1250.00",
+            "description": "Net unit price, VAT excluded"
+          },
+          "vatRate": {
+            "type": "string",
+            "enum": [
+              "20",
+              "8",
+              "0"
+            ],
+            "example": "20"
+          }
+        },
+        "required": [
+          "name",
+          "priceNet",
+          "vatRate"
+        ]
+      },
+      "UpdateProductDto": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "SRV-001"
+          },
+          "name": {
+            "type": "string",
+            "example": "Consultanță IT"
+          },
+          "unit": {
+            "type": "string",
+            "example": "H87",
+            "description": "Unit code from the national classifier"
+          },
+          "priceNet": {
+            "type": "string",
+            "example": "1250.00",
+            "description": "Net unit price, VAT excluded"
+          },
+          "vatRate": {
+            "type": "string",
+            "enum": [
+              "20",
+              "8",
+              "0"
+            ],
+            "example": "20"
+          },
+          "isArchived": {
+            "type": "boolean"
+          }
+        }
+      },
+      "InvoiceListItemResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "direction": {
+            "type": "string",
+            "enum": [
+              "OUTGOING",
+              "INCOMING"
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "cycle": {
+            "type": "string"
+          },
+          "series": {
+            "type": "string"
+          },
+          "number": {
+            "type": "number"
+          },
+          "issueDate": {
+            "type": "string"
+          },
+          "counterpartyName": {
+            "type": "string"
+          },
+          "total": {
+            "type": "string"
+          },
+          "currency": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "direction",
+          "status",
+          "cycle",
+          "series",
+          "number",
+          "issueDate",
+          "counterpartyName",
+          "total",
+          "currency"
+        ]
+      },
+      "InvoicePage": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InvoiceListItemResponse"
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/PageMeta"
+          }
+        },
+        "required": [
+          "items",
+          "meta"
+        ]
+      },
+      "InvoiceLineResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "position": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "string"
+          },
+          "priceNet": {
+            "type": "string"
+          },
+          "vatRate": {
+            "type": "string"
+          },
+          "amountNet": {
+            "type": "string"
+          },
+          "vatAmount": {
+            "type": "string"
+          },
+          "amountGross": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "position",
+          "name",
+          "unit",
+          "quantity",
+          "priceNet",
+          "vatRate",
+          "amountNet",
+          "vatAmount",
+          "amountGross"
+        ]
+      },
+      "InvoiceResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "direction": {
+            "type": "string",
+            "enum": [
+              "OUTGOING",
+              "INCOMING"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "DRAFT",
+              "SIGNED",
+              "SENT",
+              "RECEIVED",
+              "FINISHED",
+              "CANCELLATION_REQUESTED",
+              "CANCELLED",
+              "ERROR"
+            ]
+          },
+          "cycle": {
+            "type": "string",
+            "enum": [
+              "SHORT",
+              "LONG"
+            ]
+          },
+          "statusReason": {
+            "type": "object"
+          },
+          "series": {
+            "type": "string"
+          },
+          "number": {
+            "type": "number"
+          },
+          "issueDate": {
+            "type": "string"
+          },
+          "deliveryDate": {
+            "type": "object"
+          },
+          "dueDate": {
+            "type": "object"
+          },
+          "counterpartyId": {
+            "type": "object"
+          },
+          "counterpartyName": {
+            "type": "string"
+          },
+          "counterpartyIdno": {
+            "type": "string"
+          },
+          "counterpartyVatCode": {
+            "type": "object"
+          },
+          "counterpartyAddress": {
+            "type": "object"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "subtotal": {
+            "type": "string"
+          },
+          "vatTotal": {
+            "type": "string"
+          },
+          "total": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "object"
+          },
+          "loadingPoint": {
+            "type": "object"
+          },
+          "unloadingPoint": {
+            "type": "object"
+          },
+          "lines": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InvoiceLineResponse"
+            }
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "direction",
+          "status",
+          "cycle",
+          "series",
+          "number",
+          "issueDate",
+          "counterpartyName",
+          "counterpartyIdno",
+          "currency",
+          "subtotal",
+          "vatTotal",
+          "total",
+          "lines",
+          "createdAt",
+          "updatedAt"
+        ]
+      },
+      "InvoiceLineDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Consultanță IT"
+          },
+          "unit": {
+            "type": "string",
+            "example": "H87"
+          },
+          "quantity": {
+            "type": "string",
+            "example": "2.500",
+            "description": "Up to three decimals"
+          },
+          "priceNet": {
+            "type": "string",
+            "example": "1250.00",
+            "description": "Net unit price, VAT excluded"
+          },
+          "vatRate": {
+            "type": "string",
+            "example": "20",
+            "description": "One of the platform rates"
+          },
+          "productId": {
+            "type": "string",
+            "description": "Reference to a product in the catalogue"
+          }
+        },
+        "required": [
+          "name",
+          "quantity",
+          "priceNet",
+          "vatRate"
+        ]
+      },
+      "CreateInvoiceDto": {
+        "type": "object",
+        "properties": {
+          "cycle": {
+            "type": "string",
+            "enum": [
+              "SHORT",
+              "LONG"
+            ],
+            "default": "LONG"
+          },
+          "series": {
+            "type": "string",
+            "description": "Draft series; defaults to the company default"
+          },
+          "issueDate": {
+            "type": "string",
+            "description": "YYYY-MM-DD; today or up to 10 days ahead"
+          },
+          "deliveryDate": {
+            "type": "string",
+            "description": "YYYY-MM-DD"
+          },
+          "dueDate": {
+            "type": "string"
+          },
+          "counterpartyId": {
+            "type": "string",
+            "description": "Existing counterparty id"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "loadingPoint": {
+            "type": "string"
+          },
+          "unloadingPoint": {
+            "type": "string"
+          },
+          "transporterName": {
+            "type": "string"
+          },
+          "transporterIdno": {
+            "type": "string"
+          },
+          "vehicleNumber": {
+            "type": "string"
+          },
+          "driverName": {
+            "type": "string"
+          },
+          "lines": {
+            "minItems": 1,
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InvoiceLineDto"
+            }
+          }
+        },
+        "required": [
+          "issueDate",
+          "counterpartyId",
+          "lines"
+        ]
+      },
+      "PreviewInvoiceDto": {
+        "type": "object",
+        "properties": {
+          "lines": {
+            "minItems": 1,
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InvoiceLineDto"
+            }
+          }
+        },
+        "required": [
+          "lines"
+        ]
+      },
+      "PreviewInvoiceResponse": {
+        "type": "object",
+        "properties": {
+          "subtotal": {
+            "type": "string"
+          },
+          "vatTotal": {
+            "type": "string"
+          },
+          "total": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "subtotal",
+          "vatTotal",
+          "total"
+        ]
+      },
+      "UpdateInvoiceDto": {
+        "type": "object",
+        "properties": {
+          "cycle": {
+            "type": "string",
+            "enum": [
+              "SHORT",
+              "LONG"
+            ],
+            "default": "LONG"
+          },
+          "series": {
+            "type": "string",
+            "description": "Draft series; defaults to the company default"
+          },
+          "issueDate": {
+            "type": "string",
+            "description": "YYYY-MM-DD; today or up to 10 days ahead"
+          },
+          "deliveryDate": {
+            "type": "string",
+            "description": "YYYY-MM-DD"
+          },
+          "dueDate": {
+            "type": "string"
+          },
+          "counterpartyId": {
+            "type": "string",
+            "description": "Existing counterparty id"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "loadingPoint": {
+            "type": "string"
+          },
+          "unloadingPoint": {
+            "type": "string"
+          },
+          "transporterName": {
+            "type": "string"
+          },
+          "transporterIdno": {
+            "type": "string"
+          },
+          "vehicleNumber": {
+            "type": "string"
+          },
+          "driverName": {
+            "type": "string"
+          },
+          "lines": {
+            "minItems": 1,
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InvoiceLineDto"
+            }
+          }
+        }
+      },
+      "ImportUploadDto": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "COUNTERPARTIES",
+              "PRODUCTS"
+            ]
+          },
+          "file": {
+            "type": "string",
+            "format": "binary"
+          }
+        },
+        "required": [
+          "kind",
+          "file"
+        ]
+      },
+      "ImportRowError": {
+        "type": "object",
+        "properties": {
+          "row": {
+            "type": "number"
+          },
+          "field": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "row",
+          "field",
+          "code"
+        ]
+      },
+      "ImportResponse": {
+        "type": "object",
+        "properties": {
+          "totalRows": {
+            "type": "number"
+          },
+          "okRows": {
+            "type": "number"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ImportRowError"
+            }
+          }
+        },
+        "required": [
+          "totalRows",
+          "okRows",
+          "errors"
+        ]
+      }
+    }
+  }
+}

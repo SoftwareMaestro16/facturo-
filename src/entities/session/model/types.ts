@@ -8,11 +8,11 @@ export type UserRole = 'OWNER' | 'ACCOUNTANT' | 'VIEWER';
 
 export interface CurrentUser {
   userId: string;
-  companyId: string;
+  companyId: string | null;
   email: string;
   fullName: string;
   role: UserRole;
-  companyName: string;
-  locale: string;
+  companyName: string | null;
+  locale: string | null;
   vatCode?: string | null;
 }

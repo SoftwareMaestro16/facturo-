@@ -1,115 +1,102 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import type { ReactNode } from 'react';
-
-import { cn } from '@/shared/lib';
-
-type FeatureKey = 'speed' | 'import' | 'errors';
-
-/// Dark cards on the light page body: an eyebrow, a title, a body, and a
-/// self-drawn graphic — no hotlinked image, so nothing here can break on a
-/// blocked CDN or go missing when a URL rots. The graphic is CSS and one
-/// inline SVG grid, built from design tokens rather than arbitrary hex, so a
-/// future brand change moves it along with everything else.
-const CARDS: readonly { key: FeatureKey; span: string; graphic: ReactNode }[] = [
-  { key: 'speed', span: 'lg:col-span-2 lg:row-span-2', graphic: <SpeedGraphic /> },
-  { key: 'import', span: 'lg:col-span-1', graphic: <ImportGraphic /> },
-  { key: 'errors', span: 'lg:col-span-1', graphic: <ErrorsGraphic /> },
-];
+import { BentoCard } from '@/components/ui/bento';
 
 export function FeatureBento() {
   const t = useTranslations('landing.features');
-
   return (
-    <section className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:grid-rows-2">
-      {CARDS.map((card) => (
-        <motion.article
-          key={card.key}
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          whileHover={{ y: -4 }}
-          transition={{ duration: 0.2 }}
-          className={cn(
-            'group relative flex min-h-64 flex-col justify-end overflow-hidden rounded-(--radius-card) bg-ink shadow-card',
-            card.span,
-          )}
-        >
-          <div className="absolute inset-0">{card.graphic}</div>
-
-          <div className="relative z-10 bg-gradient-to-t from-ink via-ink/90 to-transparent p-6 pt-16">
-            <p className="text-sm font-semibold uppercase tracking-wide text-white/60">
-              {t(`${card.key}.eyebrow`)}
-            </p>
-            <h2 className="mt-1 text-xl font-bold text-white">{t(`${card.key}.title`)}</h2>
-            <p className="mt-2 max-w-sm text-body text-white/70">{t(`${card.key}.body`)}</p>
-          </div>
-        </motion.article>
+    <section className="grid grid-cols-1 gap-4 md:grid-cols-6">
+      {(['speed', 'import', 'companies', 'languages', 'errors'] as const).map((key, index) => (
+        <BentoCard
+          key={key}
+          className={index < 2 ? 'md:col-span-3' : 'md:col-span-2'}
+          eyebrow={t(key + '.eyebrow')}
+          title={t(key + '.title')}
+          description={t(key + '.body')}
+          graphic={<FeatureGraphic index={index} label={t(key + '.visual')} />}
+        />
       ))}
     </section>
   );
 }
 
-/// A grid of thin lines plus a brand-coloured glow — stands in for "speed"
-/// without needing a photograph of anyone's hand on a phone.
-function SpeedGraphic() {
-  return (
-    <div className="absolute inset-0">
-      <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-brand-500/40 blur-3xl transition-transform duration-300 group-hover:scale-110" />
-      <GridLines />
-    </div>
-  );
-}
-
-/// Rows of little blocks flowing into one, standing in for many spreadsheet
-/// rows collapsing into the product's own list.
-function ImportGraphic() {
-  return (
-    <div className="absolute inset-0">
-      <div className="absolute -left-10 top-6 h-40 w-40 rounded-full bg-success-600/30 blur-3xl" />
-      <div className="absolute left-6 top-8 flex flex-col gap-1.5 opacity-70">
+function FeatureGraphic({ index, label }: { index: number; label: string }) {
+  if (index === 0)
+    return (
+      <div className="relative w-full max-w-xs rotate-[-6deg] rounded-2xl border border-white/25 bg-white/10 p-6 transition-transform duration-300 group-hover:rotate-0">
+        <div className="flex justify-between text-sm">
+          <span>FAC / 001</span>
+          <span>↗</span>
+        </div>
+        <div className="mt-5 space-y-2">
+          {[90, 70, 80].map((n) => (
+            <div key={n} className="h-1 rounded-full bg-white/20" style={{ width: n + '%' }} />
+          ))}
+        </div>
+        <div className="mt-5 flex justify-between border-t border-white/10 pt-4 text-sm">
+          <span className="text-white/50">{label}</span>
+          <span>3 000,00 L</span>
+        </div>
+      </div>
+    );
+  if (index === 1)
+    return (
+      <div className="w-full max-w-sm rounded-xl border border-white/15 bg-white/5">
+        <div className="border-b border-white/10 p-3 text-xs text-white/50">{label} · .xlsx</div>
         {[0, 1, 2, 3].map((row) => (
           <div
             key={row}
-            className="h-2 w-24 rounded-full bg-white/25"
-            style={{ width: `${60 + row * 14}px` }}
-          />
+            className="grid grid-cols-[24px_1fr_1fr_20px] items-center gap-4 border-b border-white/5 px-4 py-3"
+          >
+            <span className="text-xs text-white/25">{row + 1}</span>
+            <span className="h-1.5 rounded-full bg-white/25" />
+            <span className="h-1.5 rounded-full bg-white/10" />
+            <span className="text-xs text-white/70">✓</span>
+          </div>
         ))}
       </div>
-    </div>
-  );
-}
-
-/// A single flagged line among calm ones, standing in for one explained error
-/// among documents that otherwise went through cleanly.
-function ErrorsGraphic() {
-  return (
-    <div className="absolute inset-0">
-      <div className="absolute -right-10 top-4 h-40 w-40 rounded-full bg-danger-600/30 blur-3xl" />
-      <div className="absolute right-6 top-8 flex flex-col items-end gap-1.5 opacity-70">
-        <div className="h-2 w-16 rounded-full bg-white/25" />
-        <div className="h-2 w-20 rounded-full bg-danger-600/70" />
-        <div className="h-2 w-14 rounded-full bg-white/25" />
+    );
+  if (index === 2)
+    return (
+      <div className="relative w-full max-w-xs">
+        <div className="absolute inset-x-4 -top-3 h-20 rounded-xl border border-white/10 bg-white/5" />
+        <div className="relative rounded-xl border border-white/25 bg-black p-5">
+          <div className="flex items-center gap-3">
+            <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/15">A</span>
+            <span className="text-sm">Atelier Nord SRL</span>
+            <span className="ml-auto">✓</span>
+          </div>
+          <div className="mt-5 flex items-center gap-3 text-sm text-white/40">
+            <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10">
+              +
+            </span>
+            {label}
+          </div>
+        </div>
       </div>
-    </div>
-  );
-}
-
-function GridLines() {
+    );
+  if (index === 3)
+    return (
+      <div className="relative flex h-48 w-48 items-center justify-center rounded-full border border-white/10">
+        <div className="absolute h-36 w-36 rounded-full border border-white/10" />
+        <div className="relative flex -rotate-6 gap-3 rounded-2xl border border-white/20 bg-black p-4">
+          <span className="rounded-lg bg-white px-4 py-3 text-black">RO</span>
+          <span className="px-4 py-3 text-white/50">RU</span>
+        </div>
+      </div>
+    );
   return (
-    <svg
-      aria-hidden="true"
-      className="absolute inset-0 h-full w-full opacity-[0.15]"
-      preserveAspectRatio="none"
-    >
-      <defs>
-        <pattern id="feature-grid" width="28" height="28" patternUnits="userSpaceOnUse">
-          <path d="M 28 0 L 0 0 0 28" fill="none" stroke="white" strokeWidth="1" />
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#feature-grid)" />
-    </svg>
+    <div className="w-full max-w-xs rounded-2xl border border-white/20 bg-white/5 p-5">
+      <div className="mb-5 flex items-center gap-3">
+        <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30">
+          i
+        </span>
+        <span className="text-sm">{label}</span>
+      </div>
+      <div className="space-y-2">
+        <div className="h-1.5 w-full rounded-full bg-white/20" />
+        <div className="h-1.5 w-3/4 rounded-full bg-white/20" />
+      </div>
+      <div className="mt-5 h-6 w-24 rounded-full bg-white/15" />
+    </div>
   );
 }

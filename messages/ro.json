@@ -5,38 +5,75 @@
   },
   "landing": {
     "nav": {
-      "login": "Autentificare"
+      "login": "Autentificare",
+      "features": "Posibilități"
     },
     "hero": {
-      "badge": "Integrare directă cu e-Factura",
-      "title": "e-Factura, fără să învățați un program de contabilitate",
-      "subtitle": "Emiteți factura electronică în trei clicuri și trimiteți-o prin sistemul e-Factura. Contragenții și articolele se importă dintr-un fișier Excel într-o seară.",
+      "badge": "e-Factura pentru afaceri din Moldova",
+      "title": "Facturi în ordine.",
+      "subtitle": "Creați facturi, păstrați cumpărătorii și produsele, gestionați companiile. Fără un program complicat de contabilitate.",
       "primaryCta": "Începeți gratuit",
-      "secondaryCta": "Vedeți prețurile",
-      "note": "Primele 10 facturi sunt gratuite. Fără card la înregistrare.",
-      "consent": "Creând un cont, sunteți de acord cu <terms>Termenii și condițiile</terms> și cu <privacy>Politica de confidențialitate</privacy>."
+      "secondaryCta": "Vedeți posibilitățile",
+      "note": "Fără card bancar. Pe calculator și telefon.",
+      "consent": "Creând un cont, sunteți de acord cu <terms>Termenii și condițiile</terms> și cu <privacy>Politica de confidențialitate</privacy>.",
+      "titleSecond": "Afaceri în mișcare.",
+      "bottomNote": "Documentele și companiile dumneavoastră. Un singur Facturo.",
+      "explore": "Aflați mai multe"
     },
     "features": {
       "speed": {
-        "title": "Trei clicuri",
-        "body": "Alegeți contragentul, adăugați poziția, trimiteți. De pe telefon, din mașină, fără să deschideți laptopul.",
-        "eyebrow": "Viteză"
+        "title": "De la idee la factura pregătită.",
+        "body": "Alegeți cumpărătorul, adăugați pozițiile — sumele și TVA se calculează automat.",
+        "eyebrow": "01 / Documente",
+        "visual": "De plată"
       },
       "import": {
-        "title": "Import din Excel",
-        "body": "Încărcați lista de contragenți și de articole dintr-un fișier pe care îl aveți deja. Rândurile cu probleme sunt arătate separat, cu motivul.",
-        "eyebrow": "Import"
+        "title": "Excel a făcut deja jumătate.",
+        "body": "Încărcați cumpărătorii și produsele din tabel. Vedeți imediat ce rânduri trebuie corectate.",
+        "eyebrow": "02 / Liste",
+        "visual": "Lista dumneavoastră"
       },
       "errors": {
-        "title": "Erori explicate",
-        "body": "Când sistemul respinge un document, vă spunem ce trebuie corectat, într-o propoziție, nu un cod de eroare.",
-        "eyebrow": "Claritate"
+        "title": "Știți ce trebuie corectat.",
+        "body": "Indicațiile lângă câmpuri și raportul pe rânduri vă ajută să pregătiți documentul fără întrebări în plus.",
+        "eyebrow": "05 / Claritate",
+        "visual": "Verificați datele"
+      },
+      "companies": {
+        "eyebrow": "03 / Companii",
+        "title": "Mai multe afaceri. Un singur acces.",
+        "body": "Treceți de la o companie la alta. Fiecare are documentele, produsele și cumpărătorii săi.",
+        "visual": "Încă o companie"
+      },
+      "languages": {
+        "eyebrow": "04 / Limba dumneavoastră",
+        "title": "Așa cum vă este comod.",
+        "body": "Română și rusă. La fel de clar pe telefon și pe ecranul mare.",
+        "visual": "Limba"
       }
     },
     "footer": {
       "company": "Facturo, Republica Moldova",
       "terms": "Termeni",
       "privacy": "Confidențialitate"
+    },
+    "featuresLabel": "Mai puțină rutină. Mai multă claritate.",
+    "featuresTitle": "Totul pentru facturi.\nNimic în plus.",
+    "featuresIntro": "De la primul cumpărător la documentul pregătit — într-un singur spațiu de lucru, ușor de folosit.",
+    "preview": {
+      "example": "Exemplu de document",
+      "draft": "Ciornă",
+      "document": "Factură",
+      "buyer": "Cumpărător",
+      "service": "Design și consultanță",
+      "vat": "TVA · 20%",
+      "total": "De plată",
+      "ready": "Date completate",
+      "caption": "Un document clar — până la ultima linie."
+    },
+    "closing": {
+      "title": "Ordinea începe cu prima factură.",
+      "body": "Intrați, adăugați compania și începeți lucrul."
     }
   },
   "invoice": {
@@ -145,7 +182,8 @@
       }
     },
     "logout": {
-      "submit": "Ieșire"
+      "submit": "Ieșire",
+      "error": "Nu am reușit să închidem sesiunea. Încercați din nou."
     },
     "google": {
       "loading": "Pregătim intrarea…",
@@ -333,5 +371,39 @@
     "rowError": "Rândul {row}, {field}: {reason}",
     "duplicate": "există deja în listă",
     "invalidValue": "verificați valoarea"
+  },
+  "session": {
+    "loading": "Verificăm accesul…",
+    "error": "Nu am putut verifica accesul. Încercați din nou.",
+    "retry": "Încercați din nou"
+  },
+  "account": {
+    "eyebrow": "Spațiul personal",
+    "welcome": "Să adăugăm compania",
+    "title": "Setările dumneavoastră",
+    "intro": "Ați intrat. Adăugați compania pentru a crea facturi și liste de parteneri.",
+    "description": "Gestionați companiile și alegeți limba interfeței.",
+    "language": "Limba interfeței"
+  },
+  "companies": {
+    "loading": "Încărcăm companiile…",
+    "yours": "Companiile dumneavoastră",
+    "add": "Adăugați o companie",
+    "hint": "Introduceți datele companiei pe care aveți dreptul să o administrați. Fiecare listă și factură aparține companiei selectate.",
+    "name": "Denumirea companiei",
+    "idnoHint": "Cele 13 cifre ale numărului de înregistrare de stat.",
+    "vat": "Cod TVA — dacă există",
+    "vatHint": "6 cifre. Lăsați gol dacă nu sunteți plătitor de TVA.",
+    "create": "Creați compania",
+    "active": "Selectată",
+    "switch": "Selectați",
+    "exists": "O companie cu acest IDNO este deja înregistrată. Intrați prin proprietar sau selectați compania dumneavoastră.",
+    "failed": "Nu am putut salva modificările. Verificați conexiunea și încercați din nou.",
+    "retry": "Încercați din nou",
+    "roles": {
+      "OWNER": "Proprietar",
+      "ACCOUNTANT": "Contabil",
+      "VIEWER": "Vizualizare"
+    }
   }
 }

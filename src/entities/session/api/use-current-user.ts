@@ -18,7 +18,7 @@ export function useCurrentUser() {
       try {
         const response = await authControllerDescribe({ signal });
 
-        return response.data as CurrentUser;
+        return response.data;
       } catch (error) {
         // Not signed in is not an error to retry; the interface treats it as a
         // known state and redirects.
@@ -30,7 +30,8 @@ export function useCurrentUser() {
       }
     },
     // The current user does not change on its own during a browser tab's life.
-    staleTime: 5 * 60 * 1000,
+    staleTime: 0,
+    refetchOnWindowFocus: true,
     retry: false,
   });
 }
