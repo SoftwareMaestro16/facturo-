@@ -194,5 +194,62 @@
       "load": "Nu am putut încărca lista. Verificați conexiunea.",
       "retry": "Încercați din nou"
     }
+  },
+  "counterparty": {
+    "create": {
+      "title": "Adăugați un partener",
+      "subtitle": "Datele apar apoi automat pe factură.",
+      "back": "← Toți partenerii"
+    },
+    "form": {
+      "name": "Denumire",
+      "idno": "IDNO",
+      "idnoHint": "13 cifre",
+      "vatCode": "Cod TVA",
+      "vatHint": "6 cifre, dacă este plătitor de TVA. Puteți lăsa gol.",
+      "email": "E-mail",
+      "phone": "Telefon",
+      "address": "Adresă",
+      "iban": "Cont bancar",
+      "ibanHint": "IBAN, 24 caractere, începe cu MD.",
+      "bankName": "Banca",
+      "submit": "Salvați partenerul",
+      "retry": "Încercați din nou",
+      "errors": {
+        "name_required": "Denumirea nu poate fi goală.",
+        "idno_invalid": "IDNO trebuie să conțină exact 13 cifre.",
+        "vat_invalid": "Codul TVA trebuie să conțină exact 6 cifre.",
+        "email_invalid": "Verificați adresa: pare scrisă greșit.",
+        "iban_invalid": "IBAN-ul molovenesc are 24 caractere și începe cu MD.",
+        "counterparty_exists": "Acest partener există deja în lista dumneavoastră.",
+        "generic": "Ceva nu a funcționat. Încercați din nou.",
+        "network": "Ceva nu a funcționat. Verificați conexiunea."
+      }
+    }
+  },
+  "product": {
+    "create": {
+      "title": "Adăugați o poziție",
+      "subtitle": "Va putea fi aleasă pe factură.",
+      "back": "← Toate pozițiile"
+    },
+    "form": {
+      "name": "Denumire",
+      "code": "Cod",
+      "codeHint": "Opțional. Vă ajută să găsiți poziția mai repede.",
+      "priceNet": "Preț fără TVA",
+      "priceHint": "În lei, cu punct sau virgulă.",
+      "vatRate": "Cotă TVA",
+      "submit": "Salvați poziția",
+      "retry": "Încercați din nou",
+      "errors": {
+        "name_required": "Denumirea nu poate fi goală.",
+        "price_invalid": "Prețul trebuie să aibă cel mult 2 zecimale.",
+        "vat_invalid": "Alegeți una dintre cotele disponibile.",
+        "product_code_exists": "O poziție cu acest cod există deja.",
+        "generic": "Ceva nu a funcționat. Încercați din nou.",
+        "network": "Ceva nu a funcționat. Verificați conexiunea."
+      }
+    }
   }
 }
