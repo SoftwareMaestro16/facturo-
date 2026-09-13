@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { sessionDestination } from '@/entities/session';
 import { ApiError } from '@/shared/api';
 import { googleControllerAuthenticate, googleControllerChallenge } from '@/shared/api/generated/auth/auth';
+import { LEGAL_VERSION } from '@/shared/config';
 import { useRouter } from '@/shared/i18n';
 import { Button, GoogleButton } from '@/shared/ui';
 
@@ -24,7 +25,8 @@ export function GoogleAuth({ mode }: { mode: 'login' | 'register' }) {
     refetchOnWindowFocus: false,
   });
   const mutation = useMutation({
-    mutationFn: (credential: string) => googleControllerAuthenticate({ credential }),
+    mutationFn: (credential: string) =>
+      googleControllerAuthenticate({ credential, termsVersion: LEGAL_VERSION }),
     onSuccess: async (response) => {
       if (!response.data) throw new Error('Missing session');
       await cache.cancelQueries();

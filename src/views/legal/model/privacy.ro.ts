@@ -20,7 +20,7 @@ export const privacyRo: LegalDocument = {
         'La autentificarea Google: identificatorul Google, emailul verificat, numele și datele necesare verificării autentificării. Parola Google nu este transmisă serviciului.',
         'Datele companiei și participanților: date de identificare, IDNO, contacte, limbă, roluri și apartenența la companii.',
         'Date din cataloage și documente: parteneri, poziții, sume și impozite.',
-        'Date tehnice: sesiuni, adresa IP și informații despre cereri necesare funcționării și securității.',
+        'Date tehnice: sesiuni, adresa IP și informații despre cereri necesare funcționării și securității, precum și data și versiunea Condițiilor acceptate la intrare.',
       ],
       paragraphs: [
         'Nu încărcați categorii speciale de date sau informații inutile pentru facturare. Interfața actuală nu include formular de plată cu cardul.',
@@ -47,8 +47,8 @@ export const privacyRo: LegalDocument = {
     {
       heading: '5. Cookie și componente externe',
       paragraphs: [
-        'Facturo utilizează cookie și mecanisme locale necesare sesiunii și interfeței. Componenta Google de autentificare încarcă resurse Google; prelucrarea sa este reglementată și de documentele Google.',
-        'Dacă sunt introduse tehnologii opționale de analiză sau publicitate, informarea și alegerea vor fi oferite înainte de utilizare, când legea o cere. Politica nu constituie ea însăși consimțământ.',
+        'Facturo folosește numai cookie și mecanisme locale fără de care intrarea și interfața nu funcționează: access_token (confirmarea intrării, până la 15 minute), refresh_token (prelungirea intrării, până la 30 de zile, trimis doar către adresele de intrare) și google_nonce (protecția intrării prin Google, până la 10 minute). Niciunul nu este accesibil scripturilor din pagină. În memoria locală a browserului se păstrează marcajul tehnic facturo-session, pentru ca filele deschise să afle despre ieșire sau schimbarea companiei. Componenta Google de autentificare încarcă resurse Google; prelucrarea sa este reglementată și de documentele Google.',
+        'Nu folosim cookie de analiză sau publicitate, de aceea nu afișăm o cerere separată de consimțământ pentru ele. Dacă asemenea tehnologii vor fi introduse, informarea și alegerea vor fi oferite înainte de utilizare, când legea o cere. Politica nu constituie ea însăși consimțământ.',
       ],
     },
     {
@@ -70,6 +70,7 @@ export const privacyRo: LegalDocument = {
       heading: '8. Drepturi și cereri',
       paragraphs: [
         'În cazurile prevăzute de lege există drepturi la informare și acces, rectificare, ștergere, restricționare, portabilitate, opoziție și retragerea consimțământului. Aplicabilitatea depinde de temei și circumstanțe.',
+        'Copia datelor contului — profilul, companiile și rolurile, istoricul intrărilor și evenimentele de securitate — o puteți descărca singur în secțiunea „Setări”. Documentele și cataloagele companiei țin de evidența acesteia: exportul sau ștergerea lor se solicită de proprietarul companiei prin email.',
         'Cererile se trimit la daniilscherbakov1@gmail.com. Poate fi necesară verificarea proporțională a identității sau împuternicirilor. Răspunsul se oferă în termenul legal; prelungirea legală și motivele sunt comunicate solicitantului.',
         'Puteți depune plângere la Centrul Național pentru Protecția Datelor cu Caracter Personal (CNPDCP, datepersonale.md) și vă puteți adresa instanței. Contactarea noastră prealabilă nu este o condiție.',
       ],

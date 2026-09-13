@@ -382,7 +382,8 @@
       "google_registration_required": "Compania nu este încă înregistrată prin Google. Mergeți la înregistrare.",
       "email_taken": "Această adresă este deja folosită. Intrați cu parola aleasă la înregistrare.",
       "company_exists": "Acest IDNO este deja înregistrat. Intrați în compania existentă.",
-      "invalid_credentials": "Intrarea nu este disponibilă acum. Încercați mai târziu."
+      "invalid_credentials": "Intrarea nu este disponibilă acum. Încercați mai târziu.",
+      "terms_outdated": "Condițiile au fost actualizate. Reîncărcați pagina, citiți noua versiune și intrați din nou."
     }
   },
   "workspace": {
@@ -390,6 +391,12 @@
       "home": "Pagina principală",
       "cabinet": "Spațiul personal",
       "switchCompany": "Schimbați compania sau vedeți datele ei"
+    },
+    "footer": {
+      "label": "Informații juridice",
+      "operator": "Furnizor: Şcerbacov Daniil, IDNO 1026023032436",
+      "contact": "Scrieți-ne",
+      "email": "daniilscherbakov1@gmail.com"
     }
   },
   "counterparties": {
@@ -569,7 +576,14 @@
     "title": "Setările dumneavoastră",
     "intro": "Ați intrat. Adăugați compania pentru a crea facturi și liste de parteneri.",
     "description": "Gestionați companiile și alegeți limba interfeței.",
-    "language": "Limba interfeței"
+    "language": "Limba interfeței",
+    "export": {
+      "title": "Datele dumneavoastră",
+      "description": "Descărcați o copie a datelor contului: nume, email, companii și roluri, intrări și evenimente de securitate. Documentele companiei nu sunt incluse în acest fișier.",
+      "button": "Descărcați datele mele",
+      "failed": "Nu am putut pregăti fișierul. Încercați din nou peste un minut.",
+      "privacy": "Cum prelucrăm datele — în <link>Politica de confidențialitate</link>."
+    }
   },
   "companies": {
     "loading": "Încărcăm companiile…",

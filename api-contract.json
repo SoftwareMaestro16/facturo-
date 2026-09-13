@@ -126,6 +126,32 @@
         ]
       }
     },
+    "/api/auth/me/export": {
+      "get": {
+        "operationId": "AuthController_exportPersonalData",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PersonalDataExport"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "auth"
+        ]
+      }
+    },
     "/api/auth/change-password": {
       "post": {
         "operationId": "AuthController_changePassword",
@@ -203,6 +229,9 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "terms_outdated"
           },
           "401": {
             "description": "google_invalid"
@@ -1573,6 +1602,157 @@
           "password"
         ]
       },
+      "PersonalDataMembership": {
+        "type": "object",
+        "properties": {
+          "companyName": {
+            "type": "string"
+          },
+          "companyIdno": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "OWNER",
+              "ACCOUNTANT",
+              "VIEWER"
+            ]
+          },
+          "since": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "companyName",
+          "companyIdno",
+          "role",
+          "since"
+        ]
+      },
+      "PersonalDataSession": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "string"
+          },
+          "expiresAt": {
+            "type": "string"
+          },
+          "revokedAt": {
+            "type": "string",
+            "nullable": true
+          },
+          "ip": {
+            "type": "string",
+            "nullable": true
+          },
+          "userAgent": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "required": [
+          "createdAt",
+          "expiresAt",
+          "revokedAt",
+          "ip",
+          "userAgent"
+        ]
+      },
+      "PersonalDataEvent": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "ip": {
+            "type": "string",
+            "nullable": true
+          },
+          "userAgent": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "required": [
+          "type",
+          "createdAt",
+          "ip",
+          "userAgent"
+        ]
+      },
+      "PersonalDataExport": {
+        "type": "object",
+        "properties": {
+          "exportedAt": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "signsInWithGoogle": {
+            "type": "boolean"
+          },
+          "accountCreatedAt": {
+            "type": "string"
+          },
+          "lastLoginAt": {
+            "type": "string",
+            "nullable": true
+          },
+          "termsVersion": {
+            "type": "string",
+            "nullable": true
+          },
+          "termsAcceptedAt": {
+            "type": "string",
+            "nullable": true
+          },
+          "memberships": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PersonalDataMembership"
+            }
+          },
+          "sessions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PersonalDataSession"
+            }
+          },
+          "securityEvents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PersonalDataEvent"
+            }
+          }
+        },
+        "required": [
+          "exportedAt",
+          "email",
+          "fullName",
+          "phone",
+          "signsInWithGoogle",
+          "accountCreatedAt",
+          "lastLoginAt",
+          "termsVersion",
+          "termsAcceptedAt",
+          "memberships",
+          "sessions",
+          "securityEvents"
+        ]
+      },
       "ChangePasswordDto": {
         "type": "object",
         "properties": {
@@ -1605,10 +1785,16 @@
         "properties": {
           "credential": {
             "type": "string"
+          },
+          "termsVersion": {
+            "type": "string",
+            "example": "2026-09-13",
+            "description": "Edition of the Terms shown beside the sign-in button"
           }
         },
         "required": [
-          "credential"
+          "credential",
+          "termsVersion"
         ]
       },
       "CompanyResponse": {

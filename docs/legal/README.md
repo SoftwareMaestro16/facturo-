@@ -28,10 +28,15 @@ independently verified. A publishable correspondence address is still missing.
 3. Verify actual hosting providers, legal entities, regions, transfer safeguards,
    contracts, monitoring configuration and international access. Publish a factual
    subprocessor list, not an assumed one.
-4. Implement retention/deletion/export procedures with tested backup handling.
-   Set per-category periods from actual purposes and applicable obligations.
-5. Record accepted terms version and timestamp server-side. Text below a Google
-   button alone does not provide a complete auditable acceptance record.
+4. Implement retention/deletion procedures with tested backup handling. Set
+   per-category periods from actual purposes and applicable obligations.
+   *Partly done:* a person can download their own account data (profile,
+   memberships, sessions, security events) in Settings. Company documents and
+   deletion still go through an emailed request.
+5. *Done:* the server stores `User.termsVersion` and `termsAcceptedAt` at Google
+   sign-in and refuses a sign-in from a page showing an outdated edition
+   (`terms_outdated`). Bump `CURRENT_TERMS_VERSION` (server), `LEGAL_VERSION`
+   (client) and both documents' `updatedAt` together.
 6. Define request/complaint handling, incident response and legally required
    notification procedures. Confirm the stated email is monitored.
 7. Before payments: final price/tax disclosure, renewal authorization, cancellation,

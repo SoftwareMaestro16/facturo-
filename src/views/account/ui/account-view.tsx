@@ -3,7 +3,9 @@
 import { useTranslations } from 'next-intl';
 
 import { useCurrentUser } from '@/entities/session';
+import { ExportDataButton } from '@/features/account-export';
 import { CompanyManager } from '@/features/company-manage';
+import { Link } from '@/shared/i18n';
 import { Card, LocaleSwitcher, PageHeader, Skeleton } from '@/shared/ui';
 
 export function AccountView({ onboarding = false }: { onboarding?: boolean }) {
@@ -47,6 +49,21 @@ export function AccountView({ onboarding = false }: { onboarding?: boolean }) {
       </Card>
 
       <CompanyManager />
+
+      <Card className="flex flex-col gap-3 sm:p-6">
+        <h2 className="text-lg">{t('export.title')}</h2>
+        <p className="text-ink-muted">{t('export.description')}</p>
+        <ExportDataButton />
+        <p className="text-sm text-ink-muted">
+          {t.rich('export.privacy', {
+            link: (chunks) => (
+              <Link href="/privacy" className="underline underline-offset-4 hover:text-ink">
+                {chunks}
+              </Link>
+            ),
+          })}
+        </p>
+      </Card>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 
+import { AppFooter } from '@/widgets/app-footer';
 import { AppHeader } from '@/widgets/app-header';
 import { AppNav } from '@/widgets/app-sidebar';
 import { SessionBoundary } from '@/entities/session';
@@ -24,7 +25,10 @@ export default function WorkspaceLayout({ children }: { children: ReactNode }) {
             <AppNav />
           </aside>
 
-          <main className="min-w-0 flex-1">{children}</main>
+          <div className="flex min-w-0 flex-1 flex-col gap-10">
+            <main className="min-w-0 flex-1">{children}</main>
+            <AppFooter />
+          </div>
         </div>
       </div>
     </SessionBoundary>

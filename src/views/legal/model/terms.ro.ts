@@ -4,7 +4,7 @@ export const termsRo: LegalDocument = {
   updatedAt: '2026-09-13',
   intro: [
     'Prezentele Condiții stabilesc accesul la Facturo și obligațiile furnizorului și clientului. Serviciul este destinat activității profesionale și antreprenoriale.',
-    'Versiune pentru consultare preliminară. Adresa furnizorului și procedura de încheiere a contractului trebuie finalizate înainte de lansarea comercială.',
+    'Versiune pentru consultare preliminară. Procedura de încheiere a contractului plătit trebuie finalizată înainte de lansarea comercială.',
   ],
   sections: [
     {
@@ -27,6 +27,7 @@ export const termsRo: LegalDocument = {
       paragraphs: [
         'Autentificarea se face prin Google. Utilizatorul trebuie să fie împuternicit să acționeze pentru compania adăugată și să acorde acces numai persoanelor autorizate. Apartenența la o companie nu dovedește, singură, dreptul de a dispune de documentele sale.',
         'Utilizatorul protejează contul Google și dispozitivul și raportează suspiciunile de compromitere. Operațiunile contestate se apreciază pe baza probelor disponibile; autentificarea nu exclude cercetarea accesului neautorizat.',
+        'Apăsând butonul de intrare prin Google, utilizatorul acceptă versiunea Condițiilor și a Politicii de confidențialitate cu data indicată la începutul documentului. Data acceptării și versiunea se păstrează în cont; după apariția unei versiuni noi, acordul se solicită din nou la următoarea intrare.',
         'Luarea la cunoștință a politicii de confidențialitate nu reprezintă consimțământ general pentru orice prelucrare sau marketing.',
       ],
     },
@@ -52,7 +53,7 @@ export const termsRo: LegalDocument = {
       paragraphs: [
         'Lucrările tehnice, defecțiunile și sistemele externe pot afecta accesul. În lipsa unui acord separat nu se garantează continuitatea absolută sau un termen pentru remedierea fiecărei defecțiuni.',
         'Furnizorul poate limita proporțional accesul pentru riscuri de securitate, suspiciuni întemeiate de utilizare ilegală ori încălcări esențiale. Motivul și modalitatea de remediere se comunică dacă este posibil și compatibil cu legea și securitatea.',
-        'Încetarea planificată a serviciului trebuie însoțită de informare și posibilitate rezonabilă de obținere a datelor, dacă legea și securitatea permit. Nu se presupune existența exportului sau ștergerii automate din interfață.',
+        'Încetarea planificată a serviciului trebuie însoțită de informare și posibilitate rezonabilă de obținere a datelor, dacă legea și securitatea permit. Datele propriului cont pot fi descărcate în secțiunea „Setări”; exportul documentelor companiei se oferă la cererea proprietarului acesteia.',
       ],
     },
     {
