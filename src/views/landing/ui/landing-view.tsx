@@ -3,6 +3,7 @@ import { Link } from '@/shared/i18n';
 import { HeroCanvas, LocaleSwitcher, Logo } from '@/shared/ui';
 import { FeatureBento } from './feature-bento';
 import { InvoicePreview } from './invoice-preview';
+import { LandingDetails } from './landing-details';
 
 export function LandingView() {
   const t = useTranslations('landing');
@@ -20,6 +21,9 @@ export function LandingView() {
                 {t('nav.features')}
               </a>
               <LocaleSwitcher inverted />
+              <a href="#pricing" className="hidden text-sm text-white/70 hover:text-white md:block">
+                {t('nav.pricing')}
+              </a>
               <Link
                 href="/login"
                 className="inline-flex min-h-11 items-center rounded-full border border-white/25 px-5 text-sm font-medium transition-colors hover:bg-white hover:text-black"
@@ -83,6 +87,7 @@ export function LandingView() {
             <p className="max-w-xl text-lg text-white/55">{t('featuresIntro')}</p>
           </div>
           <FeatureBento />
+          <LandingDetails />
           <section className="mt-20 flex flex-col items-start justify-between gap-7 border-t border-white/10 pt-12 sm:flex-row sm:items-center">
             <div>
               <h2 className="text-3xl">{t('closing.title')}</h2>
@@ -117,6 +122,12 @@ export function LandingView() {
               {t('nav.features')}
             </a>
             <span className="font-mono text-sm tracking-widest text-white/35">XML / e-Factura · RO / RU</span>
+            <a href="#pricing" className="text-white/60 hover:text-white">
+              {t('nav.pricing')}
+            </a>
+            <a href="#faq" className="text-white/60 hover:text-white">
+              FAQ
+            </a>
           </div>
         </div>
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-8 text-sm text-white/50 sm:flex-row sm:items-center sm:justify-between sm:px-10">

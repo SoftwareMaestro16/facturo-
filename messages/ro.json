@@ -1,4 +1,66 @@
 {
+  "landingDetails": {
+    "how": {
+      "label": "De la autentificare la document",
+      "title": "Trei pași. Sunteți gata de lucru.",
+      "account": {
+        "title": "Intrați cu Google",
+        "body": "Alegeți contul dvs. Fără o parolă nouă și fără formulare lungi."
+      },
+      "company": {
+        "title": "Adăugați compania",
+        "body": "Completați datele în contul personal. Dacă aveți mai multe companii, comutați între ele."
+      },
+      "invoice": {
+        "title": "Pregătiți prima factură",
+        "body": "Adăugați cumpărătorul, alegeți produsele sau serviciile și verificați sumele înainte de trimitere."
+      }
+    },
+    "pricing": {
+      "label": "Tarife",
+      "title": "Începeți simplu.\nCreșteți în ritmul dvs.",
+      "preview": "Tarife preliminare",
+      "intro": "Pentru primele documente, activitatea zilnică și o echipă în creștere. Alegeți volumul potrivit.",
+      "month": "lună",
+      "FREE": { "label": "Pentru început", "body": "Descoperiți Facturo și pregătiți primele documente." },
+      "STARTER": {
+        "label": "Pentru echipă",
+        "body": "Când facturarea devine parte din activitatea zilnică."
+      },
+      "BUSINESS": {
+        "label": "Pentru creștere",
+        "body": "Pentru un volum mare de documente și extinderea echipei."
+      },
+      "documents": "{count} documente pe perioadă",
+      "users": "{count, plural, one {# participant} other {# participanți}}",
+      "unlimitedDocuments": "Documente nelimitate",
+      "unlimitedUsers": "Participanți nelimitați",
+      "catalogs": "Cataloage de cumpărători și produse",
+      "languages": "Interfață în română și rusă",
+      "cta": "Creați un cont",
+      "note": "Prețuri și limite preliminare. Planurile plătite sunt în pregătire. Acum puteți crea un cont și descoperi Facturo."
+    },
+    "faq": {
+      "title": "Înainte de început",
+      "intro": "Răspunsuri la întrebările de dinaintea primei facturi.",
+      "google": {
+        "q": "Am nevoie de o parolă separată?",
+        "a": "Nu. Autentificarea și înregistrarea se fac prin Google. Datele companiei se completează după autentificare, în contul personal."
+      },
+      "companies": {
+        "q": "Pot lucra cu mai multe companii?",
+        "a": "Da. În setările contului puteți crea o companie și comuta între companiile la care aveți acces."
+      },
+      "import": {
+        "q": "Pot transfera date din Excel?",
+        "a": "Secțiunile de cumpărători și produse includ import Excel. Folosiți șablonul acceptat; rezultatul importului indică rândurile cu erori. Interpretarea fișierelor arbitrare cu AI nu este conectată încă."
+      },
+      "payment": {
+        "q": "Când trebuie să plătesc?",
+        "a": "Plata online nu este conectată încă, iar abonamentele plătite nu pot fi activate. Tarifele sunt informative; condițiile finale vor fi disponibile înainte de activare."
+      }
+    }
+  },
   "billing": {
     "title": "Plan și plăți",
     "intro": "Alegeți ritmul de lucru pentru companie. Plata online este în pregătire.",
@@ -22,6 +84,7 @@
   },
   "landing": {
     "nav": {
+      "pricing": "Tarife",
       "login": "Autentificare",
       "features": "Posibilități"
     },
