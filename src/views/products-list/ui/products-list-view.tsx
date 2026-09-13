@@ -5,10 +5,18 @@ import { useState } from 'react';
 
 import { useProducts } from '@/entities/product';
 import { CatalogImport } from '@/features/catalog-import';
+import { Link, type Locale } from '@/shared/i18n';
 import { formatMoney } from '@/shared/lib';
-import type { Locale } from '@/shared/i18n';
-import { Badge, Button, Card, EmptyState, ErrorState, Field, Input, Skeleton } from '@/shared/ui';
-import { Link } from '@/shared/i18n';
+import {
+  Badge,
+  EmptyState,
+  ErrorState,
+  IconPlus,
+  Input,
+  PageHeader,
+  Skeleton,
+  buttonClassName,
+} from '@/shared/ui';
 
 interface ProductRow {
   id: string;
@@ -23,30 +31,36 @@ interface ProductRow {
 export function ProductsListView({ locale }: { locale: Locale }) {
   const t = useTranslations('products');
   const [search, setSearch] = useState('');
-  const { data, isLoading, isError, refetch } = useProducts({ search: search || undefined });
+  const { data, isLoading, isError, refetch } = useProducts({ search: search.trim() || undefined });
   const items = (data?.items ?? ([] as unknown)) as ProductRow[];
 
   return (
-    <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-8">
-      <header className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="text-2xl">{t('title')}</h1>
-        <Link href="/products/new">
-          <Button className="w-full sm:w-auto">{t('create')}</Button>
-        </Link>
-      </header>
-      <CatalogImport kind="PRODUCTS" />
+    <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-4 sm:px-0 sm:py-2">
+      <PageHeader
+        title={t('title')}
+        description={t('subtitle')}
+        actions={
+          <Link href="/products/new" className={buttonClassName('primary', 'lg', 'w-full sm:w-auto')}>
+            <IconPlus className="size-5" />
+            {t('create')}
+          </Link>
+        }
+      />
 
-      <Field label={t('search.label')}>
-        {(props) => (
+      <div className="flex flex-col gap-3 lg:flex-row lg:items-start">
+        <label className="w-full lg:max-w-sm">
+          <span className="sr-only">{t('search.label')}</span>
           <Input
-            {...props}
+            type="search"
             value={search}
             onChange={(event) => setSearch(event.target.value)}
             placeholder={t('search.placeholder')}
-            inputMode="search"
           />
-        )}
-      </Field>
+        </label>
+        <div className="w-full lg:flex-1">
+          <CatalogImport kind="PRODUCTS" />
+        </div>
+      </div>
 
       {isError ? (
         <ErrorState
@@ -67,28 +81,26 @@ export function ProductsListView({ locale }: { locale: Locale }) {
           title={t('empty.title')}
           description={t('empty.description')}
           action={
-            <Link href="/products/new">
-              <Button>{t('create')}</Button>
+            <Link href="/products/new" className={buttonClassName()}>
+              {t('create')}
             </Link>
           }
         />
       ) : (
-        <ul className="flex flex-col gap-2">
+        <ul className="divide-y divide-line overflow-hidden rounded-(--radius-card) border border-line bg-surface">
           {items.map((entry) => (
-            <li key={entry.id}>
-              <Card className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                  <div className="flex items-center gap-2">
-                    <p className="font-semibold text-ink">{entry.name}</p>
-                    {entry.code ? <span className="text-sm text-ink-muted">{entry.code}</span> : null}
-                    {entry.isArchived ? <Badge tone="neutral">{t('badges.archived')}</Badge> : null}
-                  </div>
-                  <p className="text-sm text-ink-muted">{t('vat', { rate: entry.vatRate })}</p>
+            <li key={entry.id} className="flex items-center justify-between gap-4 px-4 py-4 sm:px-5">
+              <div className="min-w-0">
+                <p className="truncate font-semibold text-ink">{entry.name}</p>
+                <div className="mt-1 flex flex-wrap items-center gap-2 text-sm text-ink-muted">
+                  {entry.code ? <span className="tabular-nums">{entry.code}</span> : null}
+                  <span>{t('vat', { rate: entry.vatRate })}</span>
+                  {entry.isArchived ? <Badge tone="neutral">{t('badges.archived')}</Badge> : null}
                 </div>
-                <p className="text-body font-semibold tabular-nums text-ink">
-                  {formatMoney(entry.priceNet, locale)}
-                </p>
-              </Card>
+              </div>
+              <p className="shrink-0 text-body font-semibold tabular-nums text-ink">
+                {formatMoney(entry.priceNet, locale)}
+              </p>
             </li>
           ))}
         </ul>

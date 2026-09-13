@@ -23,6 +23,19 @@ const SIZES: Record<Size, string> = {
   lg: 'h-(--size-control-lg) px-6 text-body-lg',
 };
 
+/// The same look for a link that navigates. A `<button>` inside an `<a>` is
+/// invalid HTML and announces twice to a screen reader, so links take the
+/// classes instead of wrapping a button.
+export function buttonClassName(variant: Variant = 'primary', size: Size = 'md', className?: string): string {
+  return cn(
+    'inline-flex items-center justify-center gap-2 rounded-(--radius-control) font-semibold',
+    'transition-colors duration-150',
+    VARIANTS[variant],
+    SIZES[size],
+    className,
+  );
+}
+
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
   size?: Size;

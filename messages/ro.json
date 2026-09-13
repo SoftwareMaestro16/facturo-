@@ -23,7 +23,10 @@
       "preview": "Tarife preliminare",
       "intro": "Pentru primele documente, activitatea zilnică și o echipă în creștere. Alegeți volumul potrivit.",
       "month": "lună",
-      "FREE": { "label": "Pentru început", "body": "Descoperiți Facturo și pregătiți primele documente." },
+      "FREE": {
+        "label": "Pentru început",
+        "body": "Descoperiți Facturo și pregătiți primele documente."
+      },
       "STARTER": {
         "label": "Pentru echipă",
         "body": "Când facturarea devine parte din activitatea zilnică."
@@ -260,6 +263,30 @@
     "errors": {
       "load": "Nu am putut încărca facturile. Verificați conexiunea.",
       "retry": "Încercați din nou"
+    },
+    "subtitle": "Toate facturile emise de dumneavoastră: ciorne, trimise și finalizate.",
+    "search": {
+      "label": "Căutare în facturi",
+      "placeholder": "Cumpărător sau serie"
+    },
+    "filters": {
+      "label": "Afișați facturile",
+      "all": "Toate"
+    },
+    "filteredEmpty": {
+      "title": "Nu am găsit nimic",
+      "description": "Alegeți alt filtru sau goliți căutarea."
+    },
+    "summary": {
+      "attention": "Necesită atenție",
+      "attentionHint": "Ciorne: {drafts} · Netrimise: {errors}",
+      "awaiting": "Așteaptă cumpărătorul",
+      "month": "Emise luna aceasta",
+      "monthHint": "{count, plural, one {# factură} few {# facturi} other {# de facturi}}",
+      "finished": "Finalizate luna aceasta",
+      "finishedHint": "Semnate de cumpărător",
+      "failed": "Nu am putut calcula totalurile. Lista de mai jos funcționează ca de obicei.",
+      "retry": "Calculați din nou"
     }
   },
   "nav": {
@@ -384,7 +411,8 @@
     "errors": {
       "load": "Nu am putut încărca lista. Verificați conexiunea.",
       "retry": "Încercați din nou"
-    }
+    },
+    "subtitle": "Companiile cărora le emiteți facturi și de la care cumpărați."
   },
   "products": {
     "title": "Produse și servicii",
@@ -404,7 +432,8 @@
     "errors": {
       "load": "Nu am putut încărca lista. Verificați conexiunea.",
       "retry": "Încercați din nou"
-    }
+    },
+    "subtitle": "Pozițiile pe care le puteți alege în factură, cu preț fără TVA și cotă."
   },
   "counterparty": {
     "create": {

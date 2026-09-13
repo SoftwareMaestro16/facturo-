@@ -1,5 +1,6 @@
 export { Badge } from './badge';
-export { Button } from './button';
+export { Button, buttonClassName } from './button';
+export { PageHeader } from './page-header';
 export { Card } from './card';
 export { EmptyState } from './empty-state';
 export { ErrorState } from './error-state';

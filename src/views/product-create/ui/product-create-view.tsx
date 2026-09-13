@@ -2,22 +2,28 @@ import { useTranslations } from 'next-intl';
 
 import { ProductForm } from '@/features/product-create';
 import { Link } from '@/shared/i18n';
-import { Card } from '@/shared/ui';
+import { Card, IconArrowLeft, PageHeader } from '@/shared/ui';
 
 export function ProductCreateView() {
   const t = useTranslations('product.create');
 
   return (
-    <div className="mx-auto flex w-full max-w-xl flex-col gap-4 px-4 py-8">
-      <Link href="/products" className="text-sm text-ink-muted hover:text-ink">
-        {t('back')}
-      </Link>
-      <Card>
-        <h1 className="text-2xl">{t('title')}</h1>
-        <p className="mt-1 text-body text-ink-muted">{t('subtitle')}</p>
-        <div className="mt-6">
-          <ProductForm />
-        </div>
+    <div className="mx-auto flex w-full max-w-2xl flex-col gap-6 px-4 py-4 sm:px-0 sm:py-2">
+      <PageHeader
+        title={t('title')}
+        description={t('subtitle')}
+        back={
+          <Link
+            href="/products"
+            className="inline-flex min-h-(--size-control) w-fit items-center gap-2 text-sm text-ink-muted hover:text-ink"
+          >
+            <IconArrowLeft className="size-4" />
+            {t('back')}
+          </Link>
+        }
+      />
+      <Card className="sm:p-6">
+        <ProductForm />
       </Card>
     </div>
   );

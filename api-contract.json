@@ -949,6 +949,32 @@
         ]
       }
     },
+    "/api/invoices/summary": {
+      "get": {
+        "operationId": "InvoicesController_summary",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoiceSummaryResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "invoices"
+        ]
+      }
+    },
     "/api/invoices/{id}": {
       "get": {
         "operationId": "InvoicesController_findOne",
@@ -2110,6 +2136,50 @@
         "required": [
           "items",
           "meta"
+        ]
+      },
+      "InvoiceSummaryResponse": {
+        "type": "object",
+        "properties": {
+          "attentionCount": {
+            "type": "number",
+            "description": "Drafts, failed sends and cancellations waiting for the buyer"
+          },
+          "draftCount": {
+            "type": "number"
+          },
+          "errorCount": {
+            "type": "number"
+          },
+          "awaitingBuyerCount": {
+            "type": "number",
+            "description": "Signed, sent or received documents the buyer has not finished"
+          },
+          "awaitingBuyerTotal": {
+            "type": "string",
+            "example": "1250.00"
+          },
+          "monthIssuedCount": {
+            "type": "number",
+            "description": "Issued this calendar month, excluding drafts, failures and cancellations"
+          },
+          "monthIssuedTotal": {
+            "type": "string",
+            "example": "1250.00"
+          },
+          "monthFinishedCount": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "attentionCount",
+          "draftCount",
+          "errorCount",
+          "awaitingBuyerCount",
+          "awaitingBuyerTotal",
+          "monthIssuedCount",
+          "monthIssuedTotal",
+          "monthFinishedCount"
         ]
       },
       "InvoiceLineResponse": {
