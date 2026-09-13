@@ -96,7 +96,7 @@ export function GoogleButton({
       />
       <div
         ref={shell}
-        className="google-button-shell my-2 flex min-h-14 items-center justify-center rounded-full"
+        className="google-button-shell my-3 flex min-h-14 items-center justify-center rounded-full"
       >
         <div ref={container} className="flex min-h-11 justify-center" />
       </div>

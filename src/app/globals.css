@@ -81,7 +81,7 @@
   }
 }
 .google-button-shell {
-  scale: 1.1;
+  scale: 1.18;
   transition:
     transform 200ms ease,
     scale 200ms ease,
@@ -95,7 +95,7 @@
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .google-button-shell:hover {
     transform: translateY(-2px);
-    scale: 1.13;
+    scale: 1.18;
     filter: drop-shadow(0 10px 26px rgb(255 255 255 / 0.14));
   }
 }
