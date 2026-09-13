@@ -1,5 +1,64 @@
 @import 'tailwindcss';
 
+.pricing-card {
+  transition:
+    transform 350ms ease,
+    box-shadow 350ms ease,
+    border-color 350ms ease;
+}
+.pricing-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(120deg, transparent 25%, #ffffff12 48%, transparent 70%);
+  background-size: 250% 100%;
+  background-position: 100% 0;
+  opacity: 0;
+  transition:
+    background-position 700ms ease,
+    opacity 350ms ease;
+}
+.pricing-featured {
+  box-shadow: 0 0 60px #ffffff12;
+}
+.pricing-card:focus-within {
+  outline: 2px solid #fff;
+  outline-offset: 5px;
+}
+.pricing-cta,
+.pricing-arrow {
+  transition:
+    transform 250ms ease,
+    background-color 250ms ease;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .pricing-card:hover {
+    transform: translateY(-8px);
+    border-color: #ffffff80;
+    box-shadow: 0 20px 70px #ffffff12;
+  }
+  .pricing-card:hover::after {
+    opacity: 1;
+    background-position: 0 0;
+  }
+  .pricing-card:hover .pricing-arrow {
+    transform: translate(3px, -3px);
+  }
+  .pricing-cta:hover {
+    transform: scale(1.025);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pricing-card,
+  .pricing-card::after,
+  .pricing-cta,
+  .pricing-arrow {
+    transition: none;
+  }
+}
+
 .auth-dot-field {
   background-image: radial-gradient(circle, rgb(255 255 255 / 0.35) 2px, transparent 3px);
   background-size: 20px 20px;

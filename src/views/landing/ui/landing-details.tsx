@@ -38,12 +38,17 @@ export function LandingDetails() {
           </span>
         </div>
         <p className="mt-6 max-w-2xl leading-7 text-white/55">{t('pricing.intro')}</p>
-        <div className="mt-10 grid gap-4 lg:grid-cols-3">
+        <div className="pricing-grid mt-14 grid gap-6 lg:grid-cols-3">
           {plans.map((plan) => (
             <article
               key={plan.code}
-              className={`flex flex-col rounded-3xl border p-7 sm:p-8 ${plan.code === 'STARTER' ? 'border-white bg-white text-black' : 'border-white/15 bg-white/[0.025] text-white'}`}
+              className={`pricing-card relative isolate flex flex-col rounded-3xl border p-7 sm:p-8 ${plan.code === 'STARTER' ? 'pricing-featured border-white bg-white text-black' : 'border-white/15 bg-white/[0.025] text-white'}`}
             >
+              {plan.code === 'STARTER' && (
+                <span className="absolute -top-3 left-7 rounded-full border border-white/25 bg-black px-4 py-1 text-[11px] tracking-wider text-white">
+                  {t('pricing.featured')}
+                </span>
+              )}
               <div className="flex items-center justify-between gap-3">
                 <h3 className="text-sm font-medium tracking-widest">{plan.code}</h3>
                 <span className="text-xs opacity-50">{t(`pricing.${plan.code}.label`)}</span>
@@ -79,9 +84,12 @@ export function LandingDetails() {
               </ul>
               <Link
                 href="/register"
-                className={`mt-auto flex min-h-12 items-center justify-between rounded-full px-5 text-sm font-medium transition-opacity hover:opacity-75 ${plan.code === 'STARTER' ? 'bg-black text-white' : 'border border-white/25'}`}
+                className={`pricing-cta mt-auto flex min-h-12 items-center justify-between rounded-full px-5 text-sm font-medium ${plan.code === 'STARTER' ? 'bg-black text-white' : 'border border-white/25'}`}
               >
-                {t('pricing.cta')} <span aria-hidden="true">↗</span>
+                {t('pricing.cta')}{' '}
+                <span aria-hidden="true" className="pricing-arrow">
+                  ↗
+                </span>
               </Link>
             </article>
           ))}
@@ -98,7 +106,7 @@ export function LandingDetails() {
           <p className="mt-5 max-w-sm leading-7 text-white/55">{t('faq.intro')}</p>
         </div>
         <div>
-          {(['google', 'companies', 'import', 'payment'] as const).map((key) => (
+          {(['google', 'companies', 'import', 'payment', 'responsibility', 'ai'] as const).map((key) => (
             <details key={key} className="group border-b border-white/15 py-5 first:border-t">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-2 text-lg [&::-webkit-details-marker]:hidden">
                 {t(`faq.${key}.q`)}

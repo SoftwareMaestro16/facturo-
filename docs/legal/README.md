@@ -1,139 +1,52 @@
-# Юридическая защита: что сделано и что осталось
+# Legal readiness — 2026-09-13
 
-Этот файл — рабочий чеклист, а не юридическое заключение. Тексты в
-`src/views/legal/model/` — **черновики, подготовленные к проверке молдавским
-юристом**. Проверить их надо до первого платящего клиента, а не после.
+These RU/RO documents are review drafts, not a legal opinion or a guarantee
+against claims. Supplier details provided by the owner: Şcerbacov Daniil,
+independent entrepreneur/freelancer, IDNO 1026023032436,
+daniilscherbakov1@gmail.com. Registration and activity eligibility have not been
+independently verified. A publishable correspondence address is still missing.
 
----
+## Changes
 
-## 1. Что уже защищает
+- Removed unverified promises of six-year fiscal archiving, settings-based deletion,
+  universal export, active maib checkout and absolute security guarantees.
+- Distinguished available software from sandbox integrations and future AI.
+- Limited liability clauses preserve mandatory rights and exceptions; their
+  enforceability needs Moldovan counsel's assessment, particularly for a freelancer.
+- Separated acceptance of contract from consent to optional data processing.
+- Explained Google authentication, Supabase infrastructure, client/controller roles,
+  rights and complaints, and the need for transfer safeguards and retention rules.
 
-### Условия использования (`terms.ro.ts`, `terms.ru.ts`)
+## Before commercial launch
 
-Написаны так, чтобы закрыть претензии, которые реально предъявляют
-SaaS-продуктам в этой нише:
+1. Complete supplier address; verify registered activity, tax status and contract
+   wording with Moldovan counsel/accountant. Do not represent personal liability
+   as eliminated by these terms.
+2. Approve final B2B terms, customer order and processing agreement. Cover documented
+   instructions, confidentiality, security, subprocessors, assistance with requests,
+   incidents, deletion/return and audit arrangements.
+3. Verify actual hosting providers, legal entities, regions, transfer safeguards,
+   contracts, monitoring configuration and international access. Publish a factual
+   subprocessor list, not an assumed one.
+4. Implement retention/deletion/export procedures with tested backup handling.
+   Set per-category periods from actual purposes and applicable obligations.
+5. Record accepted terms version and timestamp server-side. Text below a Google
+   button alone does not provide a complete auditable acceptance record.
+6. Define request/complaint handling, incident response and legally required
+   notification procedures. Confirm the stated email is monitored.
+7. Before payments: final price/tax disclosure, renewal authorization, cancellation,
+   refunds and payment-provider documentation. Before AI: data notices, provider
+   contract, scoped access, review workflow and deletion/cost limits.
 
-| Риск | Чем закрыт |
-|---|---|
-| «Вы посчитали мне налог неправильно» | Прямо сказано: Facturo не бухгалтер, не даёт налоговых консультаций и не проверяет введённые данные |
-| «Из-за вас я получил штраф / потерял вычет НДС» | Ответственность за правильность и сроки документов — на пользователе; ответственность за штрафы, пени и вычет НДС исключена прямо |
-| «Ваш сервис лежал, я не успел» | Нет обещания стопроцентной доступности; отдельно сказано, что система e-Factura нам не подчиняется |
-| «Возместите упущенную выгоду» | Косвенные убытки и упущенная прибыль исключены; потолок ответственности — сумма, уплаченная за 12 месяцев |
-| «Вы удалили мои документы» | Данные не удаляются за неоплату; хранение шесть лет; выгрузка доступна до закрытия аккаунта |
-| «Цену подняли задним числом» | Предупреждение за 30 дней, оплаченный период не дорожает |
-| «С моего аккаунта что-то сделали» | Ответственность за сохранность пароля — на пользователе |
-| Спор в чужой юрисдикции | Право Республики Молдова, суды Кишинёва, досудебная претензия 30 дней |
+## Official sources reviewed
 
-### Права на продукт
+- CNPDCP: Law 195/2024 took effect 23 August 2026:
+  https://datepersonale.md/legea-nr-195-2024-privind-protectia-datelor-cu-caracter-personal-principalele-prevederi-si-noutati-legislative/
+- CNPDCP explanation of legal bases, accountability and rights:
+  https://datepersonale.md/wp-content/uploads/2026/04/GDPR.pdf
+- Chisinau commerce directorate, information-society service duties:
+  https://comert.chisinau.md/informatii-utile/comertul-electronic/comertul-electronic/
 
-- Раздел «Права на программу» в Условиях: интерфейс, тексты, структура базы,
-  название и логотип — наши; пользователь получает право пользоваться сервисом,
-  а не права на программу.
-- Запрет копирования, попыток получить исходный код, перепродажи доступа и
-  построения конкурирующего продукта.
-- Предложенные пользователем улучшения после реализации принадлежат нам —
-  иначе через год приходит письмо «это была моя идея».
-- `LICENSE` в обоих репозиториях: проприетарная лицензия, все права защищены,
-  доступ к репозиторию не даёт никаких прав.
-
-### Политика конфиденциальности (`privacy.ro.ts`, `privacy.ru.ts`)
-
-- Перечислены все категории данных и все получатели поимённо.
-- Отдельный раздел про данные контрагентов: **оператором этих данных выступает
-  клиент, а не мы**. Это важно: иначе претензии третьих лиц о том, что их
-  данные попали в систему, адресуют нам.
-- Сказано прямо: рекламных и аналитических cookie нет, поэтому баннера согласия
-  нет — и это не упущение.
-- Сроки хранения названы: аккаунт — пока активен, фискальные документы — шесть
-  лет по закону, журнал безопасности — 12 месяцев.
-- Права пользователя и срок ответа — 30 дней.
-
----
-
-## 2. Что обязательно сделать до первого платящего клиента
-
-Порядок примерно по важности.
-
-1. **Проверить оба документа у молдавского юриста.** Особенно три места:
-   потолок ответственности (законен ли в таком виде для B2B-договора по праву
-   Молдовы), формулировки про обработку персональных данных по Закону
-   № 133/2011, и срок ответа на запрос субъекта данных — в черновике стоит
-   30 дней, надо подтвердить по закону.
-2. **Решить форму ведения деятельности.** Сейчас сказано «независимый
-   предприниматель». Физическое лицо отвечает по обязательствам **всем своим
-   имуществом**. Юридическое лицо (SRL) ограничивает ответственность вкладом в
-   уставный капитал. Для продукта, который работает с налоговыми документами
-   чужих компаний, это самый крупный из всех пунктов этого списка. Обсудить с
-   юристом и бухгалтером до запуска, а не после первого спора.
-3. **Подставить реальные реквизиты** вместо заглушек: наименование, IDNO,
-   юридический адрес, адреса `contact@facturo.md`, `privacy@facturo.md`,
-   `legal@facturo.md`. Документ без реквизитов оператора не выполняет свою
-   функцию.
-4. **Зарегистрировать в AGEPI товарный знак «Facturo»** — словесный и
-   комбинированный, по классам 9 и 42 Ниццкой классификации. Пока знак не
-   зарегистрирован, название может занять кто угодно, включая конкурента,
-   который увидит запуск.
-5. **Зарегистрировать домен на себя**, не на подрядчика и не на знакомого.
-   Проверить, что контакты в whois — ваши.
-6. **Уведомить Национальный центр по защите персональных данных**, если по
-   закону это требуется для вашего случая обработки. Уточнить у юриста.
-7. **Добавить строку согласия под кнопкой регистрации.** Сейчас она есть под
-   главной кнопкой лендинга; когда появится экран регистрации, она должна быть
-   и там, потому что согласие даётся именно в этот момент.
-
----
-
-## 3. Если появится подрядчик или сотрудник
-
-**По праву Молдовы авторские права на код по умолчанию возникают у автора, а не
-у заказчика.** Устная договорённость и оплата счёта этого не меняют. Поэтому:
-
-- Письменный договор до первой строки кода, а не после.
-- В договоре — **передача исключительных имущественных прав** на всё
-  созданное, в полном объёме, на весь срок и на все территории.
-- Пункт о неразглашении и о запрете использовать наработки в других проектах.
-- Прямой запрет публиковать код, фрагменты и скриншоты, в том числе в портфолио.
-- Доступ к репозиторию выдаётся именной учётной записи и отзывается в день
-  окончания работ.
-- Файл `LICENSE` подстраховывает: он прямо говорит, что доступ к репозиторию
-  сам по себе не даёт никаких прав, и что вкладчик обязуется подписать
-  передачу прав.
-
----
-
-## 4. Что защищает продукт технически
-
-Это тоже юридическая защита, просто другим способом: чем меньше данных мы
-касаемся, тем меньше к нам претензий.
-
-- **Номер карты никогда не попадает на наши серверы.** Карту вводят на странице
-  банка. Это выводит бизнес из-под PCI DSS и снимает целый класс претензий.
-- **Мультитенантность проверяется на каждом запросе.** Утечка данных одной
-  компании в другую — это претензия, от которой не спасает никакой договор.
-- **Журнал безопасности** фиксирует входы, блокировки, смену пароля, отправку
-  документов. Когда клиент говорит «я этого не делал», это единственное
-  доказательство.
-- **Каждая попытка отправки в e-Factura сохраняется целиком**, вместе с
-  переданным XML и ответом. Когда спорят, что именно было отправлено, спор
-  заканчивается на этой записи.
-- **Ничего не удаляется физически раньше шести лет.**
-
----
-
-## 5. Где ссылки на документы
-
-- Футер лендинга.
-- Строка под главной кнопкой регистрации.
-- `sitemap.xml`.
-- Отдельные адреса на каждом языке: `/ro/terms`, `/ru/terms`, `/ro/privacy`,
-  `/ru/privacy`.
-
----
-
-## 6. Когда документы меняются
-
-- Обновить дату в поле `updatedAt` — её видит читатель.
-- Предупредить действующих клиентов за 30 дней по электронной почте и в
-  интерфейсе, как обещано в самих Условиях.
-- Сохранить предыдущую версию в истории git. Когда спорят об условиях, которые
-  действовали в марте, коммит и есть доказательство.
+These sources inform the draft; they do not validate the entire business or the
+enforceability of a particular limitation clause. Legal compliance also requires
+operational controls and agreements, not only published website text.

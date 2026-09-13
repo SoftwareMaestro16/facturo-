@@ -17,6 +17,7 @@
       }
     },
     "pricing": {
+      "featured": "Pentru activitatea zilnică",
       "label": "Tarife",
       "title": "Începeți simplu.\nCreșteți în ritmul dvs.",
       "preview": "Tarife preliminare",
@@ -41,6 +42,14 @@
       "note": "Prețuri și limite preliminare. Planurile plătite sunt în pregătire. Acum puteți crea un cont și descoperi Facturo."
     },
     "faq": {
+      "responsibility": {
+        "q": "Facturo înlocuiește contabilul?",
+        "a": "Nu. Serviciul ajută la pregătirea documentelor; clientul verifică datele, cotele fiscale și termenele. Condițiile descriu răspunderile părților, fără a înlătura normele imperative ale legii."
+      },
+      "ai": {
+        "q": "AI procesează deja documentele mele?",
+        "a": "Nu. Este pregătită baza tehnică pentru AI tools. Înainte de activarea procesării prin AI extern vom descrie furnizorul, datele transmise și verificarea rezultatului."
+      },
       "title": "Înainte de început",
       "intro": "Răspunsuri la întrebările de dinaintea primei facturi.",
       "google": {

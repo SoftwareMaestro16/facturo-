@@ -1,108 +1,84 @@
 import type { LegalDocument } from './types';
-
 export const privacyRo: LegalDocument = {
-  title: 'Politica de confidențialitate',
-  updatedAt: '2026-09-12',
+  title: 'Politica de confidențialitate Facturo',
+  updatedAt: '2026-09-13',
   intro: [
-    'Aici scrie ce date colectăm, de ce, cui le transmitem și cât le păstrăm. Fără formulări ascunse.',
-    'Pe scurt: colectăm doar ce este necesar ca serviciul să funcționeze, nu vindem nimic nimănui și nu folosim cookie-uri de publicitate.',
+    'Politica descrie prelucrarea datelor personale în Facturo și nu înlocuiește acordul de prelucrare dintre furnizor și client.',
+    'Versiune preliminară: înainte de lansarea comercială trebuie completate adresa operatorului, lista persoanelor împuternicite și termenele concrete de păstrare.',
   ],
   sections: [
     {
-      heading: 'Cine răspunde de datele dumneavoastră',
+      heading: '1. Operator și roluri',
       paragraphs: [
-        'Operatorul datelor este Facturo. Pentru orice întrebare legată de date scrieți la privacy@facturo.md.',
+        'Pentru datele contului și organizarea serviciului, operatorul este Şcerbacov Daniil, antreprenor independent (freelancer), Republica Moldova, IDNO 1026023032436. Adresa de corespondență urmează a fi completată. Contact: daniilscherbakov1@gmail.com.',
+        'Pentru datele personale din documente și cataloage, clientul stabilește de regulă scopurile, iar furnizorul acționează conform instrucțiunilor documentate ale acestuia. Rolurile depind de prelucrarea efectivă; denumirea contractuală nu înlătură obligațiile legale.',
       ],
     },
     {
-      heading: 'Ce colectăm',
+      heading: '2. Categorii de date',
       bullets: [
-        'Datele contului: numele, adresa de e-mail, telefonul, limba interfeței.',
-        'Datele companiei: denumirea, IDNO, codul TVA, adresa, contul bancar.',
-        'Datele contragenților pe care îi introduceți: denumire, IDNO, adresă, contacte.',
-        'Conținutul documentelor: poziții, cantități, sume, TVA, note.',
-        'Date tehnice: adresa IP, tipul browserului, data și ora acțiunilor importante — intrare în cont, schimbarea parolei, trimiterea unui document.',
+        'La autentificarea Google: identificatorul Google, emailul verificat, numele și datele necesare verificării autentificării. Parola Google nu este transmisă serviciului.',
+        'Datele companiei și participanților: date de identificare, IDNO, contacte, limbă, roluri și apartenența la companii.',
+        'Date din cataloage și documente: parteneri, poziții, sume și impozite.',
+        'Date tehnice: sesiuni, adresa IP și informații despre cereri necesare funcționării și securității.',
       ],
       paragraphs: [
-        'Nu colectăm date despre card. Cardul se introduce pe pagina băncii; la noi ajunge doar un identificator al plății.',
+        'Nu încărcați categorii speciale de date sau informații inutile pentru facturare. Interfața actuală nu include formular de plată cu cardul.',
       ],
     },
     {
-      heading: 'De ce le colectăm',
-      bullets: [
-        'Ca serviciul să funcționeze: să întocmiți documente și să le trimiteți prin e-Factura.',
-        'Ca să respectăm legea: facturile fiscale se păstrează, iar datele se transmit sistemului statului.',
-        'Ca să emitem factura pentru abonament și să încasăm plata.',
-        'Ca să protejăm contul: jurnalul de intrări ne ajută să observăm o încercare de acces străin.',
-      ],
+      heading: '3. Scopuri și temeiuri',
       paragraphs: [
-        'Nu folosim datele dumneavoastră pentru publicitate, nu le analizăm în alte scopuri și nu le vindem.',
+        'Datele contului sunt folosite pentru inițierea și executarea relației cu utilizatorul; contactele reprezentanților organizațiilor, și pentru interesul legitim de administrare a relației, cu respectarea echilibrului drepturilor.',
+        'Datele tehnice susțin securitatea și prevenirea abuzurilor pe baza interesului legitim aplicabil. Cerințele legale concrete se întemeiază pe obligația juridică respectivă.',
+        'Pentru operațiunile opționale care necesită consimțământ, acesta se solicită separat și poate fi retras fără afectarea prelucrării anterioare legale. Acceptarea Condițiilor nu este acord pentru publicitate.',
+        'Clientul stabilește temeiul datelor din documentele sale. Furnizorul le folosește pentru funcțiile solicitate, nu pentru scopuri proprii fără legătură.',
       ],
     },
     {
-      heading: 'Datele contragenților dumneavoastră',
+      heading: '4. Destinatari și transferuri internaționale',
       paragraphs: [
-        'Când introduceți în Facturo datele partenerilor dumneavoastră, dumneavoastră decideți de ce le colectați și cât le păstrați. Noi doar le stocăm și le prelucrăm la comanda dumneavoastră, în limitele acestei politici.',
-        'Este responsabilitatea dumneavoastră să aveți temei legal pentru a le folosi.',
+        'Google participă la autentificare și prelucrează date potrivit propriilor condiții. Baza de date a proiectului utilizează Supabase. Accesul furnizorilor de infrastructură este limitat la necesitățile serviciului.',
+        'Lista exactă a entităților furnizoare, regiunile, garanțiile contractuale și ștergerea copiilor de siguranță trebuie confirmate înainte de lansarea comercială. Transferurile internaționale necesită temeiurile și garanțiile prevăzute de legislația Republicii Moldova.',
+        'Transmiterea către e-Factura are loc numai prin integrarea reală activată. Integrarea de plată și transmiterea documentelor către AI extern nu sunt activate. Existența unei baze tehnice nu constituie transmitere de date.',
+        'Divulgarea către autorități se face numai cu temei legal și în volumul necesar. Datele nu sunt vândute ca produs distinct.',
       ],
     },
     {
-      heading: 'Cui transmitem datele',
-      bullets: [
-        'Serviciului Fiscal de Stat — conținutul documentelor, pentru că legea cere transmiterea lor prin e-Factura.',
-        'maib — datele necesare încasării plății pentru abonament.',
-        'Furnizorului de găzduire a bazei de date și furnizorului de monitorizare a erorilor — strict tehnic, pentru ca serviciul să funcționeze.',
-        'Autorităților — doar la o cerere legală, întemeiată și scrisă.',
-      ],
-      paragraphs: ['Nimănui altcuiva. Lista completă se actualizează dacă se schimbă ceva.'],
-    },
-    {
-      heading: 'Cookie-uri',
+      heading: '5. Cookie și componente externe',
       paragraphs: [
-        'Folosim doar cookie-uri funcționale: sesiunea dumneavoastră și limba aleasă. Fără cookie-uri de publicitate și fără urmărire.',
-        'De aceea nu vedeți bannerul de consimțământ: nu avem pentru ce să îl cerem.',
+        'Facturo utilizează cookie și mecanisme locale necesare sesiunii și interfeței. Componenta Google de autentificare încarcă resurse Google; prelucrarea sa este reglementată și de documentele Google.',
+        'Dacă sunt introduse tehnologii opționale de analiză sau publicitate, informarea și alegerea vor fi oferite înainte de utilizare, când legea o cere. Politica nu constituie ea însăși consimțământ.',
       ],
     },
     {
-      heading: 'Cât păstrăm datele',
-      bullets: [
-        'Datele contului — cât timp contul este activ.',
-        'Documentele fiscale și dovada transmiterii lor — șase ani, conform legii, inclusiv după închiderea contului.',
-        'Jurnalul de securitate — 12 luni.',
-      ],
-    },
-    {
-      heading: 'Cum le protejăm',
-      bullets: [
-        'Traficul este criptat pe tot traseul.',
-        'Parola nu se păstrează niciodată în clar, ci doar sub forma unei amprente ireversibile.',
-        'Fiecare companie vede doar propriile date; separarea este verificată la fiecare cerere.',
-        'Accesul angajaților la baza de date este limitat și înregistrat.',
-      ],
-    },
-    {
-      heading: 'Drepturile dumneavoastră',
-      bullets: [
-        'Să aflați ce date avem despre dumneavoastră.',
-        'Să cereți corectarea datelor greșite.',
-        'Să cereți ștergerea — în măsura în care legea nu ne obligă să le păstrăm.',
-        'Să primiți datele într-un fișier pe care îl puteți deschide în alt program.',
-        'Să vă opuneți prelucrării.',
-      ],
+      heading: '6. Păstrarea datelor',
       paragraphs: [
-        'Scrieți la privacy@facturo.md. Răspundem în cel mult 30 de zile și vă spunem exact ce am făcut.',
+        'Datele se păstrează numai cât sunt necesare scopului declarat, contractului, unei obligații legale concrete ori apărării justificate a pretențiilor. Conturile, documentele, jurnalele și copiile de siguranță au criterii diferite.',
+        'Politica nu stabilește un termen obligatoriu unic pentru toate documentele. Un calendar al duratelor și procedurilor de ștergere trebuie aprobat și publicat înainte de lansarea comercială. Nu se declară ștergerea automată după un termen fix.',
+        'Clientul asigură păstrarea obligatorie a propriilor documente contabile. Ștergerea solicitată se examinează ținând cont de drepturile altora și temeiurile legale de păstrare.',
       ],
     },
     {
-      heading: 'Ștergerea contului',
+      heading: '7. Securitate și incidente',
       paragraphs: [
-        'Puteți închide contul din Setări. Descărcați documentele înainte. Datele care nu sunt obligatorii prin lege se șterg în 30 de zile.',
+        'Sunt aplicate măsuri de autentificare, control al accesului și protecție a sesiunilor. Securitatea absolută nu este garantată; măsurile trebuie întreținute și verificate în funcție de riscuri.',
+        'În cazul unei încălcări, operatorul evaluează consecințele și respectă obligațiile aplicabile de notificare a autorității și persoanelor afectate. Clientului-operator i se oferă asistența necesară.',
       ],
     },
     {
-      heading: 'Modificări',
+      heading: '8. Drepturi și cereri',
       paragraphs: [
-        'Dacă schimbăm ceva important, vă anunțăm prin e-mail și în interfață cu cel puțin 30 de zile înainte. Data ultimei modificări este scrisă la începutul paginii.',
+        'În cazurile prevăzute de lege există drepturi la informare și acces, rectificare, ștergere, restricționare, portabilitate, opoziție și retragerea consimțământului. Aplicabilitatea depinde de temei și circumstanțe.',
+        'Cererile se trimit la daniilscherbakov1@gmail.com. Poate fi necesară verificarea proporțională a identității sau împuternicirilor. Răspunsul se oferă în termenul legal; prelungirea legală și motivele sunt comunicate solicitantului.',
+        'Puteți depune plângere la Centrul Național pentru Protecția Datelor cu Caracter Personal (CNPDCP, datepersonale.md) și vă puteți adresa instanței. Contactarea noastră prealabilă nu este o condiție.',
+      ],
+    },
+    {
+      heading: '9. Decizii automate și modificări',
+      paragraphs: [
+        'Versiunea actuală nu utilizează un model AI extern pentru decizii despre utilizatori sau analiza documentelor. Înainte de schimbarea scopurilor ori destinatarilor se actualizează politica și informările.',
+        'Se aplică legislația Republicii Moldova, inclusiv Legea nr. 195/2024. Data versiunii apare la început; modificările esențiale sunt comunicate înainte de prelucrarea nouă.',
       ],
     },
   ],

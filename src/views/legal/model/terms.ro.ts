@@ -1,104 +1,90 @@
 import type { LegalDocument } from './types';
-
 export const termsRo: LegalDocument = {
-  title: 'Termeni și condiții',
-  updatedAt: '2026-09-12',
+  title: 'Condiții de utilizare Facturo',
+  updatedAt: '2026-09-13',
   intro: [
-    'Acest text explică ce face Facturo, ce face dumneavoastră și cine răspunde pentru ce. L-am scris simplu, ca să poată fi citit până la capăt.',
-    'Prin crearea unui cont sunteți de acord cu cele scrise mai jos.',
+    'Prezentele Condiții stabilesc accesul la Facturo și obligațiile furnizorului și clientului. Serviciul este destinat activității profesionale și antreprenoriale.',
+    'Versiune pentru consultare preliminară. Adresa furnizorului și procedura de încheiere a contractului trebuie finalizate înainte de lansarea comercială.',
   ],
   sections: [
     {
-      heading: 'Ce este Facturo',
+      heading: '1. Furnizor și contact',
       paragraphs: [
-        'Facturo este un program care vă ajută să întocmiți facturi electronice și să le trimiteți prin sistemul e-Factura al Serviciului Fiscal de Stat.',
+        'Furnizor: Şcerbacov Daniil, antreprenor independent (freelancer), Republica Moldova, IDNO 1026023032436. Adresa pentru corespondență juridică urmează a fi completată. Facturo este denumirea produsului software, nu o persoană juridică distinctă.',
+        'Solicitările, reclamațiile și cererile privind datele personale se trimit la daniilscherbakov1@gmail.com. Indicați contul, obiectul cererii și informațiile necesare examinării. Nu transmiteți parole, tokenuri sau date complete ale cardurilor.',
       ],
+    },
+    {
+      heading: '2. Obiectul și stadiul serviciului',
+      paragraphs: [
+        'Facturo oferă instrumente software pentru pregătirea facturilor, gestionarea cataloagelor și accesului la companii. Funcțiile disponibile sunt cele ale versiunii efectiv furnizate.',
+        'Documentele demonstrative, tarifele preliminare și integrările de test nu confirmă o tranzacție, o plată sau acceptarea unui document de către o autoritate. Transmiterea cu efect juridic trebuie verificată prin rezultatul integrării reale și în sistemul competent.',
+        'Facturo nu este sistemul de stat e-Factura, bancă, contabil sau consultant fiscal. Serviciul nu înlocuiește verificarea profesională.',
+      ],
+    },
+    {
+      heading: '3. Cont și împuterniciri',
+      paragraphs: [
+        'Autentificarea se face prin Google. Utilizatorul trebuie să fie împuternicit să acționeze pentru compania adăugată și să acorde acces numai persoanelor autorizate. Apartenența la o companie nu dovedește, singură, dreptul de a dispune de documentele sale.',
+        'Utilizatorul protejează contul Google și dispozitivul și raportează suspiciunile de compromitere. Operațiunile contestate se apreciază pe baza probelor disponibile; autentificarea nu exclude cercetarea accesului neautorizat.',
+        'Luarea la cunoștință a politicii de confidențialitate nu reprezintă consimțământ general pentru orice prelucrare sau marketing.',
+      ],
+    },
+    {
+      heading: '4. Obligațiile clientului',
       bullets: [
-        'Facturo nu este contabil și nu ține contabilitatea companiei dumneavoastră.',
-        'Facturo nu oferă consultanță fiscală sau juridică.',
-        'Facturo nu verifică dacă datele pe care le introduceți sunt corecte și nu decide dacă o operațiune este legală.',
-        'Facturo nu este parte a Serviciului Fiscal de Stat și nu îl reprezintă.',
+        'Să verifice datele, cotele fiscale, sumele, împuternicirile și termenele legale.',
+        'Să dețină temei legal pentru datele partenerilor și angajaților încărcate și să le furnizeze informările necesare.',
+        'Să păstreze documentele obligatorii și copii de siguranță potrivit normelor aplicabile. Facturo nu preia obligațiile unei arhive fiscale obligatorii sau de stat.',
+        'Să nu încarce cod malițios, să nu eludeze controlul accesului și să nu utilizeze serviciul pentru operațiuni fictive sau ilegale.',
       ],
     },
     {
-      heading: 'Ce răspundeți dumneavoastră',
-      bullets: [
-        'Corectitudinea, caracterul complet și termenele documentelor pe care le întocmiți.',
-        'Respectarea obligațiilor fiscale ale companiei dumneavoastră.',
-        'Datele contragenților pe care le încărcați în sistem și dreptul dumneavoastră de a le folosi.',
-        'Păstrarea parolei. Tot ce se face din contul dumneavoastră se consideră făcut de dumneavoastră.',
-      ],
-    },
-    {
-      heading: 'Ce nu putem garanta',
+      heading: '5. Tarife și plăți',
       paragraphs: [
-        'Facturo transmite documentele către sistemul e-Factura, dar nu îl administrează. Dacă sistemul statului nu răspunde, este lent sau refuză un document, acest lucru nu depinde de noi.',
-        'Nu promitem funcționare neîntreruptă. Facem tot ce putem, anunțăm din timp lucrările planificate, dar nu garantăm o disponibilitate de 100%.',
+        'Prețurile și limitele publicate sunt preliminare. Plata online și activarea abonamentelor plătite nu sunt disponibile încă; crearea contului nu constituie comandă pentru un plan plătit.',
+        'Înainte de comanda plătită trebuie comunicate prețul final în MDL, taxele aplicabile, perioada, limitele, reînnoirea, încetarea și rambursarea. Debitarea automată necesită autorizare distinctă corespunzătoare.',
+        'Modificările pentru viitor nu majorează prețul unei perioade deja plătite. Rambursările și drepturile obligatorii sunt guvernate de comanda convenită și lege.',
       ],
     },
     {
-      heading: 'Limita răspunderii noastre',
+      heading: '6. Disponibilitate și suspendare',
       paragraphs: [
-        'Răspundem doar pentru funcționarea programului și doar în limita sumei pe care ne-ați plătit în ultimele 12 luni.',
-      ],
-      bullets: [
-        'Nu răspundem pentru amenzi, penalități sau pierderea dreptului de deducere a TVA.',
-        'Nu răspundem pentru profitul nerealizat, pentru contractele pierdute și pentru alte pierderi indirecte.',
-        'Nu răspundem pentru indisponibilitatea sistemului e-Factura, a rețelei bancare sau a internetului.',
-        'Nu răspundem pentru consecințele unor date greșite introduse de dumneavoastră.',
+        'Lucrările tehnice, defecțiunile și sistemele externe pot afecta accesul. În lipsa unui acord separat nu se garantează continuitatea absolută sau un termen pentru remedierea fiecărei defecțiuni.',
+        'Furnizorul poate limita proporțional accesul pentru riscuri de securitate, suspiciuni întemeiate de utilizare ilegală ori încălcări esențiale. Motivul și modalitatea de remediere se comunică dacă este posibil și compatibil cu legea și securitatea.',
+        'Încetarea planificată a serviciului trebuie însoțită de informare și posibilitate rezonabilă de obținere a datelor, dacă legea și securitatea permit. Nu se presupune existența exportului sau ștergerii automate din interfață.',
       ],
     },
     {
-      heading: 'Ce nu aveți voie să faceți',
-      bullets: [
-        'Să folosiți Facturo pentru documente fictive sau pentru activități interzise de lege.',
-        'Să copiați programul, să încercați să îi obțineți codul sursă sau să construiți un produs concurent pe baza lui.',
-        'Să revindeți accesul, să îl împărțiți cu alte companii sau să automatizați accesul fără acordul nostru scris.',
-        'Să încercați să accesați datele altor utilizatori sau să perturbați funcționarea serviciului.',
-      ],
+      heading: '7. Răspunderea părților',
       paragraphs: [
-        'În cazul încălcării acestor reguli putem suspenda contul. Vă anunțăm și vă explicăm motivul, iar datele dumneavoastră rămân accesibile pentru descărcare.',
+        'Fiecare parte răspunde pentru încălcarea propriilor obligații în condițiile legii. Verificările tehnice nu garantează corectitudinea juridică sau fiscală a operațiunilor.',
+        'În limitele permise de lege, pentru utilizarea profesională se propune plafonarea despăgubirilor totale pentru prejudiciul direct la plățile aferente serviciului afectat din cele 12 luni anterioare evenimentului. Aplicabilitatea plafonului trebuie apreciată în circumstanțele contractului concret.',
+        'Limitările nu se aplică intenției, culpei grave sau altor situații în care legea interzice excluderea ori limitarea răspunderii. Drepturile imperative ale persoanelor vizate și consumatorilor rămân intacte.',
+        'Pierderile indirecte, profitul ratat și consecințele datelor inițiale incorecte sunt excluse numai în măsura permisă de lege. Clauza nu exonerează furnizorul pentru propriile încălcări.',
       ],
     },
     {
-      heading: 'Prețul și plata',
+      heading: '8. Proprietate intelectuală și date',
       paragraphs: [
-        'Prețul curent este afișat pe pagina de tarife, cu TVA inclus. Plata se face cu cardul, prin maib.',
-        'Dacă schimbăm prețul, vă anunțăm cu cel puțin 30 de zile înainte. Perioada deja plătită nu se scumpește.',
-        'Dacă plata nu intră la timp, limităm crearea de documente noi. Documentele deja emise rămân accesibile: sunteți obligat prin lege să le păstrați.',
+        'Software-ul și materialele aparțin titularilor legitimi. Clientul primește un drept limitat de utilizare a funcțiilor disponibile conform destinației lor. Drepturile terților și licențele componentelor se păstrează.',
+        'Clientul păstrează drepturile asupra documentelor și acordă doar permisiunile necesare prestării serviciului. Condițiile nu acordă dreptul de a vinde conținutul documentelor clientului.',
       ],
     },
     {
-      heading: 'Drepturile asupra programului',
+      heading: '9. Funcții AI viitoare',
       paragraphs: [
-        'Programul, interfața, textele, structura bazei de date, denumirea și sigla Facturo ne aparțin. Dumneavoastră primiți dreptul de a folosi serviciul cât timp aveți un cont activ — nu drepturi asupra programului însuși.',
-        'Datele pe care le introduceți rămân ale dumneavoastră. Le puteți descărca oricând și nu le folosim în alte scopuri decât funcționarea serviciului.',
-        'Dacă ne propuneți o îmbunătățire și o realizăm, rezultatul ne aparține. Nu vă datorăm plată pentru o sugestie, iar dumneavoastră nu pierdeți nimic.',
+        'Procesarea documentelor clienților prin AI extern nu este activată. Înainte de lansare vor fi comunicate scopurile, destinatarii datelor și condițiile de utilizare.',
+        'Recunoașterea și sugestiile viitoare sunt propuneri supuse verificării umane. Asumarea obligațiilor, transmiterea facturilor și plata nu se pot baza exclusiv pe un răspuns neconfirmat al modelului.',
       ],
     },
     {
-      heading: 'Închiderea contului',
+      heading: '10. Încetare, modificări și litigii',
       paragraphs: [
-        'Puteți închide contul oricând din Setări. Înainte de asta descărcați documentele: după închidere nu mai aveți acces la ele prin interfață.',
-        'Documentele fiscale se păstrează în arhivă șase ani, pentru că legea ne obligă. Nu le folosim în niciun alt scop.',
+        'Cererile de încetare a serviciului sau obținere a datelor se trimit prin email. Păstrarea ulterioară se bazează pe scopuri legale și obligații aplicabile, nu pe o durată unică pentru toate documentele.',
+        'Modificările esențiale sunt comunicate înainte de aplicare și nu produc efecte retroactive asupra obligațiilor executate. Obligațiile plătite noi necesită acord corespunzător.',
+        'Se aplică dreptul Republicii Moldova, cu respectarea normelor imperative. Părțile încearcă soluționarea prin email; aceasta nu înlătură accesul la instanța competentă ori autoritatea de supraveghere și nu suspendă termenele legale. Nevaliditatea unei clauze nu afectează celelalte.',
       ],
-    },
-    {
-      heading: 'Modificarea acestor condiții',
-      paragraphs: [
-        'Dacă schimbăm ceva important, vă anunțăm prin e-mail și în interfață cu cel puțin 30 de zile înainte. Dacă nu sunteți de acord, puteți închide contul, iar perioada plătită și nefolosită se restituie.',
-      ],
-    },
-    {
-      heading: 'Legea aplicabilă și litigiile',
-      paragraphs: [
-        'Se aplică legislația Republicii Moldova.',
-        'Dacă apare o neînțelegere, scrieți-ne mai întâi nouă: răspundem în cel mult 30 de zile și în cele mai multe cazuri se rezolvă acolo. Dacă nu, competente sunt instanțele din Chișinău.',
-      ],
-    },
-    {
-      heading: 'Contact',
-      paragraphs: ['Scrieți la contact@facturo.md. Răspundem în zilele lucrătoare.'],
     },
   ],
 };
