@@ -43,6 +43,17 @@ independently verified. A publishable correspondence address is still missing.
    refunds and payment-provider documentation. Before AI: data notices, provider
    contract, scoped access, review workflow and deletion/cost limits.
 
+## Risks and free/low-cost consultation contacts
+
+See `docs/legal/risks-and-contacts.md` (Russian) for the numbered risk list
+discussed with the owner — personal liability, invoice-error liability,
+personal data law, IDNO fraud/impersonation, consumer-vs-business status,
+e-signature custody, payments, trademarks/third-party licences, Google OAuth
+consent screen — each with a mitigation, plus free-launch strategy (no
+payments/no real e-Factura sending/AI in sandbox until launch) and where to
+get free or low-cost help (SFS/CTIF, CNPDCP, ODA, university legal clinics,
+AGEPI).
+
 ## Official sources reviewed
 
 - CNPDCP: Law 195/2024 took effect 23 August 2026:
