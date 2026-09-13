@@ -1,19 +1,25 @@
 import { useFormatter, useTranslations } from 'next-intl';
 
-import { InvoiceStatusBadge, type InvoiceListItem } from '@/entities/invoice';
-import { Skeleton } from '@/shared/ui';
+import { InvoiceStatusBadge, type InvoiceDirection, type InvoiceListItem } from '@/entities/invoice';
+import { IncomingInvoiceActions } from '@/features/invoice-incoming-decide';
+import { Badge, Skeleton } from '@/shared/ui';
 
 interface InvoiceTableProps {
   invoices: readonly InvoiceListItem[];
+  /// Which side of the exchange the list is showing. It decides whether the
+  /// other party is called a buyer or a supplier, and whether the row carries
+  /// the accept and disagree actions.
+  direction?: InvoiceDirection;
   isLoading?: boolean;
 }
 
 /// The only place invoices are laid out as rows. On a phone each invoice is a
 /// card, because five columns do not fit a thumb's width; from tablet width it
 /// is a real table, scrolling sideways only inside its own container.
-export function InvoiceTable({ invoices, isLoading = false }: InvoiceTableProps) {
+export function InvoiceTable({ invoices, direction = 'OUTGOING', isLoading = false }: InvoiceTableProps) {
   const t = useTranslations('invoice.table');
   const format = useFormatter();
+  const isIncoming = direction === 'INCOMING';
 
   if (isLoading) {
     return (
@@ -46,8 +52,9 @@ export function InvoiceTable({ invoices, isLoading = false }: InvoiceTableProps)
               <p className="shrink-0 font-semibold tabular-nums text-ink">{money(invoice.total)}</p>
             </div>
             <div>
-              <InvoiceStatusBadge status={invoice.status} />
+              <InvoiceStatusBadge status={invoice.status} direction={invoice.direction} />
             </div>
+            <RowDecision invoice={invoice} />
           </li>
         ))}
       </ul>
@@ -60,7 +67,7 @@ export function InvoiceTable({ invoices, isLoading = false }: InvoiceTableProps)
                 {t('number')}
               </th>
               <th scope="col" className="px-5 py-3 font-medium">
-                {t('counterparty')}
+                {isIncoming ? t('supplier') : t('counterparty')}
               </th>
               <th scope="col" className="px-5 py-3 font-medium">
                 {t('issueDate')}
@@ -71,6 +78,11 @@ export function InvoiceTable({ invoices, isLoading = false }: InvoiceTableProps)
               <th scope="col" className="px-5 py-3 font-medium">
                 {t('status')}
               </th>
+              {isIncoming ? (
+                <th scope="col" className="px-5 py-3 font-medium">
+                  {t('decision')}
+                </th>
+              ) : null}
             </tr>
           </thead>
           <tbody>
@@ -88,8 +100,13 @@ export function InvoiceTable({ invoices, isLoading = false }: InvoiceTableProps)
                   {money(invoice.total)}
                 </td>
                 <td className="px-5 py-4">
-                  <InvoiceStatusBadge status={invoice.status} />
+                  <InvoiceStatusBadge status={invoice.status} direction={invoice.direction} />
                 </td>
+                {isIncoming ? (
+                  <td className="px-5 py-4 align-top">
+                    <RowDecision invoice={invoice} />
+                  </td>
+                ) : null}
               </tr>
             ))}
           </tbody>
@@ -97,4 +114,20 @@ export function InvoiceTable({ invoices, isLoading = false }: InvoiceTableProps)
       </div>
     </>
   );
+}
+
+/// A document a supplier sent is either still waiting for an answer, or it
+/// already has one. Both look the same on the phone card and in the table cell.
+function RowDecision({ invoice }: { invoice: InvoiceListItem }) {
+  const t = useTranslations('invoice');
+
+  if (invoice.direction !== 'INCOMING') return null;
+
+  if (invoice.disputedAt) {
+    return <Badge tone="warning">{t('disputed')}</Badge>;
+  }
+
+  if (invoice.status !== 'RECEIVED') return null;
+
+  return <IncomingInvoiceActions invoiceId={invoice.id} />;
 }

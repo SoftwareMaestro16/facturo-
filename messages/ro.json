@@ -75,7 +75,7 @@
   },
   "billing": {
     "title": "Plan și plăți",
-    "intro": "Alegeți ritmul de lucru pentru companie. Plata online este în pregătire.",
+    "intro": "Vedeți ce plan aveți și cât ați folosit luna aceasta. Puteți trece la un plan mai mare oricând.",
     "plans": {
       "FREE": "Primele documente",
       "STARTER": "Activitate zilnică",
@@ -86,9 +86,41 @@
       "STARTER": "Pentru facturare regulată și lucrul în echipă.",
       "BUSINESS": "Pentru volume mari de documente și mai mulți participanți."
     },
-    "preview": "Prezentare preliminară",
-    "payments": "Gestionarea plăților",
-    "unavailable": "Abonamentele nu pot fi activate încă. Nu solicităm date de plată aici; condițiile disponibile vor apărea la lansarea plăților."
+    "price": {
+      "FREE": "Gratuit",
+      "STARTER": "249 L pe lună",
+      "BUSINESS": "599 L pe lună"
+    },
+    "allowance": {
+      "FREE": "Până la 10 facturi pe lună",
+      "STARTER": "Până la 100 de facturi pe lună",
+      "BUSINESS": "Facturi fără limită"
+    },
+    "currentBadge": "Planul dumneavoastră acum",
+    "includedBelow": "Tot ce este aici intră deja în planul dumneavoastră.",
+    "cardNote": "Plata se face pe pagina băncii. Datele cardului nu ajung la noi și nu le păstrăm.",
+    "current": {
+      "title": "Planul dumneavoastră",
+      "used": "{used} din {total} facturi emise luna aceasta",
+      "left": "{count, plural, one {A mai rămas # factură.} few {Au mai rămas # facturi.} other {Au mai rămas # de facturi.}}",
+      "unlimited": "Facturi emise luna aceasta: {used}. Fără limită.",
+      "renews": "Luna aceasta se încheie la {date}.",
+      "exhausted": "Ați folosit toate facturile din luna aceasta. Treceți la un plan mai mare ca să emiteți altele noi.",
+      "pastDue": "Ultima plată nu a trecut. Facturile dumneavoastră rămân la locul lor. Plătiți din nou ca să puteți emite altele noi."
+    },
+    "errors": {
+      "load": "Nu am putut afla ce plan aveți. Verificați conexiunea și încercați din nou.",
+      "retry": "Încercați din nou"
+    },
+    "paid": {
+      "title": "Plata a trecut",
+      "description": "Planul nou funcționează deja. Puteți emite facturi mai departe.",
+      "back": "Înapoi la plan și plăți",
+      "missing": {
+        "title": "Nu găsim această plată",
+        "description": "Deschideți pagina cu planul ca să vedeți ce plan aveți acum."
+      }
+    }
   },
   "meta": {
     "title": "Facturo — facturi electronice pentru afaceri mici",
@@ -266,7 +298,9 @@
       "counterparty": "Cumpărător",
       "issueDate": "Data",
       "total": "Total",
-      "status": "Stare"
+      "status": "Stare",
+      "supplier": "Furnizor",
+      "decision": "Decizia dumneavoastră"
     },
     "statusHint": {
       "DRAFT": "Nu a plecat nicăieri. O puteți schimba oricând.",
@@ -277,7 +311,13 @@
       "CANCELLATION_REQUESTED": "Ați cerut anularea. Cumpărătorul trebuie să fie de acord.",
       "CANCELLED": "Anulată. Dacă mai e nevoie, faceți una nouă.",
       "ERROR": "Nu a plecat. Deschideți-o ca să vedeți ce trebuie schimbat."
-    }
+    },
+    "statusIncoming": {
+      "RECEIVED": "Așteaptă răspunsul dumneavoastră",
+      "FINISHED": "Acceptată",
+      "CANCELLED": "Anulată de furnizor"
+    },
+    "disputed": "Ați notat un dezacord"
   },
   "common": {
     "retry": "Încercați din nou",
@@ -297,7 +337,8 @@
     "subtitle": "Toate facturile emise de dumneavoastră: ciorne, trimise și finalizate.",
     "search": {
       "label": "Căutare în facturi",
-      "placeholder": "Cumpărător sau serie"
+      "placeholder": "Cumpărător sau serie",
+      "placeholderIncoming": "Furnizor sau serie"
     },
     "filters": {
       "label": "Afișați facturile",
@@ -317,6 +358,16 @@
       "finishedHint": "Semnate de cumpărător",
       "failed": "Nu am putut calcula totalurile. Lista de mai jos funcționează ca de obicei.",
       "retry": "Calculați din nou"
+    },
+    "subtitleIncoming": "Facturile pe care vi le-au trimis furnizorii.",
+    "direction": {
+      "label": "Ce facturi arătăm",
+      "OUTGOING": "Emise",
+      "INCOMING": "Primite"
+    },
+    "emptyIncoming": {
+      "title": "Nu aveți facturi primite",
+      "description": "Când un furnizor vă trimite o factură electronică, ea apare aici. Apăsați butonul de mai sus ca să vedeți dacă a venit ceva nou."
     }
   },
   "nav": {
@@ -681,6 +732,47 @@
         "vat_assumed": "Pentru unele poziții s-a pus TVA 20% — verificați cota.",
         "lines_truncated": "Au fost preluate doar primele 20 de poziții.",
         "line_dropped": "O parte din text nu a putut fi înțeleasă — verificați pozițiile."
+      }
+    }
+  },
+  "subscription": {
+    "status": {
+      "ACTIVE": "Activ",
+      "PAST_DUE": "Plata nu a trecut",
+      "CANCELLED": "Oprit"
+    }
+  },
+  "billingCheckout": {
+    "action": "Treceți la „{plan}”",
+    "pending": "Pregătim plata…",
+    "errors": {
+      "payment_provider_not_configured": "Plata nu se poate deschide acum. Încercați peste câteva minute sau scrieți-ne.",
+      "generic": "Nu a mers. Încercați din nou peste un minut."
+    }
+  },
+  "invoiceIncoming": {
+    "check": {
+      "action": "Vedeți dacă au venit facturi noi",
+      "pending": "Verificăm…",
+      "none": "Nu a venit nimic nou.",
+      "found": "{count, plural, one {A venit # factură nouă.} few {Au venit # facturi noi.} other {Au venit # de facturi noi.}}",
+      "failed": "Nu am putut verifica acum. Încercați din nou peste un minut."
+    },
+    "decide": {
+      "accept": "Acceptați factura",
+      "reject": "Nu sunt de acord",
+      "reasonLabel": "Scrieți ce nu este în regulă",
+      "reasonPlaceholder": "De exemplu: cantitatea nu corespunde",
+      "reasonHint": "Nota rămâne la dumneavoastră în Facturo. Furnizorul nu o vede — sunați-l.",
+      "rejectConfirm": "Salvați nota",
+      "close": "Închideți",
+      "errors": {
+        "empty": "Scrieți câteva cuvinte despre ce nu este în regulă.",
+        "tooLong": "Este prea lung. Scurtați până la 500 de semne.",
+        "invoice_not_found": "Nu mai găsim această factură. Actualizați lista.",
+        "invoice_not_acceptable": "Ați răspuns deja la această factură. Actualizați lista ca să vedeți starea ei.",
+        "invoice_not_rejectable": "Ați răspuns deja la această factură. Actualizați lista ca să vedeți starea ei.",
+        "generic": "Nu a mers. Încercați din nou peste un minut."
       }
     }
   }

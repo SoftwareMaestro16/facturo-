@@ -38,6 +38,11 @@ export interface InvoiceListItem {
   id: string;
   direction: InvoiceDirection;
   status: InvoiceStatus;
+  /// Set when the company wrote down that it does not agree with a document a
+  /// supplier sent. It is a note kept here, not a state on the tax platform —
+  /// the platform has no "the buyer refuses this" action — so it lives beside
+  /// the status rather than replacing it.
+  disputedAt?: string | null;
   cycle: InvoiceCycle;
   series: string;
   number: number;

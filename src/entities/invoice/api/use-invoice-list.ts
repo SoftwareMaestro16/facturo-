@@ -17,6 +17,11 @@ export interface InvoiceListParams {
     'DRAFT' | 'SIGNED' | 'SENT' | 'RECEIVED' | 'FINISHED' | 'CANCELLATION_REQUESTED' | 'CANCELLED' | 'ERROR';
 }
 
+/// The prefix every invoice query shares. Anything that changes a document —
+/// sending it, accepting one that came in — invalidates this one key, and both
+/// the list and the summary above it refetch.
+export const invoiceQueryKeyRoot = ['invoices'] as const;
+
 export const invoiceListQueryKey = (params: InvoiceListParams) => ['invoices', 'list', params] as const;
 
 export function useInvoiceList(params: InvoiceListParams = {}) {

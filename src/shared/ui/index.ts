@@ -8,6 +8,7 @@ export { Field } from './field';
 export { Input } from './input';
 export { Logo } from './logo';
 export { Skeleton } from './skeleton';
+export { Textarea } from './textarea';
 export { GoogleButton } from './google-button';
 export { HeroCanvas, type HeroCanvasProps } from './hero-canvas';
 export {

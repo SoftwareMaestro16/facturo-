@@ -1,12 +1,17 @@
-import { useTranslations } from 'next-intl';
-
 import { Badge } from '@/shared/ui';
 
 import { toneForStatus } from '../model/status-tone';
-import type { InvoiceStatus } from '../model/types';
+import type { InvoiceDirection, InvoiceStatus } from '../model/types';
+import { useInvoiceStatusLabel } from '../model/use-status-label';
 
-export function InvoiceStatusBadge({ status }: { status: InvoiceStatus }) {
-  const t = useTranslations('invoice.status');
+export function InvoiceStatusBadge({
+  status,
+  direction = 'OUTGOING',
+}: {
+  status: InvoiceStatus;
+  direction?: InvoiceDirection;
+}) {
+  const label = useInvoiceStatusLabel();
 
-  return <Badge tone={toneForStatus(status)}>{t(status)}</Badge>;
+  return <Badge tone={toneForStatus(status)}>{label(status, direction)}</Badge>;
 }
