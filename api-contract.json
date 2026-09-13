@@ -1153,7 +1153,7 @@
     },
     "/api/invoices/{id}/submit": {
       "post": {
-        "operationId": "InvoiceSubmitController_submit",
+        "operationId": "InvoiceExchangeController_submit",
         "parameters": [
           {
             "name": "id",
@@ -1182,6 +1182,186 @@
         ],
         "tags": [
           "invoices"
+        ]
+      }
+    },
+    "/api/invoices/{id}/accept": {
+      "post": {
+        "operationId": "InvoiceExchangeController_accept",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The document is now FINISHED"
+          },
+          "404": {
+            "description": "invoice_not_found"
+          },
+          "409": {
+            "description": "invoice_not_acceptable"
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "invoices"
+        ]
+      }
+    },
+    "/api/invoices/{id}/reject": {
+      "post": {
+        "operationId": "InvoiceExchangeController_reject",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RejectIncomingDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": ""
+          },
+          "404": {
+            "description": "invoice_not_found"
+          },
+          "409": {
+            "description": "invoice_not_rejectable"
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "invoices"
+        ]
+      }
+    },
+    "/api/invoices/incoming/sync": {
+      "post": {
+        "operationId": "IncomingInvoicesController_sync",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SyncIncomingResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "invoices"
+        ]
+      }
+    },
+    "/api/billing/subscription": {
+      "get": {
+        "operationId": "BillingController_getSubscription",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriptionResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "billing"
+        ]
+      }
+    },
+    "/api/billing/checkout": {
+      "post": {
+        "operationId": "BillingController_checkout",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CheckoutDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CheckoutResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "billing"
+        ]
+      }
+    },
+    "/api/billing/callback": {
+      "post": {
+        "operationId": "BillingController_callback",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Acknowledged. Never answer with an error for a merely unrecognised payment."
+          }
+        },
+        "tags": [
+          "billing"
         ]
       }
     },
@@ -2366,6 +2546,9 @@
           "status": {
             "type": "string"
           },
+          "disputedAt": {
+            "type": "object"
+          },
           "cycle": {
             "type": "string"
           },
@@ -2545,6 +2728,10 @@
           },
           "statusReason": {
             "type": "object"
+          },
+          "disputedAt": {
+            "type": "object",
+            "description": "Set when the buyer disputed an incoming document"
           },
           "series": {
             "type": "string"
@@ -2828,6 +3015,99 @@
             }
           }
         }
+      },
+      "RejectIncomingDto": {
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string",
+            "description": "Why the company does not recognise or agree with this document"
+          }
+        },
+        "required": [
+          "reason"
+        ]
+      },
+      "SyncIncomingResponse": {
+        "type": "object",
+        "properties": {
+          "created": {
+            "type": "number",
+            "description": "New incoming documents found since the last check"
+          }
+        },
+        "required": [
+          "created"
+        ]
+      },
+      "SubscriptionResponse": {
+        "type": "object",
+        "properties": {
+          "plan": {
+            "type": "string",
+            "enum": [
+              "FREE",
+              "STARTER",
+              "BUSINESS"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "PAST_DUE",
+              "CANCELLED"
+            ]
+          },
+          "invoiceQuota": {
+            "type": "object",
+            "description": "Null means unlimited"
+          },
+          "invoicesUsed": {
+            "type": "number"
+          },
+          "currentPeriodStart": {
+            "type": "string"
+          },
+          "currentPeriodEnd": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "plan",
+          "status",
+          "invoicesUsed",
+          "currentPeriodStart",
+          "currentPeriodEnd"
+        ]
+      },
+      "CheckoutDto": {
+        "type": "object",
+        "properties": {
+          "plan": {
+            "type": "string",
+            "enum": [
+              "STARTER",
+              "BUSINESS"
+            ],
+            "description": "FREE needs no checkout"
+          }
+        },
+        "required": [
+          "plan"
+        ]
+      },
+      "CheckoutResponse": {
+        "type": "object",
+        "properties": {
+          "checkoutUrl": {
+            "type": "string",
+            "description": "Where to send the customer's browser"
+          }
+        },
+        "required": [
+          "checkoutUrl"
+        ]
       },
       "ImportUploadDto": {
         "type": "object",

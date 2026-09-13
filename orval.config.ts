@@ -12,11 +12,14 @@ import { existsSync } from 'node:fs';
 /// the interface can show a person.
 export default defineConfig({
   facturo: {
-    // Use the live sibling contract locally and the versioned snapshot in a clean checkout.
+    // Use the live sibling checkout locally and the versioned snapshot in a
+    // clean checkout that does not have facturo-server beside it. The sibling
+    // is named facturo-server, not backend — a session that guesses wrong
+    // here silently falls back to a stale snapshot instead of failing loudly.
     input: {
       target:
         process.env.FACTURO_OPENAPI_PATH ??
-        (existsSync('../backend/openapi.json') ? '../backend/openapi.json' : './api-contract.json'),
+        (existsSync('../facturo-server/openapi.json') ? '../facturo-server/openapi.json' : './api-contract.json'),
     },
     output: {
       mode: 'tags-split',
