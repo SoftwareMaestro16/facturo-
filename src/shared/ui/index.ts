@@ -9,6 +9,18 @@ export { Logo } from './logo';
 export { Skeleton } from './skeleton';
 export { GoogleButton } from './google-button';
 export { HeroCanvas, type HeroCanvasProps } from './hero-canvas';
+export {
+  IconArrowLeft,
+  IconBox,
+  IconCard,
+  IconCopy,
+  IconInvoice,
+  IconLogout,
+  IconPlus,
+  IconSettings,
+  IconSparkles,
+  IconUsers,
+} from './icons';
 export { LocaleSwitcher } from './locale-switcher';
 export { ShaderBackground, type ShaderBackgroundProps } from './shader-background';
 export { TopoField, type TopoFieldProps } from './topo-field';

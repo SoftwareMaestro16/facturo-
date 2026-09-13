@@ -268,7 +268,14 @@
     "products": "Produse și servicii",
     "billing": "Plată",
     "settings": "Setări",
-    "label": "Meniu principal"
+    "label": "Meniu principal",
+    "short": {
+      "invoices": "Facturi",
+      "counterparties": "Parteneri",
+      "products": "Produse",
+      "billing": "Plată",
+      "settings": "Setări"
+    }
   },
   "legal": {
     "back": "Înapoi la pagina principală"
@@ -353,7 +360,9 @@
   },
   "workspace": {
     "header": {
-      "home": "Pagina principală"
+      "home": "Pagina principală",
+      "cabinet": "Spațiul personal",
+      "switchCompany": "Schimbați compania sau vedeți datele ei"
     }
   },
   "counterparties": {

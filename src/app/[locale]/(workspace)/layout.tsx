@@ -4,21 +4,27 @@ import { AppHeader } from '@/widgets/app-header';
 import { AppNav } from '@/widgets/app-sidebar';
 import { SessionBoundary } from '@/entities/session';
 
-/// Wraps every workspace route. Header on top, main navigation on the side at
-/// desktop width and along the bottom on a phone. Kept as a server component:
-/// the widgets below decide for themselves whether they need to be client.
+/// Wraps every workspace route. Sticky header on top; navigation in a side
+/// column from tablet width and in a bottom bar on a phone. The aside turns
+/// into `display: contents` on a phone so the fixed bottom bar inside it is not
+/// hidden along with an empty column. Bottom padding keeps the last row of any
+/// page clear of that bar.
 export default function WorkspaceLayout({ children }: { children: ReactNode }) {
   return (
     <SessionBoundary>
-      <div className="workspace-theme flex min-h-dvh flex-col bg-surface-sunken">
+      <div className="workspace-theme relative flex min-h-dvh flex-col bg-surface-sunken">
+        <div
+          aria-hidden="true"
+          className="workspace-backdrop pointer-events-none absolute inset-x-0 top-0 h-96"
+        />
         <AppHeader />
 
-        <div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col gap-6 px-4 py-6 sm:flex-row sm:px-6">
-          <aside className="w-full rounded-3xl border border-line bg-surface p-3 sm:sticky sm:top-6 sm:h-fit sm:w-56 sm:shrink-0">
+        <div className="relative mx-auto flex w-full max-w-[1600px] flex-1 gap-6 px-0 pt-2 pb-24 sm:px-6 sm:pt-6 sm:pb-10">
+          <aside className="max-sm:contents sm:sticky sm:top-22 sm:h-fit sm:w-60 sm:shrink-0 sm:rounded-(--radius-card) sm:border sm:border-line sm:bg-surface sm:p-2">
             <AppNav />
           </aside>
 
-          <main className="min-w-0 flex-1 rounded-3xl border border-line bg-surface/90">{children}</main>
+          <main className="min-w-0 flex-1">{children}</main>
         </div>
       </div>
     </SessionBoundary>

@@ -258,7 +258,14 @@
     "products": "Товары и услуги",
     "billing": "Оплата",
     "settings": "Настройки",
-    "label": "Главное меню"
+    "label": "Главное меню",
+    "short": {
+      "invoices": "Счета",
+      "counterparties": "Партнёры",
+      "products": "Товары",
+      "billing": "Оплата",
+      "settings": "Настройки"
+    }
   },
   "legal": {
     "back": "На главную"
@@ -343,7 +350,9 @@
   },
   "workspace": {
     "header": {
-      "home": "На главную"
+      "home": "На главную",
+      "cabinet": "Личный кабинет",
+      "switchCompany": "Сменить компанию или посмотреть реквизиты"
     }
   },
   "counterparties": {

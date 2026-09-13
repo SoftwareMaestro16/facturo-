@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 
 import { useRouter } from '@/shared/i18n';
-import { Button } from '@/shared/ui';
+import { Button, IconLogout } from '@/shared/ui';
 
 import { useLogout } from '../api/use-logout';
 
@@ -33,12 +33,14 @@ export function LogoutButton() {
     <div>
       <Button
         variant="ghost"
+        aria-label={t('submit')}
         onClick={() => {
           void runLogout();
         }}
         isLoading={logout.isPending}
       >
-        {t('submit')}
+        <IconLogout className="size-5 shrink-0" />
+        <span className="hidden sm:inline">{t('submit')}</span>
       </Button>
       {logout.isError ? (
         <p role="alert" className="text-sm text-danger-700">
