@@ -6,6 +6,9 @@ import { useEffect, useRef } from 'react';
 /// topographic contour lines from 2D simplex noise. Pure canvas/WebGL, no
 /// external script or iframe. Respects `prefers-reduced-motion` (freezes on
 /// the first frame) and pauses when the tab or the element itself is hidden.
+///
+/// The effect and the simplex-noise GLSL helpers come from open-source work
+/// (MIT); see THIRD_PARTY_NOTICES.md.
 
 const vertexShaderGLSL = `
 attribute vec2 position;

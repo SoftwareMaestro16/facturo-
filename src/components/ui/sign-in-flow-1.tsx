@@ -3,7 +3,8 @@
 import type { ReactNode } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 
-/** Monochrome adaptation of the dot reveal sign-in reference. */
+/// Monochrome adaptation of an open-source dot-reveal sign-in screen (MIT).
+/// Attribution in THIRD_PARTY_NOTICES.md.
 export function SignInPage({
   children,
   navigation,

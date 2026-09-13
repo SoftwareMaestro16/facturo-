@@ -147,7 +147,9 @@
     "footer": {
       "company": "Facturo, Republica Moldova",
       "terms": "Termeni",
-      "privacy": "Confidențialitate"
+      "privacy": "Confidențialitate",
+      "efactura": "Funcționează cu e-Factura",
+      "payments": "Pregătim plata cu cardul prin maib"
     },
     "featuresLabel": "Mai puțină rutină. Mai multă claritate.",
     "featuresTitle": "Totul pentru facturi.\nNimic în plus.",
@@ -218,6 +220,34 @@
     "closing": {
       "title": "Ordinea începe cu prima factură.",
       "body": "Intrați, adăugați compania și începeți lucrul."
+    },
+    "roadmap": {
+      "label": "Ce urmează",
+      "title": "Ce va apărea și în ce condiții.",
+      "intro": "Acum Facturo este gratuit și funcționează în regim de probă. Aici scrie cinstit ce face deja și ce vom porni mai departe — fără date promise.",
+      "nowLabel": "Acum",
+      "nextLabel": "Ce trebuie pentru asta",
+      "efactura": {
+        "title": "Trimiterea facturilor în e-Factura",
+        "now": "Facturo pregătește documentul după regulile e-Factura. Îl semnați și îl trimiteți dumneavoastră, pe portalul fiscului.",
+        "next": "Legătura confirmată cu sistemul fiscului și semnătura electronică a companiei dumneavoastră."
+      },
+      "payment": {
+        "title": "Plata cu cardul",
+        "now": "Facturo este gratuit. Nu aveți ce plăti, iar cardul nu este cerut nicăieri.",
+        "next": "Un cont deschis la bancă pentru încasări. Prețul, termenul și condițiile de returnare le vedeți înainte de prima plată."
+      },
+      "assistant": {
+        "title": "Asistentul care completează factura după o descriere",
+        "now": "Asistentul este pornit de proprietarul companiei, în setări. În afară pleacă doar textul dumneavoastră și prețurile din lista de produse.",
+        "next": "Un acord scris despre felul în care sunt tratate aceste date de cealaltă parte."
+      },
+      "verified": {
+        "title": "Semnul „companie confirmată”",
+        "now": "Compania se adaugă după IDNO, iar noi încă nu verificăm a cui este.",
+        "next": "O cale de a confirma dreptul de a lucra în numele companiei. Cine confirmă primește semnul."
+      },
+      "note": "Nu anunțăm termene și nu luăm bani pentru ceea ce încă nu există. Până când un punct nu este pornit, lucrați așa cum scrie la „Acum”."
     }
   },
   "invoice": {

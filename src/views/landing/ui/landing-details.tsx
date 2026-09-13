@@ -120,6 +120,23 @@ export function LandingDetails() {
           <p className="mt-5 max-w-sm leading-7 text-white/55">{t('faq.intro')}</p>
         </div>
         <div>
+          {/* Built from the same faqKeys and the same t() calls as the
+              accordion below — an FAQPage script that doesn't match what's
+              on screen is worse than no markup at all. */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'FAQPage',
+                mainEntity: faqKeys.map((key) => ({
+                  '@type': 'Question',
+                  name: t(`faq.${key}.q`),
+                  acceptedAnswer: { '@type': 'Answer', text: t(`faq.${key}.a`) },
+                })),
+              }),
+            }}
+          />
           {faqKeys.map((key) => {
             const isOpen = openFaq === key;
             return (

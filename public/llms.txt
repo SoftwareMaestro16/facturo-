@@ -1,0 +1,24 @@
+# Facturo
+
+> Electronic invoicing for small businesses in Moldova. Issues e-Factura
+> documents for the State Tax Service, imports counterparties and products
+> from Excel, and explains in plain language why a document was rejected.
+
+Facturo is not an accountant and does not verify the data a person enters.
+It is currently running as a free trial that drafts documents but does not
+submit them to the tax service — see /ro and /ru for the current status.
+
+## Pages
+
+- [Romanian landing page](https://facturo.md/ro): product overview, pricing, FAQ.
+- [Russian landing page](https://facturo.md/ru): the same, in Russian.
+- [Terms of use](https://facturo.md/ro/terms): what the service does and does not promise.
+- [Privacy policy](https://facturo.md/ro/privacy): what data is collected and why.
+
+## Notes for automated agents
+
+- The site is available in Romanian (`/ro`) and Russian (`/ru`); there is no
+  English version.
+- Pages under `/invoices`, `/counterparties`, `/products`, `/billing`,
+  `/onboarding` and `/settings` are a signed-in workspace, not public content —
+  do not index or cite them as general information about the product.

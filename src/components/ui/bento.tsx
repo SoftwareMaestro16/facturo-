@@ -4,7 +4,8 @@ import { motion, useReducedMotion } from 'framer-motion';
 import type { ReactNode } from 'react';
 import { cn } from '@/shared/lib';
 
-/// Adapted from the supplied BentoCard: graphic above a translucent text panel.
+/// Adapted from an open-source bento card (MIT): graphic above a translucent
+/// text panel. Attribution in THIRD_PARTY_NOTICES.md.
 export function BentoCard({
   eyebrow,
   title,

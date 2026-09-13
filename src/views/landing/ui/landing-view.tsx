@@ -1,15 +1,55 @@
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+import { env } from '@/shared/config';
 import { Link } from '@/shared/i18n';
 import { HeroCanvas, LocaleSwitcher, Logo, TopoField } from '@/shared/ui';
 import { FeatureBento } from './feature-bento';
 import { InvoicePreview } from './invoice-preview';
 import { LandingDetails } from './landing-details';
+import { LandingRoadmap } from './landing-roadmap';
+
+/// AI search and chat products read this before the page text, per the
+/// project's own SEO rules — keep it truthful, not aspirational: a claim here
+/// that outruns the product is exactly the "штраф за пугалку" the landing
+/// copy is written to avoid.
+function organizationJsonLd(locale: string, meta: { title: string; description: string }) {
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Organization',
+        name: 'Facturo',
+        url: env.siteUrl,
+        logo: `${env.siteUrl}/${locale}/opengraph-image`,
+      },
+      {
+        '@type': 'SoftwareApplication',
+        name: 'Facturo',
+        applicationCategory: 'BusinessApplication',
+        operatingSystem: 'Web',
+        description: meta.description,
+        url: `${env.siteUrl}/${locale}`,
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'MDL' },
+      },
+    ],
+    name: meta.title,
+  };
+}
 
 export function LandingView() {
   const t = useTranslations('landing');
+  const meta = useTranslations('meta');
+  const locale = useLocale();
 
   return (
     <div className="bg-surface">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            organizationJsonLd(locale, { title: meta('title'), description: meta('description') }),
+          ),
+        }}
+      />
       <HeroCanvas height="auto" speed={0.45} grain={0.2} className="min-h-dvh text-white">
         <div className="flex min-h-dvh flex-col bg-black/55">
           <header className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 border-b border-white/10 px-6 py-5 sm:px-10">
@@ -87,6 +127,7 @@ export function LandingView() {
             <p className="max-w-xl text-lg text-white/55">{t('featuresIntro')}</p>
           </div>
           <FeatureBento />
+          <LandingRoadmap />
           <LandingDetails />
         </div>
       </main>
@@ -114,11 +155,13 @@ export function LandingView() {
             </p>
             <p className="mt-4 max-w-sm leading-7 text-white/50">{t('hero.subtitle')}</p>
             <div className="mt-6 flex flex-wrap items-center gap-2">
+              {/* A statement of fact, not a badge: neither the tax service nor
+                  the bank has certified or endorsed Facturo. */}
               <span className="rounded-full border border-white/15 px-3 py-1.5 text-xs tracking-wide text-white/45">
-                e-Factura
+                {t('footer.efactura')}
               </span>
               <span className="rounded-full border border-white/15 px-3 py-1.5 text-xs tracking-wide text-white/45">
-                maib
+                {t('footer.payments')}
               </span>
             </div>
           </div>

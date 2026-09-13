@@ -4,6 +4,9 @@ import { useEffect, useRef, type ReactNode } from 'react';
 
 /// A full-bleed animated dark noise background for the landing hero.
 ///
+/// The effect follows open-source animated-noise backgrounds (MIT); see
+/// THIRD_PARTY_NOTICES.md.
+///
 /// Pure canvas/WebGL, no external image or font dependency, so it never breaks
 /// on a blocked CDN. Respects `prefers-reduced-motion` (freezes on the first
 /// frame) and pauses when the tab or the element itself is not visible.

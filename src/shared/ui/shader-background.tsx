@@ -6,6 +6,9 @@ import { useEffect, useRef } from 'react';
 /// the rest of the product. Pure canvas, no external dependency. Respects
 /// `prefers-reduced-motion` (freezes time) and pauses when the tab or the
 /// element itself is hidden.
+///
+/// The effect follows open-source animated-gradient backgrounds (MIT); see
+/// THIRD_PARTY_NOTICES.md.
 
 const vertexShaderGLSL = `attribute vec2 a_position;
 void main() {

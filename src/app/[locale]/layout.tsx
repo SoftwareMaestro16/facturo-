@@ -54,7 +54,9 @@ export async function generateMetadata({
       url: `${env.siteUrl}/${locale}`,
       title: t('title'),
       description: t('description'),
-      images: [{ url: `/og/${locale}.png`, width: 1200, height: 630 }],
+      // The image itself comes from the sibling opengraph-image.tsx file
+      // convention — Next.js wires up og:image/twitter:image from it
+      // automatically, per locale, with no static file to keep in sync.
     },
   };
 }
