@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 
 import { useCurrentUser } from '@/entities/session';
 import { ExportDataButton } from '@/features/account-export';
+import { AiSettingsCard } from '@/features/ai-settings';
 import { CompanyManager } from '@/features/company-manage';
 import { Link } from '@/shared/i18n';
 import { Card, LocaleSwitcher, PageHeader, Skeleton } from '@/shared/ui';
@@ -49,6 +50,8 @@ export function AccountView({ onboarding = false }: { onboarding?: boolean }) {
       </Card>
 
       <CompanyManager />
+
+      <AiSettingsCard />
 
       <Card className="flex flex-col gap-3 sm:p-6">
         <h2 className="text-lg">{t('export.title')}</h2>

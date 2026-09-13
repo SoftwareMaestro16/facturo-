@@ -2,6 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
+import { useEffect } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 
 import { ApiError } from '@/shared/api';
@@ -12,6 +13,7 @@ import { Button, Card, ErrorState, Field, Input } from '@/shared/ui';
 
 import { useCreateInvoice } from '../api/use-create-invoice';
 import { useSendInvoice } from '../api/use-send-invoice';
+import { applyDraft, type InvoiceDraft } from '../model/draft';
 import { invoiceSchema, type InvoiceValues, normaliseQuantity } from '../model/schema';
 
 import { CounterpartyPicker } from './counterparty-picker';
@@ -25,7 +27,7 @@ function today(): string {
 /// The main invoice screen. Two things it makes sure of: the totals shown are
 /// the totals stored (they come from the server), and "Save draft" and
 /// "Send now" are two distinct actions, so nothing gets sent by a stray tap.
-export function InvoiceForm({ locale }: { locale: Locale }) {
+export function InvoiceForm({ locale, draft }: { locale: Locale; draft?: InvoiceDraft }) {
   const t = useTranslations('invoiceCreate');
   const router = useRouter();
   const create = useCreateInvoice();
@@ -41,6 +43,11 @@ export function InvoiceForm({ locale }: { locale: Locale }) {
       lines: [{ name: '', quantity: '1', priceNet: '', vatRate: '20', unit: 'H87' }],
     },
   });
+
+  // Each new proposal replaces the lines once; later typing is the person's own.
+  useEffect(() => {
+    if (draft && draft.lines.length > 0) form.reset(applyDraft(form.getValues(), draft));
+  }, [draft, form]);
 
   const submit = form.handleSubmit(async (values, event) => {
     const wantsSend =

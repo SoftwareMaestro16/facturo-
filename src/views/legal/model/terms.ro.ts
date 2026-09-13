@@ -73,10 +73,10 @@ export const termsRo: LegalDocument = {
       ],
     },
     {
-      heading: '9. Funcții AI viitoare',
+      heading: '9. Asistentul AI',
       paragraphs: [
-        'Procesarea documentelor clienților prin AI extern nu este activată. Înainte de lansare vor fi comunicate scopurile, destinatarii datelor și condițiile de utilizare.',
-        'Recunoașterea și sugestiile viitoare sunt propuneri supuse verificării umane. Asumarea obligațiilor, transmiterea facturilor și plata nu se pot baza exclusiv pe un răspuns neconfirmat al modelului.',
+        'Asistentul AI propune completarea formularului facturii pe baza descrierii vânzării. Este pornit de proprietarul companiei în setări și poate fi oprit oricând; pentru funcționarea sa, datele sunt transmise către OpenAI în volumul descris în Politica de confidențialitate. Numărul de cereri pe zi este limitat.',
+        'Răspunsul modelului este doar o propunere și poate conține erori. Utilizatorul verifică cumpărătorul, pozițiile, cantitățile, prețurile și cotele TVA înainte de salvare și transmitere; răspunderea pentru conținutul documentului rămâne a clientului. Factura nu este salvată și nu este transmisă fără acțiunea unei persoane.',
       ],
     },
     {

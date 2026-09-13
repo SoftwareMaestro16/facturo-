@@ -50,8 +50,8 @@
         "a": "Nu. Serviciul ajută la pregătirea documentelor; clientul verifică datele, cotele fiscale și termenele. Condițiile descriu răspunderile părților, fără a înlătura normele imperative ale legii."
       },
       "ai": {
-        "q": "AI procesează deja documentele mele?",
-        "a": "Nu. Este pregătită baza tehnică pentru AI tools. Înainte de activarea procesării prin AI extern vom descrie furnizorul, datele transmise și verificarea rezultatului."
+        "q": "AI prelucrează documentele mele?",
+        "a": "Numai dacă proprietarul companiei pornește asistentul în setări. Atunci puteți descrie vânzarea în cuvinte, iar asistentul completează formularul facturii — verificarea și salvarea rămân la dumneavoastră. Se trimit doar textul introdus și catalogul de produse; lista cumpărătorilor și documentele rămân la noi."
       },
       "title": "Înainte de început",
       "intro": "Răspunsuri la întrebările de dinaintea primei facturi.",
@@ -605,6 +605,53 @@
       "OWNER": "Proprietar",
       "ACCOUNTANT": "Contabil",
       "VIEWER": "Vizualizare"
+    }
+  },
+  "ai": {
+    "settings": {
+      "title": "Asistentul AI",
+      "description": "Descrieți vânzarea în cuvinte simple — asistentul completează ciorna facturii: cumpărătorul, pozițiile, cantitățile și prețurile. Verificarea și salvarea rămân la dumneavoastră.",
+      "sent": "Se trimite: textul introdus și denumirile, prețurile și cotele TVA ale produselor dumneavoastră.",
+      "notSent": "Nu se trimite: lista cumpărătorilor, documentele, datele bancare și datele de intrare.",
+      "provider": "Prelucrarea o face OpenAI (SUA) la cererea noastră. Îi solicităm OpenAI să nu păstreze răspunsurile.",
+      "on": "Asistentul este pornit",
+      "off": "Asistentul este oprit",
+      "usage": "Azi ați folosit {used} din {limit}",
+      "turnOn": "Porniți asistentul",
+      "turnOff": "Opriți asistentul",
+      "ownerOnly": "Asistentul poate fi pornit sau oprit de proprietarul companiei.",
+      "failed": "Nu am putut salva. Încercați din nou.",
+      "unavailable": "Asistentul nu este conectat încă.",
+      "loadFailed": "Nu am putut încărca setările asistentului.",
+      "retry": "Încercați din nou",
+      "privacy": "Detalii — în <link>Politica de confidențialitate</link>."
+    },
+    "draft": {
+      "title": "Completați factura din descriere",
+      "label": "Descrieți ce și cui ați vândut",
+      "placeholder": "De exemplu: 2 ore de consultanță câte 500 lei și un logo cu 3000 pentru Atelier Nord",
+      "review": "Asistentul doar completează formularul. Verificați totul înainte de salvare.",
+      "submit": "Completați formularul",
+      "filled": "Formularul este completat. Verificați cumpărătorul, pozițiile și prețurile.",
+      "disabled": "Asistentul este oprit. Proprietarul companiei îl poate porni în <link>setări</link>.",
+      "errors": {
+        "ai_disabled": "Asistentul a fost oprit de proprietarul companiei.",
+        "ai_quota_exceeded": "Cererile pentru azi s-au terminat. Mâine contorul începe din nou.",
+        "ai_unavailable": "Asistentul nu este disponibil acum. Completați factura manual.",
+        "ai_busy": "Asistentul nu a răspuns la timp. Încercați din nou peste un minut.",
+        "ai_refused": "Asistentul nu a putut înțelege acest text. Descrieți vânzarea mai simplu.",
+        "ai_failed": "Nu am reușit să completăm formularul. Încercați din nou.",
+        "ai_nothing_found": "În text nu am găsit poziții. Scrieți ce ați vândut, câte și la ce preț.",
+        "generic": "Nu am reușit să completăm formularul. Încercați din nou."
+      },
+      "warnings": {
+        "buyer_not_found": "Cumpărătorul „{name}” nu este în lista dumneavoastră — alegeți-l sau adăugați-l.",
+        "buyer_ambiguous": "Se potrivesc mai mulți cumpărători — alegeți-l pe cel corect.",
+        "price_missing": "Unele poziții nu au preț — completați-l.",
+        "vat_assumed": "Pentru unele poziții s-a pus TVA 20% — verificați cota.",
+        "lines_truncated": "Au fost preluate doar primele 20 de poziții.",
+        "line_dropped": "O parte din text nu a putut fi înțeleasă — verificați pozițiile."
+      }
     }
   }
 }

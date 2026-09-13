@@ -1221,6 +1221,119 @@
         ]
       }
     },
+    "/api/ai/status": {
+      "get": {
+        "operationId": "AiController_status",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AiStatusResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "ai"
+        ]
+      }
+    },
+    "/api/ai/settings": {
+      "put": {
+        "operationId": "AiController_updateSettings",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AiSettingsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AiStatusResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "ai"
+        ]
+      }
+    },
+    "/api/ai/invoice-draft": {
+      "post": {
+        "operationId": "AiController_draftInvoice",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvoiceDraftDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoiceDraftResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "ai_disabled"
+          },
+          "422": {
+            "description": "ai_nothing_found | ai_refused"
+          },
+          "429": {
+            "description": "ai_quota_exceeded"
+          },
+          "502": {
+            "description": "ai_failed"
+          },
+          "503": {
+            "description": "ai_unavailable | ai_busy"
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "ai"
+        ]
+      }
+    },
     "/api/health": {
       "get": {
         "operationId": "HealthController_check",
@@ -2775,6 +2888,141 @@
           "totalRows",
           "okRows",
           "errors"
+        ]
+      },
+      "AiStatusResponse": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "The company owner turned the assistant on"
+          },
+          "enabledAt": {
+            "type": "string",
+            "nullable": true
+          },
+          "available": {
+            "type": "boolean",
+            "description": "A provider is connected on this server"
+          },
+          "usedToday": {
+            "type": "number"
+          },
+          "dailyLimit": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "enabled",
+          "enabledAt",
+          "available",
+          "usedToday",
+          "dailyLimit"
+        ]
+      },
+      "AiSettingsDto": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "enabled"
+        ]
+      },
+      "InvoiceDraftDto": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "example": "2 часа консультации по 500 лей для Atelier Nord"
+          },
+          "locale": {
+            "type": "string",
+            "enum": [
+              "ru",
+              "ro"
+            ]
+          }
+        },
+        "required": [
+          "text",
+          "locale"
+        ]
+      },
+      "InvoiceDraftLine": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "string",
+            "example": "2"
+          },
+          "priceNet": {
+            "type": "string",
+            "nullable": true,
+            "example": "500.00"
+          },
+          "vatRate": {
+            "type": "string",
+            "enum": [
+              "20",
+              "8",
+              "0"
+            ]
+          },
+          "productId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "required": [
+          "name",
+          "quantity",
+          "priceNet",
+          "vatRate",
+          "productId"
+        ]
+      },
+      "InvoiceDraftResponse": {
+        "type": "object",
+        "properties": {
+          "counterpartyId": {
+            "type": "string",
+            "nullable": true
+          },
+          "buyerName": {
+            "type": "string",
+            "nullable": true,
+            "description": "Buyer as the person wrote it"
+          },
+          "notes": {
+            "type": "string",
+            "nullable": true
+          },
+          "lines": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InvoiceDraftLine"
+            }
+          },
+          "warnings": {
+            "description": "buyer_not_found | buyer_ambiguous | price_missing | vat_assumed | lines_truncated | line_dropped",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "counterpartyId",
+          "buyerName",
+          "notes",
+          "lines",
+          "warnings"
         ]
       }
     }

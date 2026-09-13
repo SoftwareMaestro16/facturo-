@@ -40,7 +40,8 @@ export const privacyRo: LegalDocument = {
       paragraphs: [
         'Google participă la autentificare și prelucrează date potrivit propriilor condiții. Baza de date a proiectului utilizează Supabase. Accesul furnizorilor de infrastructură este limitat la necesitățile serviciului.',
         'Lista exactă a entităților furnizoare, regiunile, garanțiile contractuale și ștergerea copiilor de siguranță trebuie confirmate înainte de lansarea comercială. Transferurile internaționale necesită temeiurile și garanțiile prevăzute de legislația Republicii Moldova.',
-        'Transmiterea către e-Factura are loc numai prin integrarea reală activată. Integrarea de plată și transmiterea documentelor către AI extern nu sunt activate. Existența unei baze tehnice nu constituie transmitere de date.',
+        'Transmiterea către e-Factura are loc numai prin integrarea reală activată. Integrarea de plată nu este activată.',
+        'Asistentul AI funcționează numai dacă proprietarul companiei l-a pornit în setări. Atunci, la apăsarea „Completați formularul”, textul introdus de utilizator, precum și denumirile, prețurile și cotele TVA ale produselor companiei sunt transmise către OpenAI (SUA) pentru pregătirea ciornei. Lista cumpărătorilor, documentele, datele bancare și datele de intrare nu sunt transmise. Solicităm OpenAI să nu păstreze răspunsurile; OpenAI poate păstra temporar cererile în scop de securitate, potrivit propriilor reguli. Textul cererii și răspunsul nu sunt păstrate în Facturo — doar mențiunea cererii și volumul ei. Transferul către SUA necesită garanțiile prevăzute de legislația Republicii Moldova; formalizarea lor trebuie verificată înainte de lansarea comercială.',
         'Divulgarea către autorități se face numai cu temei legal și în volumul necesar. Datele nu sunt vândute ca produs distinct.',
       ],
     },
@@ -78,7 +79,7 @@ export const privacyRo: LegalDocument = {
     {
       heading: '9. Decizii automate și modificări',
       paragraphs: [
-        'Versiunea actuală nu utilizează un model AI extern pentru decizii despre utilizatori sau analiza documentelor. Înainte de schimbarea scopurilor ori destinatarilor se actualizează politica și informările.',
+        'Asistentul AI doar propune completarea formularului facturii: nu ia decizii despre utilizatori și nu salvează sau transmite documente. Rezultatul este arătat persoanei pentru verificare și corectare. Înainte de schimbarea scopurilor ori destinatarilor se actualizează politica și informările.',
         'Se aplică legislația Republicii Moldova, inclusiv Legea nr. 195/2024. Data versiunii apare la început; modificările esențiale sunt comunicate înainte de prelucrarea nouă.',
       ],
     },
