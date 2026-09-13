@@ -39,7 +39,7 @@ function FeatureGraphic({ index, label }: { index: number; label: string }) {
   if (index === 0)
     return (
       <>
-        <CardGlow className="inset-y-0 left-0 w-3/5 opacity-40" />
+        <CardGlow className="inset-0 opacity-40" />
         <div className="relative flex h-full w-full max-w-xs items-center justify-center">
           <div className="w-full rotate-[-5deg] rounded-2xl border border-white/25 bg-white/10 p-6 transition-transform duration-300 group-hover:rotate-0 group-hover:scale-[1.03]">
             <div className="flex justify-between text-sm">
@@ -62,7 +62,7 @@ function FeatureGraphic({ index, label }: { index: number; label: string }) {
   if (index === 1)
     return (
       <>
-        <CardGlow className="inset-y-0 right-0 w-3/5 opacity-40" />
+        <CardGlow className="inset-0 opacity-40" />
         <div className="relative flex h-full w-full max-w-sm items-center justify-center">
           <div className="w-full rounded-xl border border-white/15 bg-white/5 transition-transform duration-300 group-hover:-translate-y-1">
             <div className="border-b border-white/10 p-3 text-xs text-white/50">{label} · .xlsx</div>
