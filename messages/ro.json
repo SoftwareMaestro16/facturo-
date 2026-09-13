@@ -1,4 +1,21 @@
 {
+  "billing": {
+    "title": "Plan și plăți",
+    "intro": "Alegeți ritmul de lucru pentru companie. Plata online este în pregătire.",
+    "plans": {
+      "FREE": "Primele documente",
+      "STARTER": "Activitate zilnică",
+      "BUSINESS": "Afacere în creștere"
+    },
+    "details": {
+      "FREE": "Documente și cataloage de bază pentru început.",
+      "STARTER": "Pentru facturare regulată și lucrul în echipă.",
+      "BUSINESS": "Pentru volume mari de documente și mai mulți participanți."
+    },
+    "preview": "Prezentare preliminară",
+    "payments": "Gestionarea plăților",
+    "unavailable": "Abonamentele nu pot fi activate încă. Nu solicităm date de plată aici; condițiile disponibile vor apărea la lansarea plăților."
+  },
   "meta": {
     "title": "Facturo — facturi electronice pentru afaceri mici",
     "description": "Emiteți e-Factura în trei clicuri, importați contragenții din Excel și vedeți clar de ce a fost respins un document. Fără program de contabilitate."
@@ -71,6 +88,58 @@
       "ready": "Date completate",
       "caption": "Un document clar — până la ultima linie."
     },
+    "sphere": {
+      "invoice": {
+        "label": "FAC",
+        "title": "Facturi",
+        "body": "Ciornele, sumele și TVA-ul stau într-un singur flux de lucru."
+      },
+      "excel": {
+        "label": "XLS",
+        "title": "Excel",
+        "body": "Listele din tabele ajung mai repede în sistem."
+      },
+      "xml": {
+        "label": "XML",
+        "title": "e-Factura",
+        "body": "Documentele sunt pregătite pentru formatul de stat."
+      },
+      "company": {
+        "label": "SRL",
+        "title": "Companii",
+        "body": "Mai multe companii funcționează cu aceeași intrare Google."
+      },
+      "vat": {
+        "label": "TVA",
+        "title": "TVA",
+        "body": "Cotele și totalurile se calculează fără tabele manuale."
+      },
+      "ro": {
+        "label": "RO",
+        "title": "Română",
+        "body": "Interfața rămâne clară pentru echipă și clienți."
+      },
+      "ru": {
+        "label": "RU",
+        "title": "Rusă",
+        "body": "Puteți lucra în limba care vă este comodă."
+      },
+      "error": {
+        "label": "!",
+        "title": "Verificări",
+        "body": "Erorile apar lângă locul care trebuie corectat."
+      },
+      "buyer": {
+        "label": "ID",
+        "title": "Contragenți",
+        "body": "IDNO, contacte și date bancare sunt păstrate în liste."
+      },
+      "product": {
+        "label": "MDL",
+        "title": "Poziții",
+        "body": "Produsele și serviciile sunt gata pentru factura nouă."
+      }
+    },
     "closing": {
       "title": "Ordinea începe cu prima factură.",
       "body": "Intrați, adăugați compania și începeți lucrul."
@@ -135,7 +204,10 @@
   "auth": {
     "login": {
       "title": "Intrare în cont",
-      "subtitle": "Continuăm de unde ați rămas.",
+      "subtitle": "Alegeți contul Google. Dacă nu aveți încă o companie, Facturo deschide cabinetul și cere datele acolo.",
+      "eyebrow": "O singură intrare pentru toate companiile",
+      "createAccount": "Creați un cont",
+      "companyLater": "Denumirea companiei, IDNO și TVA se completează după intrare, în cabinet.",
       "email": "E-mail",
       "password": "Parolă",
       "submit": "Intrați",
@@ -151,7 +223,9 @@
     },
     "register": {
       "title": "Creați un cont",
-      "subtitle": "Aveți nevoie doar de câteva date despre compania dumneavoastră.",
+      "subtitle": "Înregistrarea începe cu un cont Google. Datele companiei se adaugă apoi în cabinet.",
+      "eyebrow": "Google, apoi compania",
+      "signIn": "Intrați",
       "companyName": "Denumirea companiei",
       "idno": "IDNO",
       "idnoHint": "13 cifre. Îl găsiți în certificatul de înregistrare.",
@@ -165,7 +239,7 @@
       "submit": "Creați contul",
       "retry": "Încercați din nou",
       "haveAccount": "Aveți deja un cont? <login>Intrați</login>.",
-      "consent": "Creând un cont, sunteți de acord cu <terms>Termenii și condițiile</terms> și cu <privacy>Politica de confidențialitate</privacy>.",
+      "consent": "Continuând prin Google, sunteți de acord cu <terms>Termenii și condițiile</terms> și cu <privacy>Politica de confidențialitate</privacy>.",
       "backToLanding": "Pagina principală",
       "errors": {
         "company_too_short": "Introduceți denumirea completă a companiei.",
@@ -191,12 +265,12 @@
       "companyName": "Denumirea companiei",
       "createCompany": "Înregistrați compania",
       "chooseAnother": "Alegeți alt cont Google",
-      "orEmail": "Sau folosiți adresa de e-mail și parola de mai jos.",
+      "orEmail": "",
       "retry": "Încercați din nou",
       "register": "Înregistrați compania",
-      "generic": "Nu am reușit să vă conectăm prin Google. Încercați din nou sau folosiți e-mailul și parola.",
+      "generic": "Nu am reușit să vă conectăm prin Google. Încercați din nou.",
       "google_invalid": "Alegerea contului Google a expirat. Alegeți-l din nou.",
-      "google_unavailable": "Intrarea prin Google nu este disponibilă acum. Folosiți e-mailul și parola.",
+      "google_unavailable": "Intrarea prin Google nu este disponibilă acum. Încercați mai târziu.",
       "google_registration_required": "Compania nu este încă înregistrată prin Google. Mergeți la înregistrare.",
       "email_taken": "Această adresă este deja folosită. Intrați cu parola aleasă la înregistrare.",
       "company_exists": "Acest IDNO este deja înregistrat. Intrați în compania existentă.",

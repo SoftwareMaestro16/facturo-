@@ -15,7 +15,7 @@ export function AppHeader() {
 
   return (
     <header className="border-b border-line bg-surface">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-3">
+      <div className="mx-auto flex w-full max-w-[1600px] items-center justify-between gap-4 px-6 py-5">
         <Link href="/invoices" aria-label={t('home')}>
           <Logo />
         </Link>

@@ -14,7 +14,14 @@ export function Logo({ className, inverted = false }: LogoProps) {
       <span className={cn('text-lg font-extrabold tracking-[-0.03em]', inverted ? 'text-white' : 'text-ink')}>
         factur
       </span>
-      <span className="text-lg font-extrabold tracking-[-0.03em] text-brand-600">o</span>
+      <span
+        className={cn(
+          'text-lg font-extrabold tracking-[-0.03em]',
+          inverted ? 'text-white/55' : 'text-ink-muted',
+        )}
+      >
+        o
+      </span>
     </span>
   );
 }

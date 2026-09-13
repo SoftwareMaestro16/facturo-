@@ -10,15 +10,15 @@ import { SessionBoundary } from '@/entities/session';
 export default function WorkspaceLayout({ children }: { children: ReactNode }) {
   return (
     <SessionBoundary>
-      <div className="flex min-h-dvh flex-col bg-surface-sunken">
+      <div className="workspace-theme flex min-h-dvh flex-col bg-surface-sunken">
         <AppHeader />
 
-        <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-4 px-4 py-4 sm:flex-row">
-          <aside className="w-full sm:w-56 sm:shrink-0">
+        <div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col gap-6 px-4 py-6 sm:flex-row sm:px-6">
+          <aside className="w-full rounded-3xl border border-line bg-surface p-3 sm:sticky sm:top-6 sm:h-fit sm:w-56 sm:shrink-0">
             <AppNav />
           </aside>
 
-          <main className="min-w-0 flex-1">{children}</main>
+          <main className="min-w-0 flex-1 rounded-3xl border border-line bg-surface/90">{children}</main>
         </div>
       </div>
     </SessionBoundary>

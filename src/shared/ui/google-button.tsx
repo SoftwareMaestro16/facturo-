@@ -71,7 +71,7 @@ export function GoogleButton({
         onReady={() => setReady(true)}
         onError={onError}
       />
-      <div ref={container} className="min-h-11" />
+      <div ref={container} className="flex min-h-11 justify-center" />
       {!ready || !nonce ? (
         <p role="status" className="text-sm text-ink-muted">
           {t('loading')}

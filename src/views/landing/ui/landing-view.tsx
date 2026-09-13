@@ -6,6 +6,7 @@ import { InvoicePreview } from './invoice-preview';
 
 export function LandingView() {
   const t = useTranslations('landing');
+
   return (
     <div className="bg-surface">
       <HeroCanvas height="auto" speed={0.45} grain={0.2} className="min-h-dvh text-white">
@@ -27,7 +28,7 @@ export function LandingView() {
               </Link>
             </div>
           </header>
-          <section className="mx-auto grid w-full max-w-7xl flex-1 items-center gap-12 px-6 py-8 sm:px-10 sm:py-16 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
+          <section className="mx-auto grid w-full max-w-7xl flex-1 items-center gap-10 px-6 py-8 sm:px-10 sm:py-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14">
             <div>
               <p className="mb-7 inline-flex items-center gap-3 rounded-full border border-white/20 px-4 py-2 text-xs tracking-wide text-white/75">
                 <span className="h-1.5 w-1.5 rounded-full bg-white" />
@@ -57,7 +58,7 @@ export function LandingView() {
               </div>
               <p className="mt-5 text-sm text-white/45">{t('hero.note')}</p>
             </div>
-            <div className="hidden lg:block">
+            <div className="min-h-[360px] lg:min-h-[520px]">
               <InvoicePreview />
             </div>
           </section>
@@ -70,39 +71,61 @@ export function LandingView() {
           </div>
         </div>
       </HeroCanvas>
-      <main id="features" className="mx-auto max-w-7xl scroll-mt-6 px-6 py-20 sm:px-10 sm:py-28">
-        <div className="mb-10 flex max-w-3xl flex-col gap-4">
-          <p className="text-xs font-semibold tracking-[0.16em] text-ink-muted uppercase">
-            {t('featuresLabel')}
-          </p>
-          <h2 className="text-4xl leading-tight font-medium tracking-tight sm:text-5xl">
-            {t('featuresTitle')}
-          </h2>
-          <p className="max-w-xl text-lg text-ink-muted">{t('featuresIntro')}</p>
-        </div>
-        <FeatureBento />
-        <section className="mt-20 flex flex-col items-start justify-between gap-7 border-t border-line pt-12 sm:flex-row sm:items-center">
-          <div>
-            <h2 className="text-3xl">{t('closing.title')}</h2>
-            <p className="mt-3 text-ink-muted">{t('closing.body')}</p>
+      <main id="features" className="scroll-mt-6 bg-black text-white">
+        <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 sm:py-28">
+          <div className="mb-10 flex max-w-3xl flex-col gap-4">
+            <p className="text-xs font-semibold tracking-[0.16em] text-white/45 uppercase">
+              {t('featuresLabel')}
+            </p>
+            <h2 className="text-4xl leading-tight font-medium tracking-tight sm:text-5xl">
+              {t('featuresTitle')}
+            </h2>
+            <p className="max-w-xl text-lg text-white/55">{t('featuresIntro')}</p>
           </div>
-          <Link
-            href="/register"
-            className="inline-flex min-h-14 shrink-0 items-center gap-8 rounded-full bg-ink px-7 font-semibold text-surface"
-          >
-            {t('hero.primaryCta')}
-            <span aria-hidden="true">↗</span>
-          </Link>
-        </section>
+          <FeatureBento />
+          <section className="mt-20 flex flex-col items-start justify-between gap-7 border-t border-white/10 pt-12 sm:flex-row sm:items-center">
+            <div>
+              <h2 className="text-3xl">{t('closing.title')}</h2>
+              <p className="mt-3 text-white/55">{t('closing.body')}</p>
+            </div>
+            <Link
+              href="/register"
+              className="inline-flex min-h-14 shrink-0 items-center gap-8 rounded-full bg-white px-7 font-semibold text-black transition-colors hover:bg-white/85"
+            >
+              {t('hero.primaryCta')}
+              <span aria-hidden="true">↗</span>
+            </Link>
+          </section>
+        </div>
       </main>
-      <footer className="border-t border-line">
-        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-8 text-sm text-ink-muted sm:flex-row sm:items-center sm:justify-between sm:px-10">
-          <Logo />
+      <footer className="border-t border-white/10 bg-black text-white">
+        <div className="mx-auto grid max-w-7xl gap-10 px-6 pt-16 pb-10 sm:grid-cols-2 sm:px-10">
+          <div>
+            <p className="text-6xl font-medium tracking-[-0.07em] sm:text-8xl">
+              facturo<span className="text-white/30">.</span>
+            </p>
+            <p className="mt-5 max-w-sm leading-7 text-white/50">{t('hero.subtitle')}</p>
+          </div>
+          <div className="flex flex-col items-start gap-5 sm:items-end">
+            <Link
+              href="/register"
+              className="rounded-full border border-white/25 px-6 py-3 hover:bg-white hover:text-black"
+            >
+              {t('hero.primaryCta')} ↗
+            </Link>
+            <a href="#features" className="text-white/60 hover:text-white">
+              {t('nav.features')}
+            </a>
+            <span className="font-mono text-sm tracking-widest text-white/35">XML / e-Factura · RO / RU</span>
+          </div>
+        </div>
+        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-8 text-sm text-white/50 sm:flex-row sm:items-center sm:justify-between sm:px-10">
+          <Logo inverted />
           <span>{t('footer.company')}</span>
           <nav className="flex flex-wrap items-center gap-5">
             <Link href="/terms">{t('footer.terms')}</Link>
             <Link href="/privacy">{t('footer.privacy')}</Link>
-            <LocaleSwitcher />
+            <LocaleSwitcher inverted />
           </nav>
         </div>
       </footer>

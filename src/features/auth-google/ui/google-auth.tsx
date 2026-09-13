@@ -40,7 +40,7 @@ export function GoogleAuth({ mode }: { mode: 'login' | 'register' }) {
   });
   if (!enabled) return null;
   return (
-    <div className="mb-6 flex flex-col gap-4 border-b border-line pb-6">
+    <div className="flex flex-col gap-4">
       <div className={mutation.isPending ? 'pointer-events-none opacity-60' : ''}>
         <GoogleButton
           nonce={challenge.data?.data.nonce ?? ''}
@@ -69,7 +69,6 @@ export function GoogleAuth({ mode }: { mode: 'login' | 'register' }) {
           </Button>
         </div>
       ) : null}
-      <p className="text-sm text-ink-muted">{t('orEmail')}</p>
     </div>
   );
 }

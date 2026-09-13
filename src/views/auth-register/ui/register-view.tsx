@@ -1,45 +1,50 @@
 import { useTranslations } from 'next-intl';
-
-import { RegisterForm } from '@/features/auth-register';
+import { SignInPage } from '@/components/ui/sign-in-flow-1';
 import { GoogleAuth } from '@/features/auth-google';
 import { Link } from '@/shared/i18n';
-import { Card, Logo } from '@/shared/ui';
-
+import { LocaleSwitcher, Logo } from '@/shared/ui';
 export function RegisterView() {
   const t = useTranslations('auth.register');
-
+  const legal = useTranslations('auth.register');
   return (
-    <div className="flex min-h-dvh flex-col items-center bg-surface-sunken px-4 py-10">
-      <div className="mb-6">
-        <Link href="/" aria-label={t('backToLanding')}>
-          <Logo />
-        </Link>
+    <SignInPage
+      navigation={
+        <>
+          <Link href="/" aria-label={t('backToLanding')}>
+            <Logo inverted />
+          </Link>
+          <div className="flex items-center gap-4">
+            <LocaleSwitcher inverted />
+            <Link
+              href="/login"
+              className="rounded-full border border-white/20 px-4 py-2 text-sm text-white/70 hover:text-white"
+            >
+              {t('signIn')}
+            </Link>
+          </div>
+        </>
+      }
+    >
+      <p className="mb-6 text-xs tracking-[0.2em] text-white/45 uppercase">{t('eyebrow')}</p>
+      <h1 className="text-5xl leading-[1.1] font-medium tracking-tight">{t('title')}</h1>
+      <p className="mt-5 text-lg leading-8 font-light text-white/55">{t('subtitle')}</p>
+      <div className="mt-10 rounded-3xl border border-white/15 bg-white/5 px-5 py-4 backdrop-blur-sm">
+        <GoogleAuth mode="register" />
       </div>
-
-      <Card className="w-full max-w-md">
-        <h1 className="text-2xl">{t('title')}</h1>
-        <p className="mt-1 text-body text-ink-muted">{t('subtitle')}</p>
-
-        <div className="mt-6">
-          <GoogleAuth mode="register" />
-          <RegisterForm />
-        </div>
-      </Card>
-
-      <p className="mt-4 max-w-md text-center text-sm text-ink-muted">
-        {t.rich('consent', {
+      <p className="mt-10 text-xs leading-6 text-white/40">
+        {legal.rich('consent', {
           terms: (chunks) => (
-            <Link href="/terms" className="underline">
+            <Link href="/terms" className="underline underline-offset-4 hover:text-white">
               {chunks}
             </Link>
           ),
           privacy: (chunks) => (
-            <Link href="/privacy" className="underline">
+            <Link href="/privacy" className="underline underline-offset-4 hover:text-white">
               {chunks}
             </Link>
           ),
         })}
       </p>
-    </div>
+    </SignInPage>
   );
 }
