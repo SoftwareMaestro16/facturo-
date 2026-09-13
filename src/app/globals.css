@@ -82,27 +82,11 @@
 }
 .google-button-shell {
   scale: 1.18;
-  transition:
-    transform 200ms ease,
-    scale 200ms ease,
-    filter 200ms ease;
 }
 .google-button-shell:focus-within {
   outline: 2px solid #fff;
   outline-offset: 4px;
   border-radius: 9999px;
-}
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .google-button-shell:hover {
-    transform: translateY(-2px);
-    scale: 1.18;
-    filter: drop-shadow(0 10px 26px rgb(255 255 255 / 0.14));
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .google-button-shell {
-    transition: none;
-  }
 }
 .workspace-theme {
   color-scheme: dark;
