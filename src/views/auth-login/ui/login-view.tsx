@@ -44,7 +44,7 @@ export function LoginView() {
       <h1 className="text-5xl leading-[1.1] font-medium tracking-tight">{t('title')}</h1>
       <p className="mt-5 text-lg leading-8 font-light text-white/55">{t('subtitle')}</p>
       <div className="mt-10">
-        <GoogleAuth mode="login" />
+        <GoogleAuth />
       </div>
       <p className="mt-6 text-sm text-white/55">
         {t.rich('noAccount', {

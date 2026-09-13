@@ -80,9 +80,6 @@
     animation: none;
   }
 }
-.google-button-shell {
-  scale: 1.18;
-}
 .workspace-backdrop {
   background-image: radial-gradient(circle, rgb(255 255 255 / 0.07) 1px, transparent 1.5px);
   background-size: 22px 22px;

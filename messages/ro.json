@@ -383,7 +383,8 @@
       "email_taken": "Această adresă este deja folosită. Intrați cu parola aleasă la înregistrare.",
       "company_exists": "Acest IDNO este deja înregistrat. Intrați în compania existentă.",
       "invalid_credentials": "Intrarea nu este disponibilă acum. Încercați mai târziu.",
-      "terms_outdated": "Condițiile au fost actualizate. Reîncărcați pagina, citiți noua versiune și intrați din nou."
+      "terms_outdated": "Condițiile au fost actualizate. Reîncărcați pagina, citiți noua versiune și intrați din nou.",
+      "button": "Intrați cu Google"
     }
   },
   "workspace": {

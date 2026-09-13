@@ -184,31 +184,20 @@
         ]
       }
     },
-    "/api/auth/google/challenge": {
-      "get": {
-        "operationId": "GoogleController_challenge",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GoogleChallengeResponse"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "auth"
-        ]
-      }
-    },
     "/api/auth/google": {
       "post": {
         "operationId": "GoogleController_authenticate",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "X-Requested-With",
+            "in": "header",
+            "description": "Must be XMLHttpRequest",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -235,6 +224,9 @@
           },
           "401": {
             "description": "google_invalid"
+          },
+          "403": {
+            "description": "google_invalid — the request did not come from our page"
           }
         },
         "tags": [
@@ -1769,22 +1761,12 @@
           "newPassword"
         ]
       },
-      "GoogleChallengeResponse": {
-        "type": "object",
-        "properties": {
-          "nonce": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "nonce"
-        ]
-      },
       "GoogleAuthDto": {
         "type": "object",
         "properties": {
-          "credential": {
-            "type": "string"
+          "code": {
+            "type": "string",
+            "description": "One-time authorization code returned by the Google sign-in popup"
           },
           "termsVersion": {
             "type": "string",
@@ -1793,7 +1775,7 @@
           }
         },
         "required": [
-          "credential",
+          "code",
           "termsVersion"
         ]
       },
