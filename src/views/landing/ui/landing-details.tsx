@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { Link } from '@/shared/i18n';
+import { ShaderBackground } from '@/shared/ui';
 
 const faqKeys = ['google', 'companies', 'import', 'payment', 'responsibility', 'ai'] as const;
 
@@ -32,76 +33,82 @@ export function LandingDetails() {
           ))}
         </div>
       </section>
-      <section id="pricing" className="mt-24 scroll-mt-10 sm:mt-32">
-        <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
-          <div>
-            <p className="text-xs tracking-[0.2em] text-white/45 uppercase">{t('pricing.label')}</p>
-            <h2 className="mt-5 max-w-2xl text-4xl font-medium tracking-tight sm:text-5xl">
-              {t('pricing.title')}
-            </h2>
+      <section
+        id="pricing"
+        className="relative left-1/2 w-screen -translate-x-1/2 mt-24 scroll-mt-10 py-16 sm:mt-32 sm:py-20"
+      >
+        <ShaderBackground className="opacity-70" />
+        <div className="relative mx-auto max-w-7xl px-6 sm:px-10">
+          <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+            <div>
+              <p className="text-xs tracking-[0.2em] text-white/45 uppercase">{t('pricing.label')}</p>
+              <h2 className="mt-5 max-w-2xl text-4xl font-medium tracking-tight sm:text-5xl">
+                {t('pricing.title')}
+              </h2>
+            </div>
+            <span className="w-fit rounded-full border border-white/20 px-4 py-2 text-xs text-white/60">
+              {t('pricing.preview')}
+            </span>
           </div>
-          <span className="w-fit rounded-full border border-white/20 px-4 py-2 text-xs text-white/60">
-            {t('pricing.preview')}
-          </span>
-        </div>
-        <p className="mt-6 max-w-2xl leading-7 text-white/55">{t('pricing.intro')}</p>
-        <div className="pricing-grid mt-14 grid gap-6 lg:grid-cols-3">
-          {plans.map((plan) => (
-            <article
-              key={plan.code}
-              className={`pricing-card relative isolate flex flex-col rounded-3xl border p-7 sm:p-8 ${plan.code === 'STARTER' ? 'pricing-featured border-white bg-white text-black' : 'border-white/15 bg-white/[0.025] text-white'}`}
-            >
-              {plan.code === 'STARTER' && (
-                <span className="absolute -top-3 left-7 rounded-full border border-white/25 bg-black px-4 py-1 text-[11px] tracking-wider text-white">
-                  {t('pricing.featured')}
-                </span>
-              )}
-              <div className="flex items-center justify-between gap-3">
-                <h3 className="text-sm font-medium tracking-widest">{plan.code}</h3>
-                <span className="text-xs opacity-50">{t(`pricing.${plan.code}.label`)}</span>
-              </div>
-              <p className="mt-8">
-                <span className="text-6xl font-medium tracking-[-0.06em]">{plan.price}</span>
-                <span className="ml-3 text-sm opacity-50">MDL / {t('pricing.month')}</span>
-              </p>
-              <p className="mt-5 min-h-14 text-sm leading-6 opacity-60">{t(`pricing.${plan.code}.body`)}</p>
-              <ul className="my-8 space-y-4 border-t border-current/15 pt-7 text-sm">
-                <li>
-                  ✓{' '}
-                  <span className="ml-2">
-                    {plan.documents === null
-                      ? t('pricing.unlimitedDocuments')
-                      : t('pricing.documents', { count: plan.documents })}
-                  </span>
-                </li>
-                <li>
-                  ✓{' '}
-                  <span className="ml-2">
-                    {plan.users === null
-                      ? t('pricing.unlimitedUsers')
-                      : t('pricing.users', { count: plan.users })}
-                  </span>
-                </li>
-                <li>
-                  ✓ <span className="ml-2">{t('pricing.catalogs')}</span>
-                </li>
-                <li>
-                  ✓ <span className="ml-2">{t('pricing.languages')}</span>
-                </li>
-              </ul>
-              <Link
-                href="/register"
-                className={`pricing-cta mt-auto flex min-h-12 items-center justify-between rounded-full px-5 text-sm font-medium ${plan.code === 'STARTER' ? 'bg-black text-white' : 'border border-white/25'}`}
+          <p className="mt-6 max-w-2xl leading-7 text-white/55">{t('pricing.intro')}</p>
+          <div className="pricing-grid mt-14 grid gap-6 lg:grid-cols-3">
+            {plans.map((plan) => (
+              <article
+                key={plan.code}
+                className={`pricing-card relative isolate flex flex-col rounded-3xl border p-7 sm:p-8 ${plan.code === 'STARTER' ? 'pricing-featured border-white bg-white text-black' : 'border-white/15 bg-white/[0.025] text-white'}`}
               >
-                {t('pricing.cta')}{' '}
-                <span aria-hidden="true" className="pricing-arrow">
-                  ↗
-                </span>
-              </Link>
-            </article>
-          ))}
+                {plan.code === 'STARTER' && (
+                  <span className="absolute -top-3 left-7 rounded-full border border-white/25 bg-black px-4 py-1 text-[11px] tracking-wider text-white">
+                    {t('pricing.featured')}
+                  </span>
+                )}
+                <div className="flex items-center justify-between gap-3">
+                  <h3 className="text-sm font-medium tracking-widest">{plan.code}</h3>
+                  <span className="text-xs opacity-50">{t(`pricing.${plan.code}.label`)}</span>
+                </div>
+                <p className="mt-8">
+                  <span className="text-6xl font-medium tracking-[-0.06em]">{plan.price}</span>
+                  <span className="ml-3 text-sm opacity-50">MDL / {t('pricing.month')}</span>
+                </p>
+                <p className="mt-5 min-h-14 text-sm leading-6 opacity-60">{t(`pricing.${plan.code}.body`)}</p>
+                <ul className="my-8 space-y-4 border-t border-current/15 pt-7 text-sm">
+                  <li>
+                    ✓{' '}
+                    <span className="ml-2">
+                      {plan.documents === null
+                        ? t('pricing.unlimitedDocuments')
+                        : t('pricing.documents', { count: plan.documents })}
+                    </span>
+                  </li>
+                  <li>
+                    ✓{' '}
+                    <span className="ml-2">
+                      {plan.users === null
+                        ? t('pricing.unlimitedUsers')
+                        : t('pricing.users', { count: plan.users })}
+                    </span>
+                  </li>
+                  <li>
+                    ✓ <span className="ml-2">{t('pricing.catalogs')}</span>
+                  </li>
+                  <li>
+                    ✓ <span className="ml-2">{t('pricing.languages')}</span>
+                  </li>
+                </ul>
+                <Link
+                  href="/register"
+                  className={`pricing-cta mt-auto flex min-h-12 items-center justify-between rounded-full px-5 text-sm font-medium ${plan.code === 'STARTER' ? 'bg-black text-white' : 'border border-white/25'}`}
+                >
+                  {t('pricing.cta')}{' '}
+                  <span aria-hidden="true" className="pricing-arrow">
+                    ↗
+                  </span>
+                </Link>
+              </article>
+            ))}
+          </div>
+          <p className="mt-5 max-w-3xl text-xs leading-6 text-white/40">{t('pricing.note')}</p>
         </div>
-        <p className="mt-5 max-w-3xl text-xs leading-6 text-white/40">{t('pricing.note')}</p>
       </section>
       <section
         id="faq"

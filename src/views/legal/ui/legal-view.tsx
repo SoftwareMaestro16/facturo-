@@ -1,12 +1,13 @@
 import { Link } from '@/shared/i18n';
-import { HeroCanvas, Logo } from '@/shared/ui';
+import { Logo, TopoField } from '@/shared/ui';
 
 import type { LegalDocument } from '../model/types';
 
 export function LegalView({ document, backLabel }: { document: LegalDocument; backLabel: string }) {
   return (
-    <HeroCanvas height="auto" speed={0.28} grain={0.18} className="min-h-dvh text-white">
-      <div className="min-h-dvh bg-black/65">
+    <div className="relative min-h-dvh text-white">
+      <TopoField speed={0.5} density={0.85} />
+      <div className="relative min-h-dvh bg-black/70">
         <header className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-5 sm:px-10">
           <Link href="/">
             <Logo inverted />
@@ -61,6 +62,6 @@ export function LegalView({ document, backLabel }: { document: LegalDocument; ba
           </div>
         </main>
       </div>
-    </HeroCanvas>
+    </div>
   );
 }

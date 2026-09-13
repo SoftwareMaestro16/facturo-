@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/shared/i18n';
-import { HeroCanvas, LocaleSwitcher, Logo } from '@/shared/ui';
+import { HeroCanvas, LocaleSwitcher, Logo, TopoField } from '@/shared/ui';
 import { FeatureBento } from './feature-bento';
 import { InvoicePreview } from './invoice-preview';
 import { LandingDetails } from './landing-details';
@@ -88,21 +88,24 @@ export function LandingView() {
           </div>
           <FeatureBento />
           <LandingDetails />
-          <section className="mt-20 flex flex-col items-start justify-between gap-7 border-t border-white/10 pt-12 sm:flex-row sm:items-center">
-            <div>
-              <h2 className="text-3xl">{t('closing.title')}</h2>
-              <p className="mt-3 text-white/55">{t('closing.body')}</p>
-            </div>
-            <Link
-              href="/register"
-              className="inline-flex min-h-14 shrink-0 items-center gap-8 rounded-full bg-white px-7 font-semibold text-black transition-colors hover:bg-white/85"
-            >
-              {t('hero.primaryCta')}
-              <span aria-hidden="true">↗</span>
-            </Link>
-          </section>
         </div>
       </main>
+      <section className="relative border-t border-white/10 bg-black text-white">
+        <TopoField speed={0.4} density={0.7} className="opacity-70" />
+        <div className="relative mx-auto flex max-w-7xl flex-col items-start justify-between gap-7 bg-black/40 px-6 py-16 sm:flex-row sm:items-center sm:px-10 sm:py-20">
+          <div>
+            <h2 className="text-3xl">{t('closing.title')}</h2>
+            <p className="mt-3 text-white/55">{t('closing.body')}</p>
+          </div>
+          <Link
+            href="/register"
+            className="inline-flex min-h-14 shrink-0 items-center gap-8 rounded-full bg-white px-7 font-semibold text-black transition-colors hover:bg-white/85"
+          >
+            {t('hero.primaryCta')}
+            <span aria-hidden="true">↗</span>
+          </Link>
+        </div>
+      </section>
       <footer className="border-t border-white/10 bg-black text-white">
         <div className="mx-auto grid max-w-7xl gap-8 px-6 pt-10 pb-8 sm:grid-cols-2 sm:px-10">
           <div>

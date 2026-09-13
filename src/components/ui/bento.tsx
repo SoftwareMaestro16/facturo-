@@ -29,7 +29,7 @@ export function BentoCard({
       )}
     >
       <div
-        className="relative flex h-52 items-center justify-center overflow-hidden px-6 pt-8 sm:h-60"
+        className="relative flex h-52 items-center justify-center overflow-hidden px-6 py-8 sm:h-60"
         aria-hidden="true"
       >
         {graphic}

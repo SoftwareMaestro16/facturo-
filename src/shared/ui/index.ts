@@ -10,3 +10,6 @@ export { Skeleton } from './skeleton';
 export { GoogleButton } from './google-button';
 export { HeroCanvas, type HeroCanvasProps } from './hero-canvas';
 export { LocaleSwitcher } from './locale-switcher';
+export { NebulaField, type NebulaFieldProps } from './nebula-field';
+export { ShaderBackground, type ShaderBackgroundProps } from './shader-background';
+export { TopoField, type TopoFieldProps } from './topo-field';

@@ -94,7 +94,10 @@ export function GoogleButton({
         onReady={() => setReady(true)}
         onError={onError}
       />
-      <div ref={shell} className="google-button-shell flex min-h-14 items-center justify-center rounded-full">
+      <div
+        ref={shell}
+        className="google-button-shell my-2 flex min-h-14 items-center justify-center rounded-full"
+      >
         <div ref={container} className="flex min-h-11 justify-center" />
       </div>
       {!ready || !nonce ? (
