@@ -33,9 +33,9 @@
         "body": "Pentru un volum mare de documente și extinderea echipei."
       },
       "documents": "{count} documente pe perioadă",
-      "users": "{count, plural, one {# participant} other {# participanți}}",
+      "users": "{count, plural, one {# persoană în echipa companiei} other {# persoane în echipa companiei}}",
       "unlimitedDocuments": "Documente nelimitate",
-      "unlimitedUsers": "Participanți nelimitați",
+      "unlimitedUsers": "Fără limită de persoane în echipa companiei",
       "catalogs": "Cataloage de cumpărători și produse",
       "languages": "Interfață în română și rusă",
       "cta": "Creați un cont",
@@ -285,6 +285,7 @@
       "submit": "Intrați",
       "retry": "Încercați din nou",
       "noAccount": "Nu aveți încă un cont? <register>Creați unul</register>.",
+      "noAccountShort": "Nu aveți încă un cont?",
       "backToLanding": "Pagina principală",
       "errors": {
         "invalid_email": "Verificați adresa: pare scrisă greșit.",
@@ -311,6 +312,7 @@
       "submit": "Creați contul",
       "retry": "Încercați din nou",
       "haveAccount": "Aveți deja un cont? <login>Intrați</login>.",
+      "haveAccountShort": "Aveți deja un cont?",
       "consent": "Continuând prin Google, sunteți de acord cu <terms>Termenii și condițiile</terms> și cu <privacy>Politica de confidențialitate</privacy>.",
       "backToLanding": "Pagina principală",
       "errors": {

@@ -65,6 +65,21 @@
   mask-image: radial-gradient(ellipse at center, transparent 15%, black 75%);
   animation: dot-reveal 2s ease-out both;
 }
+.auth-dot-field::before,
+.auth-dot-field::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgb(255 255 255 / 0.9) 2px, transparent 3px);
+  background-size: 20px 20px;
+  mask-image: radial-gradient(circle at center, black 0%, black 1.5%, transparent 3%);
+  mask-position: center;
+  mask-repeat: no-repeat;
+  animation: dot-chain-pulse 6s ease-out infinite;
+}
+.auth-dot-field::after {
+  animation-delay: -3s;
+}
 @keyframes dot-reveal {
   from {
     opacity: 0;
@@ -75,9 +90,48 @@
     transform: scale(1);
   }
 }
+@keyframes dot-chain-pulse {
+  0% {
+    mask-size: 0% 0%;
+    opacity: 0;
+  }
+  6% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 0.35;
+  }
+  100% {
+    mask-size: 240% 240%;
+    opacity: 0;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
-  .auth-dot-field {
+  .auth-dot-field,
+  .auth-dot-field::before,
+  .auth-dot-field::after {
     animation: none;
+  }
+}
+.google-button-shell {
+  transition:
+    transform 200ms ease,
+    filter 200ms ease;
+}
+.google-button-shell:focus-within {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+  border-radius: 9999px;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .google-button-shell:hover {
+    transform: translateY(-2px) scale(1.015);
+    filter: drop-shadow(0 10px 26px rgb(255 255 255 / 0.14));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .google-button-shell {
+    transition: none;
   }
 }
 .workspace-theme {

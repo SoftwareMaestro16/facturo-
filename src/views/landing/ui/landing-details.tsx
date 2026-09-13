@@ -1,5 +1,11 @@
+'use client';
+
+import { AnimatePresence, motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import { useState } from 'react';
 import { Link } from '@/shared/i18n';
+
+const faqKeys = ['google', 'companies', 'import', 'payment', 'responsibility', 'ai'] as const;
 
 // Preview of backend billing/model/plans.ts; checkout is not available yet.
 const plans = [
@@ -10,6 +16,7 @@ const plans = [
 
 export function LandingDetails() {
   const t = useTranslations('landingDetails');
+  const [openFaq, setOpenFaq] = useState<(typeof faqKeys)[number] | null>(null);
   return (
     <>
       <section id="how-it-works" className="scroll-mt-10 border-t border-white/10 pt-20 mt-24 sm:mt-32">
@@ -106,17 +113,40 @@ export function LandingDetails() {
           <p className="mt-5 max-w-sm leading-7 text-white/55">{t('faq.intro')}</p>
         </div>
         <div>
-          {(['google', 'companies', 'import', 'payment', 'responsibility', 'ai'] as const).map((key) => (
-            <details key={key} className="group border-b border-white/15 py-5 first:border-t">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-2 text-lg [&::-webkit-details-marker]:hidden">
-                {t(`faq.${key}.q`)}
-                <span aria-hidden="true" className="text-white/40 transition-transform group-open:rotate-45">
-                  +
-                </span>
-              </summary>
-              <p className="max-w-xl pt-3 pb-2 leading-7 text-white/55">{t(`faq.${key}.a`)}</p>
-            </details>
-          ))}
+          {faqKeys.map((key) => {
+            const isOpen = openFaq === key;
+            return (
+              <div key={key} className="border-b border-white/15 first:border-t">
+                <button
+                  type="button"
+                  aria-expanded={isOpen}
+                  onClick={() => setOpenFaq(isOpen ? null : key)}
+                  className="flex w-full cursor-pointer items-center justify-between gap-6 py-5 text-left text-lg"
+                >
+                  {t(`faq.${key}.q`)}
+                  <span
+                    aria-hidden="true"
+                    className={`shrink-0 text-white/40 transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}
+                  >
+                    +
+                  </span>
+                </button>
+                <AnimatePresence initial={false}>
+                  {isOpen ? (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      className="overflow-hidden"
+                    >
+                      <p className="max-w-xl pb-5 leading-7 text-white/55">{t(`faq.${key}.a`)}</p>
+                    </motion.div>
+                  ) : null}
+                </AnimatePresence>
+              </div>
+            );
+          })}
         </div>
       </section>
     </>

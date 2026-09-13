@@ -4,13 +4,13 @@ export const privacyRo: LegalDocument = {
   updatedAt: '2026-09-13',
   intro: [
     'Politica descrie prelucrarea datelor personale în Facturo și nu înlocuiește acordul de prelucrare dintre furnizor și client.',
-    'Versiune preliminară: înainte de lansarea comercială trebuie completate adresa operatorului, lista persoanelor împuternicite și termenele concrete de păstrare.',
+    'Versiune preliminară: înainte de lansarea comercială trebuie completate lista persoanelor împuternicite și termenele concrete de păstrare.',
   ],
   sections: [
     {
       heading: '1. Operator și roluri',
       paragraphs: [
-        'Pentru datele contului și organizarea serviciului, operatorul este Şcerbacov Daniil, antreprenor independent (freelancer), Republica Moldova, IDNO 1026023032436. Adresa de corespondență urmează a fi completată. Contact: daniilscherbakov1@gmail.com.',
+        'Pentru datele contului și organizarea serviciului, operatorul este Şcerbacov Daniil, antreprenor independent (freelancer), Republica Moldova, IDNO 1026023032436. Operatorul nu deține o adresă poștală de corespondență; unicul contact este daniilscherbakov1@gmail.com.',
         'Pentru datele personale din documente și cataloage, clientul stabilește de regulă scopurile, iar furnizorul acționează conform instrucțiunilor documentate ale acestuia. Rolurile depind de prelucrarea efectivă; denumirea contractuală nu înlătură obligațiile legale.',
       ],
     },

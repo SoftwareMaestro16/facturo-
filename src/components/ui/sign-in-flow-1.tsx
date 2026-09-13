@@ -4,7 +4,15 @@ import type { ReactNode } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 
 /** Monochrome adaptation of the dot reveal sign-in reference. */
-export function SignInPage({ children, navigation }: { children: ReactNode; navigation: ReactNode }) {
+export function SignInPage({
+  children,
+  navigation,
+  footer,
+}: {
+  children: ReactNode;
+  navigation: ReactNode;
+  footer?: ReactNode;
+}) {
   const reducedMotion = useReducedMotion();
   return (
     <div className="relative isolate flex min-h-dvh flex-col overflow-hidden bg-black text-white">
@@ -22,7 +30,9 @@ export function SignInPage({ children, navigation }: { children: ReactNode; navi
           {children}
         </motion.div>
       </main>
-      <p className="pb-6 text-center font-mono text-xs tracking-[0.2em] text-white/30">FACTURO / MOLDOVA</p>
+      {footer ? (
+        <footer className="border-t border-white/10 px-6 py-5 text-xs text-white/40">{footer}</footer>
+      ) : null}
     </div>
   );
 }

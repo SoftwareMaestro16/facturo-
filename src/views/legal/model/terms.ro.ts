@@ -10,7 +10,7 @@ export const termsRo: LegalDocument = {
     {
       heading: '1. Furnizor și contact',
       paragraphs: [
-        'Furnizor: Şcerbacov Daniil, antreprenor independent (freelancer), Republica Moldova, IDNO 1026023032436. Adresa pentru corespondență juridică urmează a fi completată. Facturo este denumirea produsului software, nu o persoană juridică distinctă.',
+        'Furnizor: Şcerbacov Daniil, antreprenor independent (freelancer), Republica Moldova, IDNO 1026023032436. Furnizorul nu deține o adresă poștală pentru corespondență; unicul canal oficial de comunicare este adresa de e-mail indicată mai jos. Facturo este denumirea produsului software, nu o persoană juridică distinctă.',
         'Solicitările, reclamațiile și cererile privind datele personale se trimit la daniilscherbakov1@gmail.com. Indicați contul, obiectul cererii și informațiile necesare examinării. Nu transmiteți parole, tokenuri sau date complete ale cardurilor.',
       ],
     },

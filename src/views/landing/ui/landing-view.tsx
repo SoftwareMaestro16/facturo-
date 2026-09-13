@@ -104,24 +104,25 @@ export function LandingView() {
         </div>
       </main>
       <footer className="border-t border-white/10 bg-black text-white">
-        <div className="mx-auto grid max-w-7xl gap-10 px-6 pt-16 pb-10 sm:grid-cols-2 sm:px-10">
+        <div className="mx-auto grid max-w-7xl gap-8 px-6 pt-10 pb-8 sm:grid-cols-2 sm:px-10">
           <div>
-            <p className="text-6xl font-medium tracking-[-0.07em] sm:text-8xl">
+            <p className="text-3xl font-medium tracking-[-0.04em] sm:text-4xl">
               facturo<span className="text-white/30">.</span>
             </p>
-            <p className="mt-5 max-w-sm leading-7 text-white/50">{t('hero.subtitle')}</p>
+            <p className="mt-4 max-w-sm leading-7 text-white/50">{t('hero.subtitle')}</p>
+            <div className="mt-6 flex flex-wrap items-center gap-2">
+              <span className="rounded-full border border-white/15 px-3 py-1.5 text-xs tracking-wide text-white/45">
+                e-Factura
+              </span>
+              <span className="rounded-full border border-white/15 px-3 py-1.5 text-xs tracking-wide text-white/45">
+                maib
+              </span>
+            </div>
           </div>
-          <div className="flex flex-col items-start gap-5 sm:items-end">
-            <Link
-              href="/register"
-              className="rounded-full border border-white/25 px-6 py-3 hover:bg-white hover:text-black"
-            >
-              {t('hero.primaryCta')} ↗
-            </Link>
+          <div className="flex flex-col items-start gap-4 sm:items-end">
             <a href="#features" className="text-white/60 hover:text-white">
               {t('nav.features')}
             </a>
-            <span className="font-mono text-sm tracking-widest text-white/35">XML / e-Factura · RO / RU</span>
             <a href="#pricing" className="text-white/60 hover:text-white">
               {t('nav.pricing')}
             </a>
@@ -130,7 +131,7 @@ export function LandingView() {
             </a>
           </div>
         </div>
-        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-8 text-sm text-white/50 sm:flex-row sm:items-center sm:justify-between sm:px-10">
+        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-6 text-sm text-white/50 sm:flex-row sm:items-center sm:justify-between sm:px-10">
           <Logo inverted />
           <span>{t('footer.company')}</span>
           <nav className="flex flex-wrap items-center gap-5">
